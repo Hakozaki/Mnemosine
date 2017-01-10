@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('eoq', function (\App\Magia $magia) { 
+    return dd($magia->escolas());
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
