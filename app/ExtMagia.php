@@ -14,7 +14,8 @@ class ExtMagia extends Model {
             "adivinhacao" => "Adivinhação",
             "encantamento" => "Encantamento",
             "evocacao" => "Evocação",
-            "ilusao" => "Ilusão"];
+            "ilusao" => "Ilusão",
+            "universal" => "Universal"];
     }
 
     public static function subEscola($escola = null) {
@@ -50,6 +51,15 @@ class ExtMagia extends Model {
                 "fantasma" => "Fantasma",
                 "sombra" => "Sombra"];
         }
+    }
+
+    public function componentes() {
+        return ["verbal" => "V",
+            "gestual" => "G",
+            "material" => "M",
+            "foco" => "F",
+            "focodivino" => "FD",
+            "custodexp" => "XP"];
     }
 
 }

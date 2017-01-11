@@ -12,19 +12,22 @@ class CreateMagiasTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('magia', function (Blueprint $table) {
+        Schema::create('magias', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome');
-            $table->string('descricao');
-            $table->string('escola');
-            $table->string('descritor');
-            $table->string('componentes');
-            $table->string('tempoExecucao');
-            $table->string('nivel');
-            $table->string('alcance');
-            $table->string('testeResistencia');
-            $table->string('resistenciaMagia');
-            $table->string('duracao');
+            $table->text('descricao')->nullable();
+            $table->string('escola')->nullable();
+            $table->string('descritor')->nullable();
+            $table->string('componentes')->nullable();
+            $table->string('tempoExecucao')->nullable();
+            $table->string('nivel')->nullable();
+            $table->string('alcance')->nullable();
+            $table->string('alvo')->nullable();
+            $table->string('efeito')->nullable();
+            $table->string('area')->nullable();
+            $table->string('testeResistencia')->nullable();
+            $table->string('resistenciaMagia')->nullable();
+            $table->string('duracao')->nullable();
             $table->timestamps();
         });
     }
@@ -35,7 +38,7 @@ class CreateMagiasTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::drop('magia');
+        Schema::drop('magias');
     }
 
 }

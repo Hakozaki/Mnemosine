@@ -11,15 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/home', ['uses' => 'HomeController@index', 'as' => 'home.index']);
+Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home.index']);
 
-Route::get('eoq', function (\App\Magia $magia) { 
-    return dd($magia->escolas());
+Route::get('/magia', ['uses' => 'MagiaController@index', 'as' => 'magia.index']);
+Route::get('/magia/detalhe/{magia?}', ['uses' => 'MagiaController@detalhe', 'as' => 'magia.detalhe']);
+Route::get('/magia/deletar/{magia?}', ['uses' => 'MagiaController@deletar', 'as' => 'magia.deletar']);
+Route::post('/magia/salvar', ['uses' => 'MagiaController@salvar', 'as' => 'magia.salvar']);
+
+
+Route::get('eoq', function (\App\Magia $magia) {     
+    return dd($magia->subEscolas("conjuracao"));
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index');
 
