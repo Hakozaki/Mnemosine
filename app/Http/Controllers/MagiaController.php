@@ -17,17 +17,22 @@ class MagiaController extends Controller {
     }
 
     public function detalhe(\App\Magia $magia) {
-
         return view('magia.detalhe', compact('magia'));
     }
 
     public function salvar(Request $request) {
-        \App\magia::create($request->all());                       
-
+        $id = $request->id;
+        $magia = \App\magia::find($id);        
+        if(is_null($magia)){            
+            \App\magia::create($request->all());                       
+        }else{
+            $magia->update($request->all());
+        }               
         return redirect()->route('magia.index');
     }
 
-    public function deletar(\App\Magia $magia) {        
+    public function deletar(\App\Magia $magia) {  
+        $magia->delete();            
         return redirect()->route('magia.index');
     }
 

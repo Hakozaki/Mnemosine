@@ -26,7 +26,7 @@
                                 <th scope="row">{{ $magia->id }}</th>
                                 <td>{{ $magia->nome }}</td>                                                               
                                 <td>
-                                    <a class="btn btn-default" href="{{ route('magia.detalhe',$magia->id) }}">Editar</a>
+                                    <a class="btn btn-default" href="{{ route('magia.detalhe',$magia) }}">Editar</a>
                                     <a class="btn btn-danger" href="javascript:confirm('Deletar magia?') ? 
                                        window.location.href='{{ route('magia.deletar',$magia) }}' : false ">Excluir</a>
                                 </td>
