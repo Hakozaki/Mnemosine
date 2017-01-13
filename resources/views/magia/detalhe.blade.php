@@ -23,7 +23,17 @@
                                 <strong>{{ $errors->first('nome') }}</strong>								
                             </span>
                             @endif
-                        </div>  
+                        </div> 
+                        
+                        <div class="form-group {{ $errors->has('descricao') ? 'has-error' : '' }}">
+                            <label for="descricao">Descrição:</label>
+                            <input type="text" name="descricao" class="form-control" value="{{ $magia->descricao }}" placeholder="Magia">
+                            @if($errors->has('descricao'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('descricao') }}</strong>								
+                            </span>
+                            @endif
+                        </div> 
                        
                         <button class="btn btn-info">Salvar</a>
                     </form>
