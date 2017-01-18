@@ -1,15 +1,15 @@
 <?php
 
 /*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| This file is where you may define all of the routes that are handled
-| by your application. Just tell Laravel the URIs it should respond
-| to using a Closure or controller method. Build something great!
-|
-*/
+  |--------------------------------------------------------------------------
+  | Web Routes
+  |--------------------------------------------------------------------------
+  |
+  | This file is where you may define all of the routes that are handled
+  | by your application. Just tell Laravel the URIs it should respond
+  | to using a Closure or controller method. Build something great!
+  |
+ */
 
 Route::get('/home', ['uses' => 'HomeController@index', 'as' => 'home.index']);
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home.index']);
@@ -20,8 +20,11 @@ Route::get('/magia/deletar/{magia?}', ['uses' => 'MagiaController@deletar', 'as'
 Route::post('/magia/salvar', ['uses' => 'MagiaController@salvar', 'as' => 'magia.salvar']);
 
 
-Route::get('eoq', function (\App\Magia $magia) {     
-    return dd($magia->subEscolas("conjuracao"));
+Route::get('eoq', function (\App\Magia $magia) {    
+    dd($magia->escolas());
+    foreach ($magia->escolas() as $value) {
+      dump($value);
+    }
 });
 
 Auth::routes();

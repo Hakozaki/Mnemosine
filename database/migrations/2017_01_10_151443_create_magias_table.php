@@ -17,8 +17,15 @@ class CreateMagiasTable extends Migration {
             $table->string('nome');
             $table->text('descricao')->nullable();
             $table->string('escola')->nullable();
+            $table->string('subEscola')->nullable();
             $table->string('descritor')->nullable();
-            $table->string('componentes')->nullable();
+            $table->string('componenteVisual')->nullable();
+            $table->string('componenteGestual')->nullable();
+            $table->string('componenteMaterial')->nullable();
+            $table->string('componenteFoco')->nullable();
+            $table->string('componenteFocoDivino')->nullable();
+            $table->string('componenteXP')->nullable();
+            $table->string('componenteDescricao')->nullable();
             $table->string('tempoExecucao')->nullable();
             $table->string('nivel')->nullable();
             $table->string('alcance')->nullable();

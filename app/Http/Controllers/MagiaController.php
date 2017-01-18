@@ -22,7 +22,8 @@ class MagiaController extends Controller {
 
     public function salvar(Request $request) {
         $id = $request->id;
-        $magia = \App\magia::find($id);        
+        $magia = \App\magia::find($id);    
+        
         if(is_null($magia)){            
             \App\magia::create($request->all());                       
         }else{
@@ -34,6 +35,10 @@ class MagiaController extends Controller {
     public function deletar(\App\Magia $magia) {  
         $magia->delete();            
         return redirect()->route('magia.index');
+    }     
+    
+    public function descritores(){
+        return \App\ExtMagia::descritor();
     }
 
 }
