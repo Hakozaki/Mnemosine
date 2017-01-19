@@ -21,10 +21,8 @@ Route::post('/magia/salvar', ['uses' => 'MagiaController@salvar', 'as' => 'magia
 
 
 Route::get('eoq', function (\App\Magia $magia) {    
-    dd($magia->escolas());
-    foreach ($magia->escolas() as $value) {
-      dump($value);
-    }
+    $magia = \App\Magia::find(1);
+    dd($magia->escola->escola());
 });
 
 Auth::routes();

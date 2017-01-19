@@ -18,6 +18,7 @@
                                 <th>#</th>
                                 <th>Nome</th>                                                              
                                 <th>Ações</th>                                                              
+                                <th>Escola</th>                                                              
                             </tr>
                         </thead>
                         <tbody>
@@ -25,6 +26,7 @@
                             <tr>
                                 <th scope="row">{{ $magia->id }}</th>
                                 <td>{{ $magia->nome }}</td>                                                               
+                                <td>{{ $magia->_escola($magia->escola) . " (". $magia->_subEscola($magia->subEscola) .") " . "[". $magia->_descritor($magia->descritor) ."]" }}</td>                                                               
                                 <td>
                                     <a class="btn btn-default" href="{{ route('magia.detalhe',$magia) }}">Editar</a>
                                     <a class="btn btn-danger" href="javascript:confirm('Deletar magia?') ? 

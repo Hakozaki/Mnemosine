@@ -63,25 +63,25 @@ class ExtMagia extends Model {
     }
 
     public static function descritor() {
-        return ["acaoMental" => "ação mental",
-            "acido" => "ácido",
-            "agua" => "água",
-            "ar" => "ar",
-            "bem" => "bem",
-            "caos" => "caos",
-            "dependenteDeIdioma" => "dependente de idioma",
-            "eletricidade" => "eletricidade",
-            "energia" => "energia",
-            "escuridão" => "escuridão",
-            "fogo" => "fogo",
-            "frio" => "frio",
-            "luz" => "luz",
-            "mal" => "mal",
-            "medo" => "medo",
-            "morte" => "morte",
-            "ordem" => "ordem",
-            "sônico" => "sônico",
-            "terra" => "terra"];
+        return ["acaoMental" => "Ação mental",
+            "acido" => "Ácido",
+            "agua" => "Água",
+            "ar" => "Ar",
+            "bem" => "Bem",
+            "caos" => "Caos",
+            "dependenteDeIdioma" => "Dependente de idioma",
+            "eletricidade" => "Eletricidade",
+            "energia" => "Energia",
+            "escuridão" => "Escuridão",
+            "fogo" => "Fogo",
+            "frio" => "Frio",
+            "luz" => "Luz",
+            "mal" => "Mal",
+            "medo" => "Medo",
+            "morte" => "Morte",
+            "ordem" => "Ordem",
+            "sônico" => "Sônico",
+            "terra" => "Terra"];
     }
 
 }

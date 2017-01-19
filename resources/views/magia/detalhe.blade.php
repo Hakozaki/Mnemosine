@@ -27,7 +27,7 @@
 
                         <div class="form-group {{ $errors->has('descricao') ? 'has-error' : '' }}">
                             <label for="descricao">Descrição:</label>
-                            <textarea type="text" name="descricao" class="form-control" value="{{ $magia->descricao }}" placeholder="Descrição da Magia"></textarea>
+                            <textarea type="text" style="max-width:100%" name="descricao" class="form-control" rows="7" value="{{ $magia->descricao }}" placeholder="Descrição da Magia">{{ $magia->descricao }}</textarea>
                             @if($errors->has('descricao'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('descricao') }}</strong>								
@@ -90,7 +90,7 @@
                             <div class="panel-heading ">Componentes</div>
                             <div class="form-group col-md-2 {{ $errors->has('componenteVisual') ? 'has-error' : '' }}">
                                 <label for="nome">Visual:</label>
-                                <input type="checkbox" name="componenteVisual"  value="{{ $magia->componenteVisual }}">
+                                <input type="checkbox" name="componenteVisual" value="{{ $magia->componenteVisual }}">
                             </div> 
                             <div class="form-group col-sm-2 {{ $errors->has('componenteGestual') ? 'has-error' : '' }}">
                                 <label for="nome">Gestual:</label>
@@ -113,10 +113,10 @@
                                 <input type="checkbox" name="componenteXP"  value="{{ $magia->componenteXP }}">
                             </div> 
                         </div> 
-                        <div class="form-group {{ $errors->has('componenteDescricao') ? 'has-error' : '' }}">
 
-                            <textarea  name="componenteDescricao" class="form-control" value="{{ $magia->componenteDescricao }}" placeholder="Descrição dos componentes"></textarea>
-                            @if($errors->has('nome'))
+                        <div class="form-group {{ $errors->has('componenteDescricao') ? 'has-error' : '' }}">
+                            <textarea  name="componenteDescricao" style="max-width:100%" class="form-control" value="{{ $magia->componenteDescricao }}" placeholder="Descrição dos componentes">{{ $magia->componenteDescricao }}</textarea>
+                            @if($errors->has('componenteDescricao'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('componenteDescricao') }}</strong>								
                             </span>
@@ -129,13 +129,17 @@
                                 <div class="input-group-btn">
                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">... <span class="caret"></span></button>
                                     <ul class="dropdown-menu">
-                                        <li id="t1" onclick="document.getElementById('tempoExecucao').innerHTML = 'TESTE'"><a>1 Ação padrão</a></li>                                    
+                                        <li><a id="t1" onclick="preencheTempoExecucao()">1 Ação padrão</a></li>                                    
                                         <li><a>1 Rodada completa</a></li>                                    
                                     </ul>
                                 </div><!-- /btn-group -->
                                 <input id="tempoExecucao" type="text" name="tempoExecucao" class="form-control" value="{{ $magia->tempoExecucao }}" placeholder="Tempo de execução">
                             </div><!-- /input-group -->
-
+                            <script>
+                                function preencheTempoExecucao() {
+                                    document.getElementById('tempoExecucao').innerHTML = 'TESTE';
+                                }
+                            </script>
                             @if($errors->has('tempoExecucao'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('tempoExecucao') }}</strong>								
@@ -143,6 +147,120 @@
                             @endif
                         </div> 
 
+                        <div class="form-group {{ $errors->has('nivel') ? 'has-error' : '' }}">
+                            <label for="nome">Nível:</label>
+                            <input type="text" name="nivel" class="form-control" value="{{ $magia->nivel }}" placeholder="Nível da Magia">
+                            @if($errors->has('nivel'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('nivel') }}</strong>								
+                            </span>
+                            @endif
+                        </div> 
+
+                        <div class="form-group {{ $errors->has('alcance') ? 'has-error' : '' }}">
+                            <label for="alcance">Alcance:</label>                                                        
+                            <div class="input-group">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">... <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a id="al1" onclick="preencheAlcance()">Pessoal</a></li>                                    
+                                        <li><a id="al2" onclick="preencheAlcance()">Toque</a></li>                                    
+                                        <li><a id="al3" onclick="preencheAlcance()">Curto</a></li>                                    
+                                        <li><a id="al4" onclick="preencheAlcance()">Médio</a></li>                                    
+                                        <li><a id="al5" onclick="preencheAlcance()">Longo</a></li>                                                                            
+                                        <li><a id="al6" onclick="preencheAlcance()">Ilimitado</a></li>                                                                            
+                                        <li><a id="al7" onclick="preencheAlcance()">Distância em metros</a></li>                                                                            
+                                    </ul>
+                                </div><!-- /btn-group -->
+                                <input id="alcance" type="text" name="alcance" class="form-control" value="{{ $magia->alcance }}" placeholder="Alcance">
+                            </div><!-- /input-group -->
+                            <script>
+                                function preencheAlcance() {
+                                    document.getElementById('alcance').innerHTML = 'TESTE';
+                                }
+                            </script>
+                            @if($errors->has('alcance'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('alcance') }}</strong>								
+                            </span>
+                            @endif
+                        </div> 
+
+                        <div class="row">
+                            <div class="form-group col-md-6 {{ $errors->has('alvo') ? 'has-error' : '' }}">
+                                <label for="alvo">Alvo:</label>
+                                <input type="text" name="alvo" class="form-control" value="{{ $magia->alvo }}" placeholder="Alvo da Magia">
+                                @if($errors->has('alvo'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('alvo') }}</strong>								
+                                </span>
+                                @endif
+                            </div> 
+
+                            <div class="form-group col-md-6 {{ $errors->has('area') ? 'has-error' : '' }}">
+                                <label for="area">Área:</label>
+                                <input type="text" name="area" class="form-control" value="{{ $magia->area }}" placeholder="Área da Magia">
+                                @if($errors->has('area'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('area') }}</strong>								
+                                </span>
+                                @endif
+                            </div> 
+                        </div>
+
+                        <div class="form-group {{ $errors->has('efeito') ? 'has-error' : '' }}">
+                            <label for="area">Efeito:</label>
+                            <input type="text" name="efeito" class="form-control" value="{{ $magia->efeito }}" placeholder="Área da Magia">
+                            @if($errors->has('efeito'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('efeito') }}</strong>								
+                            </span>
+                            @endif
+                        </div> 
+
+                        <div class="row">
+                            <div class="form-group col-md-6{{ $errors->has('testeResistencia') ? 'has-error' : '' }}">
+                                <label for="testeResistencia">Teste de resistência:</label>                                                        
+                                <div class="input-group">
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">... <span class="caret"></span></button>
+                                        <ul class="dropdown-menu">
+                                            <li><a id="tr1" onclick="preencheTeste()">Nenhum</a></li>                                                                            
+                                        </ul>
+                                    </div><!-- /btn-group -->
+                                    <input id="testeResistencia" type="text" name="testeResistencia" class="form-control" value="{{ $magia->testeResistencia }}" placeholder="Teste de resistência">
+                                </div><!-- /input-group -->
+                                <script>
+                                    function preencheTeste() {
+                                        document.getElementById('testeResistencia').innerHTML = 'TESTE';
+                                    }
+                                </script>
+                                @if($errors->has('testeResistencia'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('testeResistencia') }}</strong>								
+                                </span>
+                                @endif
+                            </div> 
+
+                            <div class="form-group col-md-6{{ $errors->has('resistenciaMagia') ? 'has-error' : '' }}">
+                                <label for="resistenciaMagia">Resistência a magia:</label>
+                                <input type="text" name="resistenciaMagia" class="form-control" value="{{ $magia->resistenciaMagia }}" placeholder="Resistência a magia">
+                                @if($errors->has('efeito'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('resistenciaMagia') }}</strong>								
+                                </span>
+                                @endif
+                            </div> 
+                        </div>
+                        <div class="form-group {{ $errors->has('duracao') ? 'has-error' : '' }}">
+                            <label for="duracao">Duração:</label>
+                            <input type="text" name="duracao" class="form-control" value="{{ $magia->duracao }}" placeholder="Duração">
+                            @if($errors->has('duracao'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('duracao') }}</strong>								
+                            </span>
+                            @endif
+                        </div> 
                         <button class="btn btn-info">Salvar</a>                            
                     </form>
                 </div>
