@@ -23,6 +23,7 @@ class MagiaController extends Controller {
     public function salvar(Request $request) {
         $id = $request->id;
         $magia = \App\magia::find($id);    
+        //dd($request->all());
         
         if(is_null($magia)){            
             \App\magia::create($request->all());                       

@@ -90,27 +90,27 @@
                             <div class="panel-heading ">Componentes</div>
                             <div class="form-group col-md-2 {{ $errors->has('componenteVisual') ? 'has-error' : '' }}">
                                 <label for="nome">Visual:</label>
-                                <input type="checkbox" name="componenteVisual" value="{{ $magia->componenteVisual }}">
+                                <input type="checkbox" name="componenteVisual" value="1" <?php echo 1 == $magia->componenteVisual ? 'checked' : ''; ?>>
                             </div> 
                             <div class="form-group col-sm-2 {{ $errors->has('componenteGestual') ? 'has-error' : '' }}">
                                 <label for="nome">Gestual:</label>
-                                <input type="checkbox" name="componenteGestual"  value="{{ $magia->componenteGestual }}">
+                                <input type="checkbox" name="componenteGestual"  value="1"<?php echo 1 == $magia->componenteGestual ? 'checked' : ''; ?>>
                             </div> 
                             <div class="form-group col-sm-2 {{ $errors->has('componenteMaterial') ? 'has-error' : '' }}">
                                 <label for="nome">Material:</label>
-                                <input type="checkbox" name="componenteMaterial"  value="{{ $magia->componenteMaterial }}">
+                                <input type="checkbox" name="componenteMaterial"  value="1"<?php echo 1 == $magia->componenteMaterial ? 'checked' : ''; ?>>
                             </div> 
                             <div class="form-group col-sm-2 {{ $errors->has('componenteFoco') ? 'has-error' : '' }}">
                                 <label for="nome">Foco:</label>
-                                <input type="checkbox" name="componenteFoco"  value="{{ $magia->componenteFoco }}">
+                                <input type="checkbox" name="componenteFoco"  value="1"<?php echo 1 == $magia->componenteFoco ? 'checked' : ''; ?>>
                             </div> 
                             <div class="form-group col-sm-2 {{ $errors->has('componenteFocoDivino') ? 'has-error' : '' }}">
                                 <label for="nome">Foco Divino:</label>
-                                <input type="checkbox" name="componenteFocoDivino"  value="{{ $magia->componenteFocoDivino }}">
+                                <input type="checkbox" name="componenteFocoDivino"  value="1"<?php echo 1 == $magia->componenteFocoDivino ? 'checked' : ''; ?>>
                             </div> 
                             <div class="form-group col-sm-2 {{ $errors->has('componenteXP') ? 'has-error' : '' }}">
                                 <label for="nome">Custo de XP:</label>
-                                <input type="checkbox" name="componenteXP"  value="{{ $magia->componenteXP }}">
+                                <input type="checkbox" name="componenteXP"  value="1"<?php echo 1 == $magia->componenteXP ? 'checked' : ''; ?>>
                             </div> 
                         </div> 
 

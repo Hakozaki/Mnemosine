@@ -6,36 +6,49 @@ use Illuminate\Database\Eloquent\Model;
 
 class Magia extends Model {
 
-protected $fillable = ['nome', 'descricao', 'escola', 'subEscola', 'descritor',
- 'componenteVisual', 'componenteGestual', 'componenteMaterial', 'componenteFoco',
- 'componenteFocoDivino', 'componenteXP', 'componenteDescricao', 'tempoExecucao',
- 'nivel', 'alcance', 'alvo', 'efeito', 'area', 'testeResistencia',
- 'resistenciaMagia', 'duracao'];
+    protected $fillable = ['nome', 'descricao', 'escola', 'subEscola', 'descritor',
+        'componenteVisual', 'componenteGestual', 'componenteMaterial', 'componenteFoco',
+        'componenteFocoDivino', 'componenteXP', 'componenteDescricao', 'tempoExecucao',
+        'nivel', 'alcance', 'alvo', 'efeito', 'area', 'testeResistencia',
+        'resistenciaMagia', 'duracao'];
 
+    public function escolas() {
+        return ExtMagia::escola();
+    }
 
+    public function subEscolas($escola = null) {
+        return ExtMagia::subEscola($escola);
+    }
 
-public function escolas() {
-return ExtMagia::escola();
-}
+    public function descritores() {
+        return ExtMagia::descritor();
+    }
 
-public function subEscolas($escola = null) {
-return ExtMagia::subEscola($escola);
-}
+    public function _escola($escola) {        
+        try {
+            return ExtMagia::escola()[$escola];            
+        } catch (Exception $ex) {
+            return "";
+        }
+        
+    }
 
-public function descritores() {
-return ExtMagia::descritor();
-}
+    public function _subEscola($subEscola) {
+        try {
+            return ExtMagia::subEscola()[$subEscola];
+        } catch (Exception $ex) {
+            return "";
+        }
+        
+    }
 
-public function _escola($escola) {
-return ExtMagia::escola()[$escola];
-}
-
-public function _subEscola($subEscola) {
-return ExtMagia::subEscola()[$subEscola];
-}
-
-public function _descritor($descritor) {
-return ExtMagia::descritor()[$descritor];
-}
+    public function _descritor($descritor) {
+        try {
+            return ExtMagia::descritor()[$descritor];
+        } catch (Exception $ex) {
+            return "";
+        }
+        
+    }
 
 }
