@@ -24,31 +24,44 @@ class Magia extends Model {
         return ExtMagia::descritor();
     }
 
-    public function _escola($escola) {        
-        try {
-            return ExtMagia::escola()[$escola];            
-        } catch (Exception $ex) {
+    public function _escola($escola) {
+        if ($escola == null) {
             return "";
+        } else {
+            return ExtMagia::escola()[$escola];
         }
-        
     }
 
     public function _subEscola($subEscola) {
-        try {
-            return ExtMagia::subEscola()[$subEscola];
-        } catch (Exception $ex) {
+        if ($subEscola == null) {
             return "";
+        } else {
+            return ExtMagia::subEscola()[$subEscola];
         }
-        
     }
 
     public function _descritor($descritor) {
-        try {
-            return ExtMagia::descritor()[$descritor];
-        } catch (Exception $ex) {
+        if ($descritor == null) {
             return "";
+        } else {
+            return ExtMagia::descritor()[$descritor];
         }
-        
+    }
+
+    public function _subEscolaCaracter($subEscola) {
+        if ($subEscola == null) {
+            return "";
+        } else {
+            return "(" . ExtMagia::subEscola()[$subEscola] . ")";
+        }
+    }
+
+    public function _descritorCaracter($descritor) {
+        if ($descritor == null) {
+            return "";
+        } else {
+            return "[" . ExtMagia::descritor()[$descritor] . "]";
+        }
     }
 
 }

@@ -90,28 +90,35 @@
                             <div class="panel-heading ">Componentes</div>
                             <div class="form-group col-md-2 {{ $errors->has('componenteVisual') ? 'has-error' : '' }}">
                                 <label for="nome">Visual:</label>
-                                <input type="checkbox" name="componenteVisual" value="1" <?php echo 1 == $magia->componenteVisual ? 'checked' : ''; ?>>
+                                <input type="radio" name="componenteVisual" value="1" <?php echo 1 == $magia->componenteVisual ? 'checked' : ''; ?>>Sim
+                                <input type="radio" name="componenteVisual" value="0" <?php echo 0 == $magia->componenteVisual ? 'checked' : ''; ?>>Não
+
                             </div> 
                             <div class="form-group col-sm-2 {{ $errors->has('componenteGestual') ? 'has-error' : '' }}">
                                 <label for="nome">Gestual:</label>
-                                <input type="checkbox" name="componenteGestual"  value="1"<?php echo 1 == $magia->componenteGestual ? 'checked' : ''; ?>>
+                                <input type="radio" name="componenteGestual"  value="1" <?php echo 1 == $magia->componenteGestual ? 'checked' : ''; ?>>Sim
+                                <input type="radio" name="componenteGestual"  value="0" <?php echo 0 == $magia->componenteGestual ? 'checked' : ''; ?>>Não
                             </div> 
                             <div class="form-group col-sm-2 {{ $errors->has('componenteMaterial') ? 'has-error' : '' }}">
                                 <label for="nome">Material:</label>
-                                <input type="checkbox" name="componenteMaterial"  value="1"<?php echo 1 == $magia->componenteMaterial ? 'checked' : ''; ?>>
+                                <input type="radio" name="componenteMaterial"  value="1" <?php echo 1 == $magia->componenteMaterial ? 'checked' : ''; ?>>Sim
+                                <input type="radio" name="componenteMaterial"  value="0" <?php echo 0 == $magia->componenteMaterial ? 'checked' : ''; ?>>Não
                             </div> 
                             <div class="form-group col-sm-2 {{ $errors->has('componenteFoco') ? 'has-error' : '' }}">
                                 <label for="nome">Foco:</label>
-                                <input type="checkbox" name="componenteFoco"  value="1"<?php echo 1 == $magia->componenteFoco ? 'checked' : ''; ?>>
+                                <input type="radio" name="componenteFoco"  value="1" <?php echo 1 == $magia->componenteFoco ? 'checked' : ''; ?>>Sim
+                                <input type="radio" name="componenteFoco"  value="0" <?php echo 0 == $magia->componenteFoco ? 'checked' : ''; ?>>Não
                             </div> 
                             <div class="form-group col-sm-2 {{ $errors->has('componenteFocoDivino') ? 'has-error' : '' }}">
-                                <label for="nome">Foco Divino:</label>
-                                <input type="checkbox" name="componenteFocoDivino"  value="1"<?php echo 1 == $magia->componenteFocoDivino ? 'checked' : ''; ?>>
+                                <label for="nome">Foco D.:</label>
+                                <input type="radio" name="componenteFocoDivino"  value="1" <?php echo 1 == $magia->componenteFocoDivino ? 'checked' : ''; ?>>Sim
+                                <input type="radio" name="componenteFocoDivino"  value="0" <?php echo 0 == $magia->componenteFocoDivino ? 'checked' : ''; ?>>Não
                             </div> 
                             <div class="form-group col-sm-2 {{ $errors->has('componenteXP') ? 'has-error' : '' }}">
-                                <label for="nome">Custo de XP:</label>
-                                <input type="checkbox" name="componenteXP"  value="1"<?php echo 1 == $magia->componenteXP ? 'checked' : ''; ?>>
-                            </div> 
+                                <label for="nome">Custo XP:</label>
+                                <input type="radio" name="componenteXP" value="1" <?php echo 1 == $magia->componenteXP ? 'checked' : ''; ?>>Sim
+                                <input type="radio" name="componenteXP" value="0" <?php echo 0 == $magia->componenteXP ? 'checked' : ''; ?>>Não
+                            </div>                            
                         </div> 
 
                         <div class="form-group {{ $errors->has('componenteDescricao') ? 'has-error' : '' }}">
@@ -129,15 +136,15 @@
                                 <div class="input-group-btn">
                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">... <span class="caret"></span></button>
                                     <ul class="dropdown-menu">
-                                        <li><a id="t1" onclick="preencheTempoExecucao()">1 Ação padrão</a></li>                                    
-                                        <li><a>1 Rodada completa</a></li>                                    
+                                        <li><a id="t1" onclick="preencheTempoExecucao('1 Ação padrão')">1 Ação padrão</a></li>                                    
+                                        <li><a id="t2" onclick="preencheTempoExecucao('1 Rodada completa')">1 Rodada completa</a></li>                                                                            
                                     </ul>
                                 </div><!-- /btn-group -->
                                 <input id="tempoExecucao" type="text" name="tempoExecucao" class="form-control" value="{{ $magia->tempoExecucao }}" placeholder="Tempo de execução">
                             </div><!-- /input-group -->
                             <script>
-                                function preencheTempoExecucao() {
-                                    document.getElementById('tempoExecucao').innerHTML = 'TESTE';
+                                function preencheTempoExecucao(valor) {
+                                    document.getElementById('tempoExecucao').value = valor;
                                 }
                             </script>
                             @if($errors->has('tempoExecucao'))
@@ -163,20 +170,19 @@
                                 <div class="input-group-btn">
                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">... <span class="caret"></span></button>
                                     <ul class="dropdown-menu">
-                                        <li><a id="al1" onclick="preencheAlcance()">Pessoal</a></li>                                    
-                                        <li><a id="al2" onclick="preencheAlcance()">Toque</a></li>                                    
-                                        <li><a id="al3" onclick="preencheAlcance()">Curto</a></li>                                    
-                                        <li><a id="al4" onclick="preencheAlcance()">Médio</a></li>                                    
-                                        <li><a id="al5" onclick="preencheAlcance()">Longo</a></li>                                                                            
-                                        <li><a id="al6" onclick="preencheAlcance()">Ilimitado</a></li>                                                                            
-                                        <li><a id="al7" onclick="preencheAlcance()">Distância em metros</a></li>                                                                            
+                                        <li><a id="al1" onclick="preencheAlcance('Pessoal')">Pessoal</a></li>                                    
+                                        <li><a id="al2" onclick="preencheAlcance('Toque')">Toque</a></li>                                    
+                                        <li><a id="al3" onclick="preencheAlcance('Curto(7,5 m + 1,5 m/2 níveis)')">Curto</a></li>                                    
+                                        <li><a id="al4" onclick="preencheAlcance('Médio(30 metros + 3 metros/nível)')">Médio</a></li>                                    
+                                        <li><a id="al5" onclick="preencheAlcance('Longo(120 m + 12 m/nível)')">Longo</a></li>                                                                            
+                                        <li><a id="al6" onclick="preencheAlcance('Ilimitado')">Ilimitado</a></li>                                                                                                                    
                                     </ul>
                                 </div><!-- /btn-group -->
                                 <input id="alcance" type="text" name="alcance" class="form-control" value="{{ $magia->alcance }}" placeholder="Alcance">
                             </div><!-- /input-group -->
                             <script>
-                                function preencheAlcance() {
-                                    document.getElementById('alcance').innerHTML = 'TESTE';
+                                function preencheAlcance(valor) {
+                                    document.getElementById('alcance').value = valor;
                                 }
                             </script>
                             @if($errors->has('alcance'))
@@ -225,14 +231,14 @@
                                     <div class="input-group-btn">
                                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">... <span class="caret"></span></button>
                                         <ul class="dropdown-menu">
-                                            <li><a id="tr1" onclick="preencheTeste()">Nenhum</a></li>                                                                            
+                                            <li><a id="tr1" onclick="preencheTeste('Nenhum')">Nenhum</a></li>                                                                            
                                         </ul>
                                     </div><!-- /btn-group -->
                                     <input id="testeResistencia" type="text" name="testeResistencia" class="form-control" value="{{ $magia->testeResistencia }}" placeholder="Teste de resistência">
                                 </div><!-- /input-group -->
                                 <script>
-                                    function preencheTeste() {
-                                        document.getElementById('testeResistencia').innerHTML = 'TESTE';
+                                    function preencheTeste(valor) {
+                                        document.getElementById('testeResistencia').value = valor;
                                     }
                                 </script>
                                 @if($errors->has('testeResistencia'))

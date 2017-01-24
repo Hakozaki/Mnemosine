@@ -27,7 +27,7 @@
                             <tr>
                                 <th scope="row">{{ $magia->id }}</th>
                                 <td>{{ $magia->nome }}</td>                                                               
-                                <td>{{ $magia->_escola($magia->escola) . " (". $magia->_subEscola($magia->subEscola) .") " . "[". $magia->_descritor($magia->descritor) ."]" }}</td>                                                               
+                                <td>{{ $magia->_escola($magia->escola) . $magia->_subEscolaCaracter($magia->subEscola)  . $magia->_descritorCaracter($magia->descritor) }}</td>                                                               
                                 <td>{{ $magia->nivel }}</td>                                                               
                                 <td>
                                     <a class="btn btn-default" href="{{ route('magia.detalhe',$magia) }}">Editar</a>
