@@ -247,17 +247,31 @@
                                 </span>
                                 @endif
                             </div> 
-
                             <div class="form-group col-md-6{{ $errors->has('resistenciaMagia') ? 'has-error' : '' }}">
-                                <label for="resistenciaMagia">Resistência a magia:</label>
-                                <input type="text" name="resistenciaMagia" class="form-control" value="{{ $magia->resistenciaMagia }}" placeholder="Resistência a magia">
-                                @if($errors->has('efeito'))
+                                <label for="resistenciaMagia">Teste de resistência:</label>                                                        
+                                <div class="input-group">
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">... <span class="caret"></span></button>
+                                        <ul class="dropdown-menu">
+                                            <li><a id="rm1" onclick="preencheResMagia('Sim')">Sim</a></li>                                                                            
+                                            <li><a id="rm2" onclick="preencheResMagia('Não')">Não</a></li>                                                                            
+                                        </ul>
+                                    </div><!-- /btn-group -->
+                                    <input id="resistenciaMagia" type="text" name="resistenciaMagia" class="form-control" value="{{ $magia->resistenciaMagia }}" placeholder="Teste de resistência">
+                                </div><!-- /input-group -->
+                                <script>
+                                    function preencheResMagia(valor) {
+                                        document.getElementById('resistenciaMagia').value = valor;
+                                    }
+                                </script>
+                                @if($errors->has('resistenciaMagia'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('resistenciaMagia') }}</strong>								
                                 </span>
                                 @endif
-                            </div> 
+                            </div>                                   
                         </div>
+                        
                         <div class="form-group {{ $errors->has('duracao') ? 'has-error' : '' }}">
                             <label for="duracao">Duração:</label>
                             <input type="text" name="duracao" class="form-control" value="{{ $magia->duracao }}" placeholder="Duração">
