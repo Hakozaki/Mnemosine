@@ -30,6 +30,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ route("magia.index") }}">Magia</a></li>
+                        <li><a href="{{ route("talento.index") }}">Talento</a></li>
                     </ul>
                 </li>
                 @endif
