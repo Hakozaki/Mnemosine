@@ -134,7 +134,7 @@
                             <label for="nome">Tempo de execução:</label>                                                        
                             <div class="input-group">
                                 <div class="input-group-btn">
-                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">... <span class="caret"></span></button>
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
                                     <ul class="dropdown-menu">
                                         <li><a id="t1" onclick="preencheTempoExecucao('1 Ação padrão')">1 Ação padrão</a></li>                                    
                                         <li><a id="t2" onclick="preencheTempoExecucao('1 Rodada completa')">1 Rodada completa</a></li>                                                                            
@@ -168,7 +168,7 @@
                             <label for="alcance">Alcance:</label>                                                        
                             <div class="input-group">
                                 <div class="input-group-btn">
-                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">... <span class="caret"></span></button>
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
                                     <ul class="dropdown-menu">
                                         <li><a id="al1" onclick="preencheAlcance('Pessoal')">Pessoal</a></li>                                    
                                         <li><a id="al2" onclick="preencheAlcance('Toque')">Toque</a></li>                                    
@@ -229,7 +229,7 @@
                                 <label for="testeResistencia">Teste de resistência:</label>                                                        
                                 <div class="input-group">
                                     <div class="input-group-btn">
-                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">... <span class="caret"></span></button>
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
                                         <ul class="dropdown-menu">
                                             <li><a id="tr1" onclick="preencheTeste('Nenhum')">Nenhum</a></li>                                                                            
                                         </ul>
@@ -251,7 +251,7 @@
                                 <label for="resistenciaMagia">Teste de resistência:</label>                                                        
                                 <div class="input-group">
                                     <div class="input-group-btn">
-                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">... <span class="caret"></span></button>
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
                                         <ul class="dropdown-menu">
                                             <li><a id="rm1" onclick="preencheResMagia('Sim')">Sim</a></li>                                                                            
                                             <li><a id="rm2" onclick="preencheResMagia('Não')">Não</a></li>                                                                            
@@ -271,7 +271,7 @@
                                 @endif
                             </div>                                   
                         </div>
-                        
+
                         <div class="form-group {{ $errors->has('duracao') ? 'has-error' : '' }}">
                             <label for="duracao">Duração:</label>
                             <input type="text" name="duracao" class="form-control" value="{{ $magia->duracao }}" placeholder="Duração">

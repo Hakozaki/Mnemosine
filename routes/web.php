@@ -24,6 +24,11 @@ Route::get('/talento/detalhe/{talento?}', ['uses' => 'TalentoController@detalhe'
 Route::get('/talento/deletar/{talento?}', ['uses' => 'TalentoController@deletar', 'as' => 'talento.deletar']);
 Route::post('/talento/salvar', ['uses' => 'TalentoController@salvar', 'as' => 'talento.salvar']);
 
+Route::get('/arma', ['uses' => 'ArmaController@index', 'as' => 'arma.index']);
+Route::get('/arma/detalhe/{arma?}', ['uses' => 'ArmaController@detalhe', 'as' => 'arma.detalhe']);
+Route::get('/arma/deletar/{arma?}', ['uses' => 'ArmaController@deletar', 'as' => 'arma.deletar']);
+Route::post('/arma/salvar', ['uses' => 'ArmaController@salvar', 'as' => 'arma.salvar']);
+
 
 Route::get('eoq', function (\App\Magia $magia) {    
     $magia = \App\Magia::find(1);

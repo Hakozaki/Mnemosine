@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class ExtMagia extends Model {
 
+    /**
+     * Função que retorna uma lista de escolas.
+     * @return Array Lista de escolas.
+     */
     public static function escola() {
         return ["abjuracao" => "Abjuração",
             "conjuracao" => "Conjuração",
@@ -18,6 +22,10 @@ class ExtMagia extends Model {
             "universal" => "Universal"];
     }
 
+    /**
+     * Função que retorna uma lista de Sub-Escolas.
+     * @return Array Lista de Sub-Escolas.
+     */
     public static function subEscola($escola = null) {
         if ($escola == null) {
             return ["invocacao" => "Invocação",
@@ -53,6 +61,10 @@ class ExtMagia extends Model {
         }
     }
 
+    /**
+     * Função que retorna uma lista de Componentes.
+     * @return Array Lista de Componentes.
+     */
     public static function componente() {
         return ["verbal" => "V",
             "gestual" => "G",
@@ -62,6 +74,10 @@ class ExtMagia extends Model {
             "custodexp" => "XP"];
     }
 
+    /**
+     * Função que retorna uma lista de Descritores.
+     * @return Array Lista de Descritores.
+     */
     public static function descritor() {
         return ["acaoMental" => "Ação mental",
             "acido" => "Ácido",

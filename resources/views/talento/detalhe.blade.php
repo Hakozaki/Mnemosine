@@ -29,7 +29,7 @@
                             <label for="tipo">Tipo:</label>                                                        
                             <div class="input-group">
                                 <div class="input-group-btn">
-                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">... <span class="caret"></span></button>
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
                                     <ul class="dropdown-menu">
                                         <li><a id="t1" onclick="preencheTipo('Geral')">Geral</a></li>                                    
                                         <li><a id="t2" onclick="preencheTipo('Metamágico')">Metamágico</a></li>                                                                            

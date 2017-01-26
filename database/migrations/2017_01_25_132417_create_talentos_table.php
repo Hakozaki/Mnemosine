@@ -31,7 +31,7 @@ class CreateTalentosTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::drop('magias');
+        Schema::drop('talentos');
     }
 
 }

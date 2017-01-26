@@ -22,7 +22,7 @@ class TalentoController extends Controller {
 
     public function salvar(Request $request) {
         $id = $request->id;
-        $talento = \App\Talento::find($id);        
+        $talento = \App\Talento::find($id);
 
         if (is_null($talento)) {
             \App\Talento::create($request->all());
@@ -36,5 +36,5 @@ class TalentoController extends Controller {
         $talento->delete();
         return redirect()->route('talento.index');
     }
-   
+
 }
