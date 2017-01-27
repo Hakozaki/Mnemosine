@@ -47,5 +47,21 @@ class ExtArma extends Model {
             "dupla" => "Armas Duplas",
             "arremesso" => "Armas de Arremesso"];
     }
+    
+    /**
+     * Função que retorna uma lista de Tipo de dano.
+     * @return Array Lista de Tipo de dano.
+     */
+    public static function tipoDano() {
+        return ["concussao" => "Concussão",
+            "perfurante" => "Perfurante",
+            "cortante" => "Cortante",
+            "concussaoEperfurante" => "Concussão e Perfurante",
+            "concussaoOUperfurante" => "Concussão ou Perfurante",
+            "perfuranteEcortante" => "Perfurante e Cortante",
+            "perfuranteOUcortante" => "Perfurante ou Cortante",
+            "concussaoEcortante" => "Concussão e Cortante",
+            "concussaoOUcortante" => "Concussão ou Cortante"];
+    }
 
 }

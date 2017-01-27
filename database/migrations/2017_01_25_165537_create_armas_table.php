@@ -16,6 +16,7 @@ class CreateArmasTable extends Migration
         Schema::create('armas', function (Blueprint $table) {
             $table->increments('id');            
             $table->string('nome')->nullable();
+            $table->text('descricao')->nullable();
             $table->string('categoria')->nullable();
             $table->string('subCategoria')->nullable();
             $table->string('tipo')->nullable();
@@ -25,8 +26,7 @@ class CreateArmasTable extends Migration
             $table->string('incrementoDecisivo')->nullable();
             $table->string('distancia')->nullable();
             $table->decimal('peso',5,2)->nullable()->default(0);
-            $table->string('tipoDano')->nullable()->default(0);            
-            $table->string('classe')->nullable()->default(0);            
+            $table->string('tipoDano')->nullable();                        
             $table->timestamps();
         });
     }

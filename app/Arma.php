@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Arma extends Model {
 
-    protected $fillable = ['nome', 'categoria', 'subCategoria', 'tipo',
+    protected $fillable = ['nome', 'descricao', 'categoria', 'subCategoria', 'tipo',
         'subTipo', 'custo', 'dano', 'incrementoDecisivo', 'distancia',
         'peso', 'tipoDano', 'classe'];
 
@@ -40,6 +40,14 @@ class Arma extends Model {
      */
     public function subTipos() {
         return ExtArma::subTipo();
+    }
+
+    /**
+     * Retorna os Tipos de dano contidos na classe ExtArma
+     * @return Array Tipo de dano setadas.
+     */
+    public function tipoDanos() {
+        return ExtArma::tipoDano();
     }
 
     /**
@@ -80,7 +88,7 @@ class Arma extends Model {
             return ExtArma::tipo()[$tipo];
         }
     }
-    
+
     /**
      * Retorna o valor da Sub-Tipo.
      * @param String $subTipo Sub-Tipo cadastrada no banco
@@ -91,6 +99,19 @@ class Arma extends Model {
             return "";
         } else {
             return ExtArma::subTipo()[$subTipo];
+        }
+    }
+
+    /**
+     * Retorna o valor da Tipo de dano.
+     * @param String $tipoDano Tipo de dano cadastrada no banco
+     * @return Retorna o nome da Tipo de dano
+     */
+    public function _tipoDano($tipoDano) {
+        if ($tipoDano == null) {
+            return "";
+        } else {
+            return ExtArma::tipoDano()[$tipoDano];
         }
     }
 

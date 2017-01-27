@@ -25,8 +25,19 @@
                             @endif
                         </div>
 
-                        <div class="row">
-                            <div class="form-group col-md-3 {{ $errors->has('categoria') ? 'has-error' : '' }}" >
+                        <div class="form-group {{ $errors->has('descricao') ? 'has-error' : '' }}">
+                            <label for="descricao">Descrição:</label>
+                            <textarea name="descricao" style="max-width:100%" class="form-control" 
+                                      value="{{ $arma->descricao }}" placeholder="Descrição">{{ $arma->descricao }}</textarea>
+                            @if($errors->has('descricao'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('descricao') }}</strong>								
+                            </span>
+                            @endif
+                        </div> 
+
+                        <div class="row">                            
+                            <div class="form-group col-md-2 {{ $errors->has('categoria') ? 'has-error' : '' }}" >
                                 <label for="categoria">Categoria:</label>
 
                                 <select name="categoria" class="form-control selectpicker" data-live-search="true" value="{{ $arma->categoria }}">   
@@ -43,7 +54,7 @@
                                 @endif
                             </div>
 
-                            <div class="form-group col-md-3{{ $errors->has('subCategoria') ? 'has-error' : '' }}" >
+                            <div class="form-group col-md-2 {{ $errors->has('subCategoria') ? 'has-error' : '' }}" >
                                 <label for="subCategoria">Sub-Categoria:</label>
 
                                 <select name="subCategoria" class="form-control selectpicker" data-live-search="true" value="{{ $arma->subCategoria }}">   
@@ -60,7 +71,7 @@
                                 @endif
                             </div>
 
-                            <div class="form-group col-md-3{{ $errors->has('tipo') ? 'has-error' : '' }}" >
+                            <div class="form-group col-md-2 {{ $errors->has('tipo') ? 'has-error' : '' }}" >
                                 <label for="tipo">Tipo:</label>
 
                                 <select name="tipo" class="form-control selectpicker" data-live-search="true" value="{{ $arma->tipo }}">   
@@ -77,7 +88,7 @@
                                 @endif
                             </div>
 
-                            <div class="form-group col-md-3{{ $errors->has('subTipo') ? 'has-error' : '' }}" >
+                            <div class="form-group col-md-3 {{ $errors->has('subTipo') ? 'has-error' : '' }}" >
                                 <label for="subTipo">Sub-Tipo:</label>
 
                                 <select name="subTipo" class="form-control selectpicker" data-live-search="true" value="{{ $arma->subTipo }}">   
@@ -93,16 +104,52 @@
                                 </span>
                                 @endif
                             </div>
+
+                            <div class="form-group col-md-3 {{ $errors->has('tipoDano') ? 'has-error' : '' }}" >
+                                <label for="tipoDano">Tipo de dano:</label>
+
+                                <select name="tipoDano" class="form-control selectpicker" data-live-search="true" value="{{ $arma->tipoDano }}">   
+                                    <option class="form-control" ></option>
+                                    @foreach($arma->tipoDanos() as $key => $tipoDano)                                                                
+                                    <option value="{{$key}}"  <?php echo $key == $arma->tipoDano ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $tipoDano }}">{{ $tipoDano }}</option>                                
+                                    @endforeach
+                                </select>
+
+                                @if($errors->has('tipoDano'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('tipoDano') }}</strong>								
+                                </span>
+                                @endif
+                            </div>
                         </div>
 
-                        <div class="form-group {{ $errors->has('custo') ? 'has-error' : '' }}">
-                            <label for="custo">Custo:</label>
-                            <input type="text" name="custo" class="form-control" value="{{ $arma->custo }}" placeholder="Custo em Peças de Cobre">                            
-                            @if($errors->has('custo'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('custo') }}</strong>								
-                            </span>
-                            @endif
+                        <div class="row">
+                            <div class="form-group col-md-6 {{ $errors->has('peso') ? 'has-error' : '' }}">
+                                <label for="peso">Custo:</label>
+                                <div class="input-group">
+                                    <input type="text" name="peso" class="form-control" value="{{ $arma->peso }}" placeholder="Peso da arma">                            
+                                    <span class="input-group-addon">KG</span>
+                                </div>
+                                @if($errors->has('peso'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('peso') }}</strong>								
+                                </span>
+                                @endif
+                            </div>
+
+                            <div class="form-group col-md-6 {{ $errors->has('custo') ? 'has-error' : '' }}">
+                                <label for="custo">Custo:</label>
+                                <div class="input-group">
+                                    <input type="text" name="custo" class="form-control" value="{{ $arma->custo }}" placeholder="Custo em Peças de Cobre">                            
+                                    <span class="input-group-addon">PC</span>
+                                </div>
+                                @if($errors->has('custo'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('custo') }}</strong>								
+                                </span>
+                                @endif
+                            </div>
+
                         </div>
 
                         <div class="row">
@@ -134,7 +181,7 @@
                             </div>
 
                             <div class="form-group col-md-6 {{ $errors->has('incrementoDecisivo') ? 'has-error' : '' }}">
-                                <label for="incrementoDecisivo">Dano(M):</label>                                                        
+                                <label for="incrementoDecisivo">Incremento Decisivo:</label>                                                        
                                 <div class="input-group">
                                     <div class="input-group-btn">
                                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
