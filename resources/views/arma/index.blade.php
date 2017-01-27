@@ -17,6 +17,9 @@
                             <tr>
                                 <th>#</th>
                                 <th>Nome</th>                                                                                                                                                                                                                                                                                                                                                                                                         
+                                <th>Categoria</th>                                                                                                                                                                                                                                                                                                                                                                                                         
+                                <th>Sub-Categoria</th>                                                                                                                                                                                                                                                                                                                                                                                                         
+                                <th>Tipo</th>                                                                                                                                                                                                                                                                                                                                                                                                                                         
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -25,6 +28,9 @@
                             <tr>
                                 <th scope="row">{{ $arma->id }}</th>
                                 <td>{{ $arma->nome }}</td>                                                                                                                                                              
+                                <td>{{ $arma->_categoria($arma->categoria) }}</td>                                                                                                                                                              
+                                <td>{{ $arma->_subCategoria($arma->subCategoria) }}</td>                                                                                                                                                              
+                                <td>{{ $arma->_tipo($arma->tipo) }}</td>                                                                                                                                                              
                                 <td>
                                     <a class="btn btn-default" href="{{ route('arma.detalhe',$arma) }}">Editar</a>
                                     <a class="btn btn-danger" href="javascript:confirm('Deletar talento?') ? 
