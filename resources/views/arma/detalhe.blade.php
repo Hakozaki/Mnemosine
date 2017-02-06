@@ -125,7 +125,7 @@
 
                         <div class="row">
                             <div class="form-group col-md-6 {{ $errors->has('peso') ? 'has-error' : '' }}">
-                                <label for="peso">Custo:</label>
+                                <label for="peso">Peso:</label>
                                 <div class="input-group">
                                     <input type="text" name="peso" class="form-control" value="{{ $arma->peso }}" placeholder="Peso da arma">                            
                                     <span class="input-group-addon">KG</span>

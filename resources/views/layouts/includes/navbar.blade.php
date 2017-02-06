@@ -32,6 +32,7 @@
                         <li><a href="{{ route("magia.index") }}">Magia</a></li>
                         <li><a href="{{ route("talento.index") }}">Talento</a></li>
                         <li><a href="{{ route("arma.index") }}">Arma</a></li>
+                        <li><a href="{{ route("armadura.index") }}">Armadura</a></li>
                     </ul>
                 </li>
                 @endif

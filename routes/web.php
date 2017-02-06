@@ -29,11 +29,10 @@ Route::get('/arma/detalhe/{arma?}', ['uses' => 'ArmaController@detalhe', 'as' =>
 Route::get('/arma/deletar/{arma?}', ['uses' => 'ArmaController@deletar', 'as' => 'arma.deletar']);
 Route::post('/arma/salvar', ['uses' => 'ArmaController@salvar', 'as' => 'arma.salvar']);
 
-
-Route::get('eoq', function (\App\Magia $magia) {    
-    $magia = \App\Magia::find(1);
-    dd($magia->escola->escola());
-});
+Route::get('/armadura', ['uses' => 'ArmaduraController@index', 'as' => 'armadura.index']);
+Route::get('/armadura/detalhe/{armadura?}', ['uses' => 'ArmaduraController@detalhe', 'as' => 'armadura.detalhe']);
+Route::get('/armadura/deletar/{armadura?}', ['uses' => 'ArmaduraController@deletar', 'as' => 'armadura.deletar']);
+Route::post('/armadura/salvar', ['uses' => 'ArmaduraController@salvar', 'as' => 'armadura.salvar']);
 
 Auth::routes();
 
