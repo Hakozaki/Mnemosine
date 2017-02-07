@@ -104,7 +104,10 @@
 
                             <div class="form-group col-md-3{{ $errors->has('falhaArmadura') ? 'has-error' : '' }}">
                                 <label for="falhaArmadura">Falha de Armadura:</label>                            
-                                <input type="text" name="falhaArmadura" class="form-control" value="{{ $armadura->falhaArmadura }}" placeholder="Falha de Armadura">                                                        
+                                <div class="input-group">
+                                    <span class="input-group-addon">-</span>
+                                    <input type="text" name="falhaArmadura" class="form-control" value="{{ $armadura->falhaArmadura }}" placeholder="Falha de Armadura">                                                        
+                                </div>
                                 @if($errors->has('falhaArmadura'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('falhaArmadura') }}</strong>								

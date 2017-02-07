@@ -119,7 +119,7 @@
                                 <input type="radio" name="componenteXP" value="1" <?php echo 1 == $magia->componenteXP ? 'checked' : ''; ?>>Sim
                                 <input type="radio" name="componenteXP" value="0" <?php echo 0 == $magia->componenteXP ? 'checked' : ''; ?>>Não
                             </div>                            
-                        </div> 
+                        </div><!-- <div>"row" componentes --> 
 
                         <div class="form-group {{ $errors->has('componenteDescricao') ? 'has-error' : '' }}">
                             <textarea  name="componenteDescricao" style="max-width:100%" class="form-control" value="{{ $magia->componenteDescricao }}" placeholder="Descrição dos componentes">{{ $magia->componenteDescricao }}</textarea>
@@ -270,7 +270,7 @@
                                 </span>
                                 @endif
                             </div>                                   
-                        </div>
+                        </div><!--<div>"row" Teste de rêsistencia -->
 
                         <div class="form-group {{ $errors->has('duracao') ? 'has-error' : '' }}">
                             <label for="duracao">Duração:</label>

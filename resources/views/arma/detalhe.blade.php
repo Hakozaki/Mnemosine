@@ -143,6 +143,11 @@
                                     <input type="text" name="custo" class="form-control" value="{{ $arma->custo }}" placeholder="Custo em Peças de Cobre">                            
                                     <span class="input-group-addon">PC</span>
                                 </div>
+                                <script>
+                                    function preencheCusto(valor) {
+                                        document.getElementById('custo').value = valor;
+                                    }
+                                </script>
                                 @if($errors->has('custo'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('custo') }}</strong>								

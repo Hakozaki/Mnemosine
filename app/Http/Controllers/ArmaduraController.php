@@ -23,10 +23,10 @@ class ArmaduraController extends Controller
 
     public function salvar(Request $request) {
         $id = $request->id;
-        $armadura = \App\Arma::find($id);
-
+        $armadura = \App\Armadura::find($id);
+        
         if (is_null($armadura)) {
-            \App\Arma::create($request->all());
+            \App\Armadura::create($request->all());
         } else {
             $armadura->update($request->all());
         }
