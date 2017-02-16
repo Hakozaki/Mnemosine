@@ -34,5 +34,22 @@ Route::get('/armadura/detalhe/{armadura?}', ['uses' => 'ArmaduraController@detal
 Route::get('/armadura/deletar/{armadura?}', ['uses' => 'ArmaduraController@deletar', 'as' => 'armadura.deletar']);
 Route::post('/armadura/salvar', ['uses' => 'ArmaduraController@salvar', 'as' => 'armadura.salvar']);
 
+Route::get('/classe', ['uses' => 'ClasseController@index', 'as' => 'classe.index']);
+Route::get('/classe/detalhe/{classe?}', ['uses' => 'ClasseController@detalhe', 'as' => 'classe.detalhe']);
+Route::get('/classe/deletar/{classe?}', ['uses' => 'ClasseController@deletar', 'as' => 'classe.deletar']);
+Route::post('/classe/salvar', ['uses' => 'ClasseController@salvar', 'as' => 'classe.salvar']);
+
+Route::get('/divindade', ['uses' => 'DivindadeController@index', 'as' => 'divindade.index']);
+Route::get('/divindade/detalhe/{divindade?}', ['uses' => 'DivindadeController@detalhe', 'as' => 'divindade.detalhe']);
+Route::get('/divindade/deletar/{divindade?}', ['uses' => 'DivindadeController@deletar', 'as' => 'divindade.deletar']);
+Route::post('/divindade/salvar', ['uses' => 'DivindadeController@salvar', 'as' => 'divindade.salvar']);
+
 Auth::routes();
+
+Route::get('eoq', function() {
+    $e = App\ExtPersonagem::pericia();
+    foreach ($e as $key => $value) {
+        echo $value["nome"] . " - " . $value["st"];
+    }
+});
 
