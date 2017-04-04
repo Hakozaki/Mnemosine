@@ -21,11 +21,11 @@ class CreateArmasTable extends Migration
             $table->string('subCategoria')->nullable();
             $table->string('tipo')->nullable();
             $table->string('subTipo')->nullable();
-            $table->decimal('custo',5,2)->nullable()->default(0);            
+            $table->decimal('custo',12,2)->nullable()->default(0);            
             $table->string('dano')->nullable();
             $table->string('incrementoDecisivo')->nullable();
             $table->string('distancia')->nullable();
-            $table->decimal('peso',5,2)->nullable()->default(0);
+            $table->decimal('peso',12,2)->nullable()->default(0);
             $table->string('tipoDano')->nullable();                        
             $table->timestamps();
         });

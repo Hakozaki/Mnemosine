@@ -17,14 +17,14 @@ class CreateArmaduraTable extends Migration {
             $table->string('nome')->nullable();
             $table->text('descricao')->nullable();
             $table->string('categoria')->nullable();            
-            $table->decimal('custo', 5, 2)->nullable()->default(0);
+            $table->decimal('custo', 12, 2)->nullable()->default(0);
             $table->string('bonus')->nullable();
             $table->string('bonusDestreza')->nullable();
             $table->string('falhaArmadura')->nullable();
             $table->string('falhaMagia')->nullable();
             $table->string('deslocamento9m')->nullable();
             $table->string('deslocamento6m')->nullable();                        
-            $table->decimal('peso', 5, 2)->nullable()->default(0);            
+            $table->decimal('peso', 12, 2)->nullable()->default(0);            
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Http\Requests\ArmaRequest;
 
 class ArmaController extends Controller {
 
@@ -20,7 +21,8 @@ class ArmaController extends Controller {
         return view('arma.detalhe', compact('arma'));
     }
 
-    public function salvar(Request $request) {
+    public function salvar(ArmaRequest $request) {
+        dd($request->all());
         $id = $request->id;
         $arma = \App\Arma::find($id);
 

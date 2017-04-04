@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ArmaRequest extends FormRequest
+class MagiaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,7 @@ class ArmaRequest extends FormRequest
     public function rules()
     {
         return [
-            'custo'=>'required',
-            'peso'=>'required'
+            'nome'=>'required|max:255'            
         ];
     }
 }

@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<!--  -->
+<script src="/js/cleave.min.js"></script>
+<script src="/js/cleave-phone.br.js"></script>
+<!-- -->
+
 <div class="container">
     <div class="row">
         <div class="col-md-12 ">
@@ -127,9 +132,14 @@
                             <div class="form-group col-md-6 {{ $errors->has('peso') ? 'has-error' : '' }}">
                                 <label for="peso">Peso:</label>
                                 <div class="input-group">
-                                    <input type="text" name="peso" class="form-control" value="{{ $arma->peso }}" placeholder="Peso da arma">                            
+                                    <input type="text" name="peso" class="form-control input-numeral-peso" value="{{ $arma->peso }}" placeholder="Peso da arma">                            
                                     <span class="input-group-addon">KG</span>
                                 </div>
+                                <script>
+                                    var cleaveNumeral = new Cleave('.input-numeral-peso', {
+                                        numericOnly: true
+                                    });
+                                </script>
                                 @if($errors->has('peso'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('peso') }}</strong>								
@@ -140,13 +150,14 @@
                             <div class="form-group col-md-6 {{ $errors->has('custo') ? 'has-error' : '' }}">
                                 <label for="custo">Custo:</label>
                                 <div class="input-group">
-                                    <input type="text" name="custo" class="form-control" value="{{ $arma->custo }}" placeholder="Custo em Peças de Cobre">                            
+                                    <input type="text" name="custo" class="form-control input-numeral-custo" value="{{ $arma->custo }}" placeholder="Custo em Peças de Cobre">                            
                                     <span class="input-group-addon">PC</span>
                                 </div>
+                                
                                 <script>
-                                    function preencheCusto(valor) {
-                                        document.getElementById('custo').value = valor;
-                                    }
+                                    var cleaveNumeral = new Cleave('.input-numeral-custo', {
+                                        numericOnly: true
+                                    });
                                 </script>
                                 @if($errors->has('custo'))
                                 <span class="help-block">

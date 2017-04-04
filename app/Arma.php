@@ -15,26 +15,27 @@ class Arma extends Model {
      * 
      * @param $value Valor de custo. 
      */
-    public function setCustoAttribute($value) {
-        if (isset($value) or is_null($value) or empty($value)) {
-            $this->attributes['custo'] = 0;
-        } else {
-            $this->attributes['custo'] = $value;
-        }
-    }
+    //public function setCustoAttribute($value) {       
+    //    if (is_null($value) or empty($value)) {
+    //        $this->attributes['custo'] = 0;
+    //    } else {
+    //        $this->attributes['custo'] = number_format($value,0,",",".");
+    //    }
+    //}
 
     /**
      * Verifica o valor do atributo peso.
      * 
      * @param $value Valor do peso. 
      */
-    public function setPesoAttribute($value) {
-        if (isset($value) or is_null($value) or empty($value)) {
-            $this->attributes['peso'] = 0;
-        } else {
-            $this->attributes['peso'] = $value;
-        }
-    }
+    //public function setPesoAttribute($value) {
+    //    dd($value . ",00");
+    //    if (is_null($value) or empty($value)) {
+    //        $this->attributes['peso'] = 0;
+    //    } else {
+    //        $this->attributes['peso'] = $value . ",00";
+    //    }
+   // }
 
     /**
      * Retorna as categorias contidas na classe ExtArma
