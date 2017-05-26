@@ -35,54 +35,61 @@
                             @endif
                         </div> 
                         <div class="row">
-                            <div class="form-group col-sm-3 {{ $errors->has('escola') ? 'has-error' : '' }}" >
-                                <label for="escola">Escola:</label>
+                            <div class="col-md-3 ">
+                                <div class="form-group {{ $errors->has('escola') ? 'has-error' : '' }}" >
+                                    <label for="escola">Escola:</label>
 
-                                <select id="escola"  name="escola" class="form-control selectpicker" data-live-search="true" value="{{ $magia->escola }}">   
-                                    <option class="form-control" ></option>
-                                    @foreach($magia->escolas() as $key => $escola)                                                                
-                                    <option value="{{$key}}"  <?php echo $key == $magia->escola ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $escola }}">{{ $escola }}</option>                                
-                                    @endforeach
-                                </select>
+                                    <select id="escola"  name="escola" class="form-control selectpicker" data-live-search="true" value="{{ $magia->escola }}">   
+                                        <option class="form-control" ></option>
+                                        @foreach($magia->escolas() as $key => $escola)                                                                
+                                        <option value="{{$key}}"  <?php echo $key == $magia->escola ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $escola }}">{{ $escola }}</option>                                
+                                        @endforeach
+                                    </select>
 
-                                @if($errors->has('escola'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('escola') }}</strong>								
-                                </span>
-                                @endif
-                            </div>
-                            <div class="form-group col-sm-3 {{ $errors->has('subEscola') ? 'has-error' : '' }}" >
-                                <label for="subEscola">Sub-escola:</label>
-
-                                <select id="subEscola" name="subEscola" class="form-control selectpicker" data-live-search="true" value="{{ $magia->subescola }}">   
-                                    <option class="form-control" ></option>                                                                             
-                                    @foreach($magia->subescolas() as $key => $subEscola)                                                                
-                                    <option value="{{$key}}"  <?php echo $key == $magia->subEscola ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $subEscola }}">{{ $subEscola }}</option>                                
-                                    @endforeach
-                                </select>
-
-                                @if($errors->has('subEscola'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('subEscola') }}</strong>								
-                                </span>
-                                @endif
+                                    @if($errors->has('escola'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('escola') }}</strong>								
+                                    </span>
+                                    @endif
+                                </div>
                             </div>
 
-                            <div class="form-group col-sm-3 {{ $errors->has('descritor') ? 'has-error' : '' }}" >
-                                <label for="descritor">Descritor:</label>
+                            <div class="col-md-3 ">
+                                <div class="form-group {{ $errors->has('subEscola') ? 'has-error' : '' }}" >
+                                    <label for="subEscola">Sub-escola:</label>
 
-                                <select name="descritor" class="form-control selectpicker" data-live-search="true" value="{{ $magia->descritor }}">   
-                                    <option class="form-control" ></option>                                                                             
-                                    @foreach($magia->descritores() as $key => $descritor)                                                                
-                                    <option value="{{$key}}"  <?php echo $key == $magia->descritor ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $descritor }}">{{ $descritor }}</option>                                
-                                    @endforeach
-                                </select>
+                                    <select id="subEscola" name="subEscola" class="form-control selectpicker" data-live-search="true" value="{{ $magia->subescola }}">   
+                                        <option class="form-control" ></option>                                                                             
+                                        @foreach($magia->subescolas() as $key => $subEscola)                                                                
+                                        <option value="{{$key}}"  <?php echo $key == $magia->subEscola ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $subEscola }}">{{ $subEscola }}</option>                                
+                                        @endforeach
+                                    </select>
 
-                                @if($errors->has('descritor'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('descritor') }}</strong>								
-                                </span>
-                                @endif
+                                    @if($errors->has('subEscola'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('subEscola') }}</strong>								
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3 ">
+                                <div class="form-group {{ $errors->has('descritor') ? 'has-error' : '' }}" >
+                                    <label for="descritor">Descritor:</label>
+
+                                    <select name="descritor" class="form-control selectpicker" data-live-search="true" value="{{ $magia->descritor }}">   
+                                        <option class="form-control" ></option>                                                                             
+                                        @foreach($magia->descritores() as $key => $descritor)                                                                
+                                        <option value="{{$key}}"  <?php echo $key == $magia->descritor ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $descritor }}">{{ $descritor }}</option>                                
+                                        @endforeach
+                                    </select>
+
+                                    @if($errors->has('descritor'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('descritor') }}</strong>								
+                                    </span>
+                                    @endif
+                                </div>
                             </div>
                         </div>
 
@@ -94,27 +101,27 @@
                                 <input type="radio" name="componenteVisual" value="0" <?php echo 0 == $magia->componenteVisual ? 'checked' : ''; ?>>Não
 
                             </div> 
-                            <div class="form-group col-sm-2 {{ $errors->has('componenteGestual') ? 'has-error' : '' }}">
+                            <div class="form-group col-md-2 {{ $errors->has('componenteGestual') ? 'has-error' : '' }}">
                                 <label for="nome">Gestual:</label>
                                 <input type="radio" name="componenteGestual"  value="1" <?php echo 1 == $magia->componenteGestual ? 'checked' : ''; ?>>Sim
                                 <input type="radio" name="componenteGestual"  value="0" <?php echo 0 == $magia->componenteGestual ? 'checked' : ''; ?>>Não
                             </div> 
-                            <div class="form-group col-sm-2 {{ $errors->has('componenteMaterial') ? 'has-error' : '' }}">
+                            <div class="form-group col-md-2 {{ $errors->has('componenteMaterial') ? 'has-error' : '' }}">
                                 <label for="nome">Material:</label>
                                 <input type="radio" name="componenteMaterial"  value="1" <?php echo 1 == $magia->componenteMaterial ? 'checked' : ''; ?>>Sim
                                 <input type="radio" name="componenteMaterial"  value="0" <?php echo 0 == $magia->componenteMaterial ? 'checked' : ''; ?>>Não
                             </div> 
-                            <div class="form-group col-sm-2 {{ $errors->has('componenteFoco') ? 'has-error' : '' }}">
+                            <div class="form-group col-md-2 {{ $errors->has('componenteFoco') ? 'has-error' : '' }}">
                                 <label for="nome">Foco:</label>
                                 <input type="radio" name="componenteFoco"  value="1" <?php echo 1 == $magia->componenteFoco ? 'checked' : ''; ?>>Sim
                                 <input type="radio" name="componenteFoco"  value="0" <?php echo 0 == $magia->componenteFoco ? 'checked' : ''; ?>>Não
                             </div> 
-                            <div class="form-group col-sm-2 {{ $errors->has('componenteFocoDivino') ? 'has-error' : '' }}">
+                            <div class="form-group col-md-2 {{ $errors->has('componenteFocoDivino') ? 'has-error' : '' }}">
                                 <label for="nome">Foco D.:</label>
                                 <input type="radio" name="componenteFocoDivino"  value="1" <?php echo 1 == $magia->componenteFocoDivino ? 'checked' : ''; ?>>Sim
                                 <input type="radio" name="componenteFocoDivino"  value="0" <?php echo 0 == $magia->componenteFocoDivino ? 'checked' : ''; ?>>Não
                             </div> 
-                            <div class="form-group col-sm-2 {{ $errors->has('componenteXP') ? 'has-error' : '' }}">
+                            <div class="form-group col-md-2 {{ $errors->has('componenteXP') ? 'has-error' : '' }}">
                                 <label for="nome">Custo XP:</label>
                                 <input type="radio" name="componenteXP" value="1" <?php echo 1 == $magia->componenteXP ? 'checked' : ''; ?>>Sim
                                 <input type="radio" name="componenteXP" value="0" <?php echo 0 == $magia->componenteXP ? 'checked' : ''; ?>>Não

@@ -22,7 +22,7 @@ class ArmaController extends Controller {
     }
 
     public function salvar(ArmaRequest $request) {
-        dd($request->all());
+        //dd($request->all());
         $id = $request->id;
         $arma = \App\Arma::find($id);
 
