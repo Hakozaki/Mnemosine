@@ -46,6 +46,10 @@ Route::post('/divindade/salvar', ['uses' => 'DivindadeController@salvar', 'as' =
 
 Auth::routes();
 
+Route::get('phpinfo', function() {
+    return view('info');
+});
+
 Route::get('eoq', function() {
     $e = App\ExtPersonagem::pericia();
     foreach ($e as $key => $value) {
