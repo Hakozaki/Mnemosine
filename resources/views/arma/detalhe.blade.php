@@ -185,7 +185,7 @@
                                             <li><a id="d5" onclick="preencheDano('1D12')">1D12</a></li>                                                                                                                    
                                         </ul>
                                     </div><!-- /btn-group -->
-                                    <input id="dano" type="text" name="dano" class="form-control" value="{{ $arma->dano }}" placeholder="Tempo de execução">
+                                    <input id="dano" type="text" name="dano" class="form-control" value="{{ $arma->dano }}" placeholder="Dano">
                                 </div><!-- /input-group -->
                                 <script>
                                     function preencheDano(valor) {
