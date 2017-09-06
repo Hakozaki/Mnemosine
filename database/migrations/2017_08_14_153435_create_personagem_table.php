@@ -14,8 +14,20 @@ class CreatePersonagemTable extends Migration {
     public function up() {
         Schema::create('pergonagens', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
+            $table->string('nome');            
+            $table->integer('idade')->unsigned;
+            $table->string('sexo');
+            $table->string('tendencia');
+            $table->string('alinhamento');
+            $table->string('tamanho');
+            $table->string('altura');
+            $table->string('olhos');
+            $table->string('cabelo');
+            $table->string('pele');
+
             $table->integer('jogador_id')->unsigned;
+            $table->integer('raca_id')->unsigned;
+            
             $table->integer('pv')->unsigned;
 
             $table->integer('forca')->unsigned;
@@ -40,10 +52,13 @@ class CreatePersonagemTable extends Migration {
             $table->integer('habFortitude')->unsigned;
             $table->integer('habReflexos')->unsigned;
             $table->integer('habVontade')->unsigned;
+            $table->integer('magicoFortitude')->unsigned;
+            $table->integer('magicoReflexos')->unsigned;
+            $table->integer('magicoVontade')->unsigned;
             $table->integer('outrosFortitude')->unsigned;
             $table->integer('outrosReflexos')->unsigned;
             $table->integer('outrosVontade')->unsigned;
-            
+
             $table->integer('ca')->unsigned;
             $table->integer('armaduraCa')->unsigned;
             $table->integer('escudoCa')->unsigned;
@@ -51,13 +66,27 @@ class CreatePersonagemTable extends Migration {
             $table->integer('tamanhoCa')->unsigned;
             $table->integer('armaduraNaturalCa')->unsigned;
             $table->integer('deflexaoCa')->unsigned;
+            $table->integer('outrosCa')->unsigned;
+
+            $table->integer('iniciativa')->unsigned;
+            $table->integer('toque')->unsigned;
+            $table->integer('surpresa')->unsigned;
+            $table->integer('b.b.a')->unsigned;
+            
+            $table->integer('agarrar')->unsigned;
+            $table->integer('modAgarrar')->unsigned;
+            $table->integer('forcaAgarrar')->unsigned;
+            $table->integer('tamanhoAgarrar')->unsigned;
+            $table->integer('outrosAgarrar')->unsigned;
 
             $table->timestamps();
         });
 
         Schema::table('pergonagens', function (Blueprint $table) {
             $table->foreign('jogador_id')->references('id')->on('users');
+            $table->foreign('raca_id')->references('id')->on('racas');
         });
+        
     }
 
     /**
