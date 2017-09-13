@@ -12,18 +12,18 @@ class CreatePersonagemTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('pergonagens', function (Blueprint $table) {
+        Schema::create('personagens', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome');            
             $table->integer('idade')->unsigned;
             $table->string('sexo');
-            $table->string('tendencia');
-            $table->string('alinhamento');
-            $table->string('tamanho');
-            $table->string('altura');
-            $table->string('olhos');
-            $table->string('cabelo');
-            $table->string('pele');
+            $table->string('tendencia')->nullable();
+            $table->string('alinhamento')->nullable();
+            $table->string('tamanho')->nullable();
+            $table->string('altura')->nullable();
+            $table->string('olhos')->nullable();
+            $table->string('cabelo')->nullable();
+            $table->string('pele')->nullable();
 
             $table->integer('jogador_id')->unsigned;
             $table->integer('raca_id')->unsigned;
@@ -71,7 +71,7 @@ class CreatePersonagemTable extends Migration {
             $table->integer('iniciativa')->unsigned;
             $table->integer('toque')->unsigned;
             $table->integer('surpresa')->unsigned;
-            $table->integer('b.b.a')->unsigned;
+            $table->integer('bba')->unsigned;
             
             $table->integer('agarrar')->unsigned;
             $table->integer('modAgarrar')->unsigned;
@@ -80,11 +80,6 @@ class CreatePersonagemTable extends Migration {
             $table->integer('outrosAgarrar')->unsigned;
 
             $table->timestamps();
-        });
-
-        Schema::table('pergonagens', function (Blueprint $table) {
-            $table->foreign('jogador_id')->references('id')->on('users');
-            $table->foreign('raca_id')->references('id')->on('racas');
         });
         
     }

@@ -13,7 +13,22 @@
                 <div class="panel-body">
                     <form action=" {{ route('talento.salvar') }} " method="post">
                         {{ csrf_field() }}
-                        <input name="id" type="hidden" value="{{$talento->id}}"/>                        
+                        <input name="id" type="hidden" value="{{$talento->id}}"/>  
+
+                        <div class="form-group {{ $errors->has('talentoHabilidade') ? 'has-error' : '' }}" >
+                            <label for="talentoHabilidade">Tipo Talento:</label>
+
+                            <select name="talentoHabilidade" class="form-control selectpicker" data-live-search="true" value="{{ $talento->talentoHabilidade }}">                                   
+                                <option  value="talento" class="form-control" >Talento</option>
+                                <option value="habilidade" class="form-control" >Habilidade Especial</option>
+                            </select>
+
+                            @if($errors->has('talentoHabilidade'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('talentoHabilidade') }}</strong>								
+                            </span>
+                            @endif
+                        </div>
 
                         <div class="form-group {{ $errors->has('nome') ? 'has-error' : '' }}">
                             <label for="nome">Nome:</label>

@@ -20,10 +20,10 @@ class TalentoController extends Controller {
         return view('talento.detalhe', compact('talento'));
     }
 
-    public function salvar(Request $request) {
+    public function salvar(Request $request) {        
         $id = $request->id;
         $talento = \App\Talento::find($id);
-
+        
         if (is_null($talento)) {
             \App\Talento::create($request->all());
         } else {
