@@ -39,7 +39,7 @@ class MagiaController extends Controller {
     }     
     
     public function descritores(){
-        return \App\ExtMagia::descritor();
+        return \App\Auxiliar::descritorMagia();
     }
 
 }

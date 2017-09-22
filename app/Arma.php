@@ -35,14 +35,14 @@ class Arma extends Model {
     //    } else {
     //        $this->attributes['peso'] = $value . ",00";
     //    }
-   // }
+    // }
 
     /**
      * Retorna as categorias contidas na classe ExtArma
      * @return Array Categorias setadas.
      */
     public function categorias() {
-        return ExtArma::categoria();
+        return Auxiliar::categoriaArma();
     }
 
     /**
@@ -50,7 +50,7 @@ class Arma extends Model {
      * @return Array Sub-Categorias setadas.
      */
     public function subCategorias() {
-        return ExtArma::subCategoria();
+        return Auxiliar::subCategoriaArma();
     }
 
     /**
@@ -58,7 +58,7 @@ class Arma extends Model {
      * @return Array Tipos setadas.
      */
     public function tipos() {
-        return ExtArma::tipo();
+        return Auxiliar::tipoArma();
     }
 
     /**
@@ -66,7 +66,7 @@ class Arma extends Model {
      * @return Array Sub-Tipos setadas.
      */
     public function subTipos() {
-        return ExtArma::subTipo();
+        return Auxiliar::subTipoArma();
     }
 
     /**
@@ -74,7 +74,7 @@ class Arma extends Model {
      * @return Array Tipo de dano setadas.
      */
     public function tipoDanos() {
-        return ExtArma::tipoDano();
+        return Auxiliar::tipoDanoArma()();
     }
 
     /**
@@ -86,7 +86,7 @@ class Arma extends Model {
         if ($categoria == null) {
             return "";
         } else {
-            return ExtArma::categoria()[$categoria];
+            return Auxiliar::categoriaArma()[$categoria];
         }
     }
 
@@ -99,7 +99,7 @@ class Arma extends Model {
         if ($subCategoria == null) {
             return "";
         } else {
-            return ExtArma::subCategoria()[$subCategoria];
+            return Auxiliar::subCategoriaArma()[$subCategoria];
         }
     }
 
@@ -112,7 +112,7 @@ class Arma extends Model {
         if ($tipo == null) {
             return "";
         } else {
-            return ExtArma::tipo()[$tipo];
+            return Auxiliar::tipoArma()[$tipo];
         }
     }
 
@@ -125,7 +125,7 @@ class Arma extends Model {
         if ($subTipo == null) {
             return "";
         } else {
-            return ExtArma::subTipo()[$subTipo];
+            return Auxiliar::subTipoArma()[$subTipo];
         }
     }
 
@@ -138,7 +138,7 @@ class Arma extends Model {
         if ($tipoDano == null) {
             return "";
         } else {
-            return ExtArma::tipoDano()[$tipoDano];
+            return Auxiliar::tipoDanoArma()[$tipoDano];
         }
     }
 

@@ -44,6 +44,11 @@ Route::get('/divindade/detalhe/{divindade?}', ['uses' => 'DivindadeController@de
 Route::get('/divindade/deletar/{divindade?}', ['uses' => 'DivindadeController@deletar', 'as' => 'divindade.deletar']);
 Route::post('/divindade/salvar', ['uses' => 'DivindadeController@salvar', 'as' => 'divindade.salvar']);
 
+Route::get('/personagem', ['uses' => 'PersonagemController@index', 'as' => 'personagem.index']);
+Route::get('/personagem/detalhe/{personagem?}', ['uses' => 'PersonagemController@detalhe', 'as' => 'personagem.detalhe']);
+Route::get('/personagem/deletar/{personagem?}', ['uses' => 'PersonagemController@deletar', 'as' => 'personagem.deletar']);
+Route::post('/personagem/salvar', ['uses' => 'PersonagemController@salvar', 'as' => 'personagem.salvar']);
+
 Auth::routes();
 
 Route::get('phpinfo', function() {
@@ -51,7 +56,7 @@ Route::get('phpinfo', function() {
 });
 
 Route::get('eoq', function() {
-    $e = App\ExtPersonagem::pericia();
+    $e = App\Auxiliar::periciaPersonagem();
     foreach ($e as $key => $value) {
         echo $value["nome"] . " - " . $value["st"];
     }

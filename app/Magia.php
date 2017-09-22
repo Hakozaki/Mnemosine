@@ -17,7 +17,7 @@ class Magia extends Model {
      * @return Array Escolas setadas.
      */
     public function escolas() {
-        return ExtMagia::escola();
+        return Auxiliar::escolaMagia();
     }
 
     /**
@@ -26,7 +26,7 @@ class Magia extends Model {
      * @return Array Sub-Escolas setadas.
      */
     public function subEscolas($escola = null) {
-        return ExtMagia::subEscola($escola);
+        return Auxiliar::subEscolaMagia($escola);
     }
 
     /**
@@ -34,7 +34,7 @@ class Magia extends Model {
      * @return Array Descritores setados.
      */
     public function descritores() {
-        return ExtMagia::descritor();
+        return Auxiliar::descritorMagia();
     }
 
     /**
@@ -46,7 +46,7 @@ class Magia extends Model {
         if ($escola == null) {
             return "";
         } else {
-            return ExtMagia::escola()[$escola];
+            return Auxiliar::escolaMagia()[$escola];
         }
     }
 
@@ -59,7 +59,7 @@ class Magia extends Model {
         if ($subEscola == null) {
             return "";
         } else {
-            return ExtMagia::subEscola()[$subEscola];
+            return Auxiliar::subEscolaMagia()[$subEscola];
         }
     }
 
@@ -72,7 +72,7 @@ class Magia extends Model {
         if ($descritor == null) {
             return "";
         } else {
-            return ExtMagia::descritor()[$descritor];
+            return Auxiliar::descritorMagia()[$descritor];
         }
     }
 
@@ -85,7 +85,7 @@ class Magia extends Model {
         if ($subEscola == null) {
             return "";
         } else {
-            return "(" . ExtMagia::subEscola()[$subEscola] . ")";
+            return "(" . Auxiliar::subEscolaMagia()[$subEscola] . ")";
         }
     }
 
@@ -98,7 +98,7 @@ class Magia extends Model {
         if ($descritor == null) {
             return "";
         } else {
-            return "[" . ExtMagia::descritor()[$descritor] . "]";
+            return "[" . Auxiliar::descritorMagia()[$descritor] . "]";
         }
     }
 

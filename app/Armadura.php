@@ -41,7 +41,7 @@ class Armadura extends Model {
      * @return Array Categorias setadas.
      */
     public function categorias() {
-        return ExtArmadura::categoria();
+        return Auxiliar::categoriaArmadura();
     }
 
     /**
@@ -53,7 +53,7 @@ class Armadura extends Model {
         if ($categoria == null) {
             return "";
         } else {
-            return ExtArmadura::categoria()[$categoria];
+            return Auxiliar::categoriaArmadura()[$categoria];
         }
     }
 

@@ -18,9 +18,10 @@
                         <div class="form-group {{ $errors->has('talentoHabilidade') ? 'has-error' : '' }}" >
                             <label for="talentoHabilidade">Tipo Talento:</label>
 
-                            <select name="talentoHabilidade" class="form-control selectpicker" data-live-search="true" value="{{ $talento->talentoHabilidade }}">                                   
-                                <option  value="talento" class="form-control" >Talento</option>
-                                <option value="habilidade" class="form-control" >Habilidade Especial</option>
+                            <select name="talentoHabilidade" class="form-control selectpicker" data-live-search="true" value="{{ $talento->talentoHabilidade }}">                                                               
+                                @foreach($talento->talentoHabilidades() as $key => $talentoHabilidade)                                                                
+                                <option value="{{$key}}"  <?php echo $key == $talento->talentoHabilidade ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $talentoHabilidade }}">{{ $talentoHabilidade }}</option>                                
+                                @endforeach
                             </select>
 
                             @if($errors->has('talentoHabilidade'))
