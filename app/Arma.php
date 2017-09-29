@@ -74,7 +74,7 @@ class Arma extends Model {
      * @return Array Tipo de dano setadas.
      */
     public function tipoDanos() {
-        return Auxiliar::tipoDanoArma()();
+        return Auxiliar::tipoDanoArma();
     }
 
     /**

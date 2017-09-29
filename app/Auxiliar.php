@@ -175,15 +175,19 @@ class Auxiliar extends Model {
      * @return Array Lista de Tendencias.
      */
     public static function tendenciaPersonagem() {
-        return ["LealEbom" => "Leal e Bom",
-            "NeutroEbom" => "Neutro e Bom",
-            "CaóticoEbom" => "Caótico e Bom",
-            "LealEneutro" => "Leal e Neutro",
-            "Neutro" => "Neutro",
-            "CaóticoEneutro" => "Caótico e Neutro",
-            "LealEmau" => "Leal e Mau",
-            "NeutroEmau" => "Neutro e Mau",
-            "CaóticoEmau" => "Caótico e Mau"];
+        return ["neutro" => "Neutro",
+            "leal" => "Leal",
+            "caotico" => "Caótico"];
+    }
+    
+    /**
+     * Função que retorna uma lista de Alinhamentos do personagem.     
+     * @return Array Lista de Alinhamentos.
+     */
+    public static function alinhamentoPersonagem() {
+        return ["neutro" => "Neutro",
+            "bom" => "Bom",
+            "mal" => "Mal"];
     }
 
     /**

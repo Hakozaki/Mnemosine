@@ -35,6 +35,8 @@
                         <li><a href="{{ route("armadura.index") }}">Armadura</a></li>
                         <li><a href="{{ route("classe.index") }}">Classe</a></li>
                         <li><a href="{{ route("divindade.index") }}">Divindade</a></li>
+                        <li><a href="{{ route("personagem.index") }}">Personagem</a></li>
+                        <li><a href="{{ route("raca.index") }}">Raça</a></li>
                     </ul>
                 </li>
                 @endif

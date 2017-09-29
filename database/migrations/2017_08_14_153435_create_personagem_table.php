@@ -14,74 +14,82 @@ class CreatePersonagemTable extends Migration {
     public function up() {
         Schema::create('personagens', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');            
-            $table->integer('idade')->unsigned;
-            $table->string('sexo');
+            $table->string('nome');
+            $table->integer('idade')->nullable()->default(0);
+            $table->string('sexo')->nullable();
             $table->string('tendencia')->nullable();
             $table->string('alinhamento')->nullable();
             $table->string('tamanho')->nullable();
-            $table->string('altura')->nullable();
+            $table->integer('altura')->nullable()->default(0);
+            $table->integer('peso')->nullable()->default(0);            
             $table->string('olhos')->nullable();
             $table->string('cabelo')->nullable();
             $table->string('pele')->nullable();
-
+            
+            $table->string('reducaoDano')->nullable();            
+            $table->integer('resistenciaMagia')->nullable()->default(0);
+            $table->string('deslocamento')->nullable();
+            
             $table->integer('jogador_id')->unsigned;
-            $table->integer('raca_id')->unsigned;
+            $table->integer('raca_id')->unsigned()->nullable();
+            $table->integer('divindade_id')->unsigned()->nullable();
+
+            $table->integer('pv')->nullable()->default(0);
+
+            $table->integer('forca')->nullable()->default(0);
+            $table->integer('destreza')->nullable()->default(0);
+            $table->integer('constituicao')->nullable()->default(0);
+            $table->integer('inteligencia')->nullable()->default(0);
+            $table->integer('sabedoria')->nullable()->default(0);
+            $table->integer('carisma')->nullable()->default(0);
+            $table->integer('modForca')->nullable()->default(0);
+            $table->integer('modDestreza')->nullable()->default(0);
+            $table->integer('modConstituicao')->nullable()->default(0);
+            $table->integer('modInteligencia')->nullable()->default(0);
+            $table->integer('modSabedoria')->nullable()->default(0);
+            $table->integer('modCarisma')->nullable()->default(0);
+
+            $table->integer('fortitude')->nullable()->default(0);
+            $table->integer('reflexos')->nullable()->default(0);
+            $table->integer('vontade')->nullable()->default(0);
+            $table->integer('modFortitude')->nullable()->default(0);
+            $table->integer('modReflexos')->nullable()->default(0);
+            $table->integer('modVontade')->nullable()->default(0);
+            $table->integer('habFortitude')->nullable()->default(0);
+            $table->integer('habReflexos')->nullable()->default(0);
+            $table->integer('habVontade')->nullable()->default(0);
+            $table->integer('magicoFortitude')->nullable()->default(0);
+            $table->integer('magicoReflexos')->nullable()->default(0);
+            $table->integer('magicoVontade')->nullable()->default(0);
+            $table->integer('outrosFortitude')->nullable()->default(0);
+            $table->integer('outrosReflexos')->nullable()->default(0);
+            $table->integer('outrosVontade')->nullable()->default(0);
+
+            $table->integer('ca')->nullable()->default(0);
+            $table->integer('armaduraCa')->nullable()->default(0);
+            $table->integer('escudoCa')->nullable()->default(0);
+            $table->integer('destrezaCa')->nullable()->default(0);
+            $table->integer('tamanhoCa')->nullable()->default(0);
+            $table->integer('armaduraNaturalCa')->nullable()->default(0);
+            $table->integer('deflexaoCa')->nullable()->default(0);
+            $table->integer('outrosCa')->nullable()->default(0);
+
+            $table->integer('iniciativa')->nullable()->default(0);
+            $table->integer('modDestrezaIniciativa')->nullable()->default(0);
+            $table->integer('outrosIniciativa')->nullable()->default(0);
             
-            $table->integer('pv')->unsigned;
+            $table->integer('toque')->nullable()->default(0);
+            $table->integer('surpresa')->nullable()->default(0);
+            $table->integer('bba')->nullable()->default(0);
 
-            $table->integer('forca')->unsigned;
-            $table->integer('destreza')->unsigned;
-            $table->integer('constituicao')->unsigned;
-            $table->integer('inteligencia')->unsigned;
-            $table->integer('sabedoria')->unsigned;
-            $table->integer('carisma')->unsigned;
-            $table->integer('modForca')->unsigned;
-            $table->integer('modDestreza')->unsigned;
-            $table->integer('modConstituicao')->unsigned;
-            $table->integer('modInteligencia')->unsigned;
-            $table->integer('modSabedoria')->unsigned;
-            $table->integer('modCarisma')->unsigned;
-
-            $table->integer('fortitude')->unsigned;
-            $table->integer('reflexos')->unsigned;
-            $table->integer('vontade')->unsigned;
-            $table->integer('modFortitude')->unsigned;
-            $table->integer('modReflexos')->unsigned;
-            $table->integer('modVontade')->unsigned;
-            $table->integer('habFortitude')->unsigned;
-            $table->integer('habReflexos')->unsigned;
-            $table->integer('habVontade')->unsigned;
-            $table->integer('magicoFortitude')->unsigned;
-            $table->integer('magicoReflexos')->unsigned;
-            $table->integer('magicoVontade')->unsigned;
-            $table->integer('outrosFortitude')->unsigned;
-            $table->integer('outrosReflexos')->unsigned;
-            $table->integer('outrosVontade')->unsigned;
-
-            $table->integer('ca')->unsigned;
-            $table->integer('armaduraCa')->unsigned;
-            $table->integer('escudoCa')->unsigned;
-            $table->integer('destrezaCa')->unsigned;
-            $table->integer('tamanhoCa')->unsigned;
-            $table->integer('armaduraNaturalCa')->unsigned;
-            $table->integer('deflexaoCa')->unsigned;
-            $table->integer('outrosCa')->unsigned;
-
-            $table->integer('iniciativa')->unsigned;
-            $table->integer('toque')->unsigned;
-            $table->integer('surpresa')->unsigned;
-            $table->integer('bba')->unsigned;
-            
-            $table->integer('agarrar')->unsigned;
-            $table->integer('modAgarrar')->unsigned;
-            $table->integer('forcaAgarrar')->unsigned;
-            $table->integer('tamanhoAgarrar')->unsigned;
-            $table->integer('outrosAgarrar')->unsigned;
+            $table->integer('agarrar')->nullable()->default(0);
+            $table->integer('modAgarrar')->nullable()->default(0);
+            $table->integer('forcaAgarrar')->nullable()->default(0);
+            $table->integer('tamanhoAgarrar')->nullable()->default(0);
+            $table->integer('outrosAgarrar')->nullable()->default(0);
 
             $table->timestamps();
         });
-        
     }
 
     /**

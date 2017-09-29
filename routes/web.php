@@ -49,16 +49,13 @@ Route::get('/personagem/detalhe/{personagem?}', ['uses' => 'PersonagemController
 Route::get('/personagem/deletar/{personagem?}', ['uses' => 'PersonagemController@deletar', 'as' => 'personagem.deletar']);
 Route::post('/personagem/salvar', ['uses' => 'PersonagemController@salvar', 'as' => 'personagem.salvar']);
 
+Route::get('/raca', ['uses' => 'RacaController@index', 'as' => 'raca.index']);
+Route::get('/raca/detalhe/{raca?}', ['uses' => 'RacaController@detalhe', 'as' => 'raca.detalhe']);
+Route::get('/raca/deletar/{raca?}', ['uses' => 'RacaController@deletar', 'as' => 'raca.deletar']);
+Route::post('/raca/salvar', ['uses' => 'RacaController@salvar', 'as' => 'raca.salvar']);
+
 Auth::routes();
 
 Route::get('phpinfo', function() {
     return view('info');
 });
-
-Route::get('eoq', function() {
-    $e = App\Auxiliar::periciaPersonagem();
-    foreach ($e as $key => $value) {
-        echo $value["nome"] . " - " . $value["st"];
-    }
-});
-
