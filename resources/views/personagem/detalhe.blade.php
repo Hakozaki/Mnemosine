@@ -549,52 +549,52 @@
                             </div>
                         </div> <!-- Fortitude -->
                         <div class="row">
-                            <div class="form-group col-md-4 {{ $errors->has('reflexos') ? 'has-error' : '' }}">
-                                <label for="reflexos">Reflexo:</label>
-                                <input type="text" name="reflexos" class="form-control" value="{{ $personagem->reflexos }}" placeholder="Reflexos">
-                                @if($errors->has('reflexos'))
+                            <div class="form-group col-md-4 {{ $errors->has('reflexo') ? 'has-error' : '' }}">
+                                <label for="reflexo">Reflexo:</label>
+                                <input type="text" name="reflexo" class="form-control" value="{{ $personagem->reflexo }}" placeholder="Reflexo">
+                                @if($errors->has('reflexo'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('reflexos') }}</strong>								
+                                    <strong>{{ $errors->first('reflexo') }}</strong>								
                                 </span>
                                 @endif
                             </div>
 
-                            <div class="form-group col-md-2 {{ $errors->has('modReflexos') ? 'has-error' : '' }}">
-                                <label for="modReflexos">Mod.Reflexo:</label>
-                                <input type="text" name="modReflexos" class="form-control" value="{{ $personagem->modReflexos }}" placeholder="Modificador Reflexo">
-                                @if($errors->has('modReflexos'))
+                            <div class="form-group col-md-2 {{ $errors->has('modReflexo') ? 'has-error' : '' }}">
+                                <label for="modReflexo">Mod.Reflexo:</label>
+                                <input type="text" name="modReflexo" class="form-control" value="{{ $personagem->modReflexo }}" placeholder="Modificador Reflexo">
+                                @if($errors->has('modReflexo'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('modReflexos') }}</strong>								
+                                    <strong>{{ $errors->first('modReflexo') }}</strong>								
                                 </span>
                                 @endif
                             </div>
 
-                            <div class="form-group col-md-2 {{ $errors->has('habReflexos') ? 'has-error' : '' }}">
-                                <label for="habReflexos">Hab.Reflexo:</label>
-                                <input type="text" name="habReflexos" class="form-control" value="{{ $personagem->habReflexos }}" placeholder="Habilidade Reflexo">
-                                @if($errors->has('habReflexos'))
+                            <div class="form-group col-md-2 {{ $errors->has('habReflexo') ? 'has-error' : '' }}">
+                                <label for="habReflexo">Hab.Reflexo:</label>
+                                <input type="text" name="habReflexo" class="form-control" value="{{ $personagem->habReflexo }}" placeholder="Habilidade Reflexo">
+                                @if($errors->has('habReflexo'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('habReflexos') }}</strong>								
+                                    <strong>{{ $errors->first('habReflexo') }}</strong>								
                                 </span>
                                 @endif
                             </div>
 
-                            <div class="form-group col-md-2 {{ $errors->has('magicoReflexos') ? 'has-error' : '' }}">
-                                <label for="magicoReflexos">Mágico Reflexo:</label>
-                                <input type="text" name="magicoReflexos" class="form-control" value="{{ $personagem->magicoReflexos }}" placeholder="Mágico Reflexo">
-                                @if($errors->has('magicoReflexos'))
+                            <div class="form-group col-md-2 {{ $errors->has('magicoReflexo') ? 'has-error' : '' }}">
+                                <label for="magicoReflexo">Mágico Reflexo:</label>
+                                <input type="text" name="magicoReflexo" class="form-control" value="{{ $personagem->magicoReflexo }}" placeholder="Mágico Reflexo">
+                                @if($errors->has('magicoReflexo'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('magicoReflexos') }}</strong>								
+                                    <strong>{{ $errors->first('magicoReflexo') }}</strong>								
                                 </span>
                                 @endif
                             </div>
 
-                            <div class="form-group col-md-2 {{ $errors->has('outrosReflexos') ? 'has-error' : '' }}">
-                                <label for="outrosReflexos">Outros Reflexo:</label>
-                                <input type="text" name="outrosReflexos" class="form-control" value="{{ $personagem->outrosReflexos }}" placeholder="Outros Reflexo">
-                                @if($errors->has('outrosReflexos'))
+                            <div class="form-group col-md-2 {{ $errors->has('outrosReflexo') ? 'has-error' : '' }}">
+                                <label for="outrosReflexo">Outros Reflexo:</label>
+                                <input type="text" name="outrosReflexo" class="form-control" value="{{ $personagem->outrosReflexo }}" placeholder="Outros Reflexo">
+                                @if($errors->has('outrosReflexo'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('outrosReflexos') }}</strong>								
+                                    <strong>{{ $errors->first('outrosReflexo') }}</strong>								
                                 </span>
                                 @endif
                             </div>
@@ -651,8 +651,8 @@
 
                         <div class="row">
                             <div class="form-group col-md-4 {{ $errors->has('agarrar') ? 'has-error' : '' }}">
-                                <label for="agarrar">Aguarrar:</label>
-                                <input type="text" name="agarrar" class="form-control" value="{{ $personagem->agarrar }}" placeholder="Bônus aguarrar">
+                                <label for="agarrar">Agarrar:</label>
+                                <input type="text" name="agarrar" class="form-control" value="{{ $personagem->agarrar }}" placeholder="Bônus agarrar">
                                 @if($errors->has('agarrar'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('agarrar') }}</strong>								
@@ -661,8 +661,8 @@
                             </div>
 
                             <div class="form-group col-md-2 {{ $errors->has('modAgarrar') ? 'has-error' : '' }}">
-                                <label for="modAgarrar">Mod.Aguarrar:</label>
-                                <input type="text" name="modAgarrar" class="form-control" value="{{ $personagem->modAgarrar }}" placeholder="Modificador aguarrar">
+                                <label for="modAgarrar">Mod.Agarrar:</label>
+                                <input type="text" name="modAgarrar" class="form-control" value="{{ $personagem->modAgarrar }}" placeholder="Modificador agarrar">
                                 @if($errors->has('modAgarrar'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('modAgarrar') }}</strong>								
@@ -672,7 +672,7 @@
 
                             <div class="form-group col-md-2 {{ $errors->has('forcaAgarrar') ? 'has-error' : '' }}">
                                 <label for="forcaAgarrar">Força:</label>
-                                <input type="text" name="forcaAgarrar" class="form-control" value="{{ $personagem->forcaAgarrar }}" placeholder="Modificador força aguarrar">
+                                <input type="text" name="forcaAgarrar" class="form-control" value="{{ $personagem->forcaAgarrar }}" placeholder="Modificador força agarrar">
                                 @if($errors->has('forcaAgarrar'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('forcaAgarrar') }}</strong>								
@@ -682,7 +682,7 @@
 
                             <div class="form-group col-md-2 {{ $errors->has('tamanhoAgarrar') ? 'has-error' : '' }}">
                                 <label for="tamanhoAgarrar">Tamanho:</label>
-                                <input type="text" name="tamanhoAgarrar" class="form-control" value="{{ $personagem->tamanhoAgarrar }}" placeholder="Modificador tamanho aguarrar">
+                                <input type="text" name="tamanhoAgarrar" class="form-control" value="{{ $personagem->tamanhoAgarrar }}" placeholder="Modificador tamanho agarrar">
                                 @if($errors->has('tamanhoAgarrar'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('tamanhoAgarrar') }}</strong>								
@@ -692,7 +692,7 @@
 
                             <div class="form-group col-md-2 {{ $errors->has('outrosAgarrar') ? 'has-error' : '' }}">
                                 <label for="outrosAgarrar">Outros:</label>
-                                <input type="text" name="outrosAgarrar" class="form-control" value="{{ $personagem->outrosAgarrar }}" placeholder="Modificador outros aguarrar">
+                                <input type="text" name="outrosAgarrar" class="form-control" value="{{ $personagem->outrosAgarrar }}" placeholder="Modificador outros agarrar">
                                 @if($errors->has('outrosAgarrar'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('outrosAgarrar') }}</strong>								

@@ -21,15 +21,15 @@ class CreatePersonagemTable extends Migration {
             $table->string('alinhamento')->nullable();
             $table->string('tamanho')->nullable();
             $table->integer('altura')->nullable()->default(0);
-            $table->integer('peso')->nullable()->default(0);            
+            $table->integer('peso')->nullable()->default(0);
             $table->string('olhos')->nullable();
             $table->string('cabelo')->nullable();
             $table->string('pele')->nullable();
-            
-            $table->string('reducaoDano')->nullable();            
-            $table->integer('resistenciaMagia')->nullable()->default(0);
+
+            $table->string('reducaoDano')->nullable();
+            $table->integer('resistenciaMagica')->nullable()->default(0);
             $table->string('deslocamento')->nullable();
-            
+
             $table->integer('jogador_id')->unsigned;
             $table->integer('raca_id')->unsigned()->nullable();
             $table->integer('divindade_id')->unsigned()->nullable();
@@ -50,19 +50,19 @@ class CreatePersonagemTable extends Migration {
             $table->integer('modCarisma')->nullable()->default(0);
 
             $table->integer('fortitude')->nullable()->default(0);
-            $table->integer('reflexos')->nullable()->default(0);
+            $table->integer('reflexo')->nullable()->default(0);
             $table->integer('vontade')->nullable()->default(0);
             $table->integer('modFortitude')->nullable()->default(0);
             $table->integer('modReflexos')->nullable()->default(0);
             $table->integer('modVontade')->nullable()->default(0);
             $table->integer('habFortitude')->nullable()->default(0);
-            $table->integer('habReflexos')->nullable()->default(0);
+            $table->integer('habReflexo')->nullable()->default(0);
             $table->integer('habVontade')->nullable()->default(0);
             $table->integer('magicoFortitude')->nullable()->default(0);
-            $table->integer('magicoReflexos')->nullable()->default(0);
+            $table->integer('magicoReflexo')->nullable()->default(0);
             $table->integer('magicoVontade')->nullable()->default(0);
             $table->integer('outrosFortitude')->nullable()->default(0);
-            $table->integer('outrosReflexos')->nullable()->default(0);
+            $table->integer('outrosReflexo')->nullable()->default(0);
             $table->integer('outrosVontade')->nullable()->default(0);
 
             $table->integer('ca')->nullable()->default(0);
@@ -77,7 +77,7 @@ class CreatePersonagemTable extends Migration {
             $table->integer('iniciativa')->nullable()->default(0);
             $table->integer('modDestrezaIniciativa')->nullable()->default(0);
             $table->integer('outrosIniciativa')->nullable()->default(0);
-            
+
             $table->integer('toque')->nullable()->default(0);
             $table->integer('surpresa')->nullable()->default(0);
             $table->integer('bba')->nullable()->default(0);
