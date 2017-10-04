@@ -198,7 +198,18 @@
                                 @endif
                             </div>
                         </div><!-- CABEÇALHO -->                                             
-
+                        
+                        <div class="form-group {{ $errors->has('observacao') ? 'has-error' : '' }}">
+                            <label for="observacao">Observação:</label>
+                            <textarea name="observacao" style="max-width:100%" class="form-control" 
+                                      value="{{ $personagem->observacao }}" placeholder="Observação">{{ $personagem->observacao }}</textarea>
+                            @if($errors->has('observacao'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('observacao') }}</strong>								
+                            </span>
+                            @endif
+                        </div> 
+                        
                         <div class="row">
                             <div class="row col-md-6">
                                 <div class="form-group col-md-6 {{ $errors->has('forca') ? 'has-error' : '' }}">

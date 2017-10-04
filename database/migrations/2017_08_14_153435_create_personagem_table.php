@@ -25,6 +25,7 @@ class CreatePersonagemTable extends Migration {
             $table->string('olhos')->nullable();
             $table->string('cabelo')->nullable();
             $table->string('pele')->nullable();
+            $table->text('observacao')->nullable();
 
             $table->string('reducaoDano')->nullable();
             $table->integer('resistenciaMagica')->nullable()->default(0);
@@ -53,7 +54,7 @@ class CreatePersonagemTable extends Migration {
             $table->integer('reflexo')->nullable()->default(0);
             $table->integer('vontade')->nullable()->default(0);
             $table->integer('modFortitude')->nullable()->default(0);
-            $table->integer('modReflexos')->nullable()->default(0);
+            $table->integer('modReflexo')->nullable()->default(0);
             $table->integer('modVontade')->nullable()->default(0);
             $table->integer('habFortitude')->nullable()->default(0);
             $table->integer('habReflexo')->nullable()->default(0);
