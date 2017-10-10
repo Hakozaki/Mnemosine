@@ -250,5 +250,26 @@ class Auxiliar extends Model {
         return ["talento" => "Talento",
             "habilidade" => "Habilidade Especial"];
     }
+    
+    
+    /**
+     * Função que retorna uma lista de Tendencias do personagem.     
+     * @return Array Lista de Tendencias.
+     */
+    public static function tendenciaDivindade() {
+        return ["neutro" => "Neutro",
+            "leal" => "Leal",
+            "caotico" => "Caótico"];
+    }
+    
+    /**
+     * Função que retorna uma lista de Alinhamentos do personagem.     
+     * @return Array Lista de Alinhamentos.
+     */
+    public static function alinhamentoDivindade() {
+        return ["neutro" => "Neutro",
+            "bom" => "Bom",
+            "mal" => "Mal"];
+    }
 
 }

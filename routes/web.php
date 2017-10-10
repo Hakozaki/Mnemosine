@@ -54,6 +54,11 @@ Route::get('/raca/detalhe/{raca?}', ['uses' => 'RacaController@detalhe', 'as' =>
 Route::get('/raca/deletar/{raca?}', ['uses' => 'RacaController@deletar', 'as' => 'raca.deletar']);
 Route::post('/raca/salvar', ['uses' => 'RacaController@salvar', 'as' => 'raca.salvar']);
 
+Route::get('/dominio', ['uses' => 'DominioController@index', 'as' => 'dominio.index']);
+Route::get('/dominio/detalhe/{dominio?}', ['uses' => 'DominioController@detalhe', 'as' => 'dominio.detalhe']);
+Route::get('/dominio/deletar/{dominio?}', ['uses' => 'DominioController@deletar', 'as' => 'dominio.deletar']);
+Route::post('/dominio/salvar', ['uses' => 'DominioController@salvar', 'as' => 'dominio.salvar']);
+
 Auth::routes();
 
 Route::get('phpinfo', function() {

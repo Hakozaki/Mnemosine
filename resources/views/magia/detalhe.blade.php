@@ -255,7 +255,7 @@
                                 @endif
                             </div> 
                             <div class="form-group col-md-6{{ $errors->has('resistenciaMagia') ? 'has-error' : '' }}">
-                                <label for="resistenciaMagia">Teste de resistência:</label>                                                        
+                                <label for="resistenciaMagia">Resistência Mágica:</label>                                                        
                                 <div class="input-group">
                                     <div class="input-group-btn">
                                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>

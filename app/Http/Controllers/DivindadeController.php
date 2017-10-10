@@ -36,6 +36,6 @@ class DivindadeController extends Controller
     public function deletar(\App\Divindade $divindade) {
         $divindade->delete();
         return redirect()->route('divindade.index');
-    }
+    }      
 
 }
