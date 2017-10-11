@@ -9,6 +9,17 @@ class Dominio extends Model {
     protected $fillable = ['nome', 'poderes', 'descricao', 'observacao', 'magia1', 'magia2', 'magia3', 'magia4',
         'magia5', 'magia6', 'magia7', 'magia8', 'magia9'];
 
+    
+    /**
+     * Retorna as tendencias contidas na classe Auxiliar
+     * @return Array Tendencias setadas.
+     */
+    public function divindades($dominio) {
+        $sql = 'select * from ';
+        $divindades = Divindade::all();
+        return $divindades;
+    }
+    
     /**
      * Retorna as tendencias contidas na classe Auxiliar
      * @return Array Tendencias setadas.

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePersoangemTalentosTable extends Migration {
+class CreatePersonagemTalentoTable extends Migration {
 
     /**
      * Run the migrations.
@@ -15,12 +15,16 @@ class CreatePersoangemTalentosTable extends Migration {
         Schema::create('personagem_talento', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('jogador_id')->unsigned;
-            $table->integer('talento_id')->unsigned;
+            $table->integer('personagem_id')->unsigned();
+            $table->integer('talento_id')->unsigned();
 
             $table->timestamps();
         });
 
+        Schema::table('personagem_talento', function (Blueprint $table) {
+            $table->foreign('personagem_id')->references('id')->on('personagens');
+            $table->foreign('talento_id')->references('id')->on('talentos');
+        });
     }
 
     /**

@@ -91,6 +91,11 @@ class CreatePersonagemTable extends Migration {
 
             $table->timestamps();
         });
+        
+        Schema::table('personagens', function (Blueprint $table) {
+            $table->foreign('raca_id')->references('id')->on('racas');
+            $table->foreign('divindade_id')->references('id')->on('divindades');
+        });
     }
 
     /**
