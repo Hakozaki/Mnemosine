@@ -7,14 +7,32 @@ use Illuminate\Database\Eloquent\Model;
 class Divindade extends Model {
 
     protected $fillable = ['nome', 'descricao', 'tendencia', 'alinhamento', 'observacao'];
+    public $_dominios = array();
 
     /**
-     * Retorna as tendencias contidas na classe Auxiliar
+     * 
+     * @return Array Retorna os dominios relacionados a divindade
+     */
+    public function dinvidadeDominios() {
+        return $this->belongsToMany('App\Dominio', 'divindade_dominio', 'divindade_id', 'dominio_id');
+    }
+
+    /**
+     * 
+     * @param \App\Dominio $dominio Dominio para adicionar
+     * @return $this Retorna o modelo
+     */
+    public function adicionaDominio(Dominio $dominio) {
+        return $this->divindadeDominios()->save($dominio);
+    }
+
+    /**
+     * Retorna os dominios
      * @return Array Tendencias setadas.
      */
-    public function magias1() {
-        $magias = Magia::all();        
-        return $magias;
+    public function dominios() {
+        $dominios = Dominio::all();
+        return $dominios;
     }
 
     /**

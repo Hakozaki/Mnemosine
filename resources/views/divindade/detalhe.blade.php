@@ -58,6 +58,50 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group{{ $errors->has('dominio') ? 'has-error' : '' }}" >
+                            <label for="dominio">Dominios:</label>
+                            <div class="input-group">
+                                <select name="dominio" class="form-control selectpicker" data-live-search="true" value="{{ $divindade->dominio }}">                                   
+                                    @foreach($divindade->dominios() as $dominio)                                                                
+                                    <option value="{{$dominio->id}}" class="form-control" data-tokens="{{ $dominio->nome }}">{{ $dominio->nome }}</option>                                
+                                    @endforeach
+                                </select>
+                                <span class="input-group-btn"> <button class="btn btn-info" type="button">Adicionar</button></span>
+                            </div>
+
+                            @if($errors->has('dominio'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('dominio') }}</strong>								
+                            </span>
+                            @endif
+                        </div>                                                        
+
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nome</th>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($divindade->_dominios as $_dominio)				
+                                <tr>
+                                    <th scope="row">{{ $_dominio->id }}</th>
+                                    <td>{{ $_dominio->nome }}</td>                                                                                                                                                                                                                                                                                                                                                                                            
+
+                                    <td>
+                                        <a class="btn btn-default" href="#">Editar</a>
+                                        <a class="btn btn-danger" href="#">Excluir</a>
+                                    </td>
+                                </tr>
+                                @endforeach		
+                            </tbody>
+                        </table>
+
+
+
                         <div class="form-group {{ $errors->has('descricao') ? 'has-error' : '' }}">
                             <label for="descricao">Descrição:</label>
                             <textarea name="descricao" style="max-width:100%" class="form-control" 
