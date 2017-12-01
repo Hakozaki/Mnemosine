@@ -12,12 +12,13 @@
 
                 <div class="panel-body">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#home">Personagem</a></li>
-                        <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
-                    </ul>            
+                        <li class="active"><a data-toggle="tab" href="#home">Caracteristicas</a></li>
+                        <li><a data-toggle="tab" href="#menu1">Atributos</a></li>
+                        <li><a data-toggle="tab" href="#menu2">Testes</a></li>
+                    </ul><!-- menus -->  
+                    <form action=" {{ route('personagem.salvar') }} " method="post">
+                        <div class="tab-content">
 
-                    <div class="tab-content">
-                        <form action=" {{ route('personagem.salvar') }} " method="post">
                             <div id="home" class="tab-pane fade in active">
                                 {{ csrf_field() }}
                                 <input name="id" type="hidden" value="{{$personagem->id}}"/>                        
@@ -218,6 +219,10 @@
                                     @endif
                                 </div> 
 
+
+                            </div><!-- TAB 01 (home) 'personagem'-->
+
+                            <div id="menu1" class="tab-pane fade">
                                 <div class="row">
                                     <div class="row col-md-6">
                                         <div class="form-group col-md-6 {{ $errors->has('forca') ? 'has-error' : '' }}">
@@ -434,6 +439,10 @@
 
                                     </div><!-- LADO DIREITO -->
                                 </div><!-- ESQUERDO(ATRIBUTOS) DIREITO(...)--> 
+
+                            </div><!-- TAB 02 (menu1) 'atributos'-->
+
+                            <div id="menu2" class="tab-pane fade">
                                 <div class="row">
                                     <div class="form-group col-md-2 {{ $errors->has('ca') ? 'has-error' : '' }}">
                                         <label for="ca">C.A:</label>
@@ -721,16 +730,12 @@
                                         @endif
                                     </div>
                                 </div><!-- AGUARRAR -->
-                            </div><!-- TAB 01 -->
-
-                            <div id="menu1" class="tab-pane fade">
-                                <h3>Menu 1</h3>
-                                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            </div>
+                            </div><!-- TAB 03 (menu2) 'talentos'-->
 
                             <button class="btn btn-info">Salvar</a>                            
-                        </form>
-                    </div><!-- tab-content -->
+
+                        </div><!-- tab-content -->
+                    </form><!-- FORM -->
                 </div> <!-- panel-body -->
             </div><!-- panel-default -->
         </div><!-- panel col-md-12 -->

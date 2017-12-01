@@ -13,6 +13,8 @@
 
 Route::get('/home', ['uses' => 'HomeController@index', 'as' => 'home.index']);
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home.index']);
+Route::post('/home/salvar', ['uses' => 'HomeController@salvar', 'as' => 'home.salvar']);
+
 
 Route::get('/magia', ['uses' => 'MagiaController@index', 'as' => 'magia.index']);
 Route::get('/magia/detalhe/{magia?}', ['uses' => 'MagiaController@detalhe', 'as' => 'magia.detalhe']);

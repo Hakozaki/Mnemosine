@@ -12,7 +12,7 @@ class CreateDivindadeDominioTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('divindade_diminio', function (Blueprint $table) {
+        Schema::create('divindade_dominio', function (Blueprint $table) {
             $table->increments('id');
 
             $table->integer('divindade_id')->unsigned();
@@ -33,7 +33,7 @@ class CreateDivindadeDominioTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::drop('divindade_diminio');
+        Schema::drop('divindade_dominio');
     }
 
 }

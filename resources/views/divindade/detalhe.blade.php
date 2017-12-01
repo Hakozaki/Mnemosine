@@ -1,6 +1,90 @@
 @extends('layouts.app')
 
 @section('content')
+<script>
+    function insere() {
+        var e = document.getElementById("dominio");
+        var campoId = e.options[e.selectedIndex].value;
+        var campoValor = e.options[e.selectedIndex].text;
+        var className = campoId.replace(" ", "") + campoValor.replace(" ", "");
+        className = className.replace(" ", "");
+
+        criaCampoTeste(className);
+
+        var inp = document.createElement("input");
+        inp.setAttribute("id", "dominios[" + campoId + "]");
+        inp.setAttribute("type", "text");
+        inp.setAttribute("name", "dominios[" + campoId + "]");
+        inp.setAttribute("class", className);
+        inp.setAttribute("value", campoValor);
+        inp.setAttribute("hidden", true);
+
+
+        var pai = document.getElementById("divDominios");
+        pai.appendChild(inp);
+
+        insereLinha(campoValor, className);
+    }
+
+    function criaCampoTeste(className) {
+        if (document.getElementById('teste') === null) {
+            var inp = document.createElement("input");
+            inp.setAttribute("id", "teste");
+            inp.setAttribute("type", "text");
+            inp.setAttribute("name", "teste");
+            inp.setAttribute("class", className);
+            inp.setAttribute("value", "teste");
+            inp.setAttribute("hidden", true);
+
+            var pai = document.getElementById("divDominios");
+            pai.appendChild(inp);
+        }
+    }
+
+
+
+    function insereLinha(valor, className) {
+        var tableRef = document.getElementById('tabelaDominios').getElementsByTagName('tbody')[0];
+        // Insert a row in the table at the last row
+        var newRow = tableRef.insertRow(tableRef.rows.length);
+        newRow.setAttribute("class", className);
+        // Insert a cell in the row at index 0
+        insereCelula(newRow, 0, "#");
+        insereCelula(newRow, 1, valor);
+        insereBotao(newRow, 2, className);
+    }
+
+    function insereCelula(newRow, coluna, valor) {
+        var newCell = newRow.insertCell(coluna);
+        var newText = document.createTextNode(valor);
+        newCell.appendChild(newText);
+    }
+
+    function insereBotao(newRow, coluna, className) {
+        var a = document.createElement('a');
+        //a.class = "btn btn-danger";
+        a.setAttribute("class", "btn btn-info " + className);
+        a.setAttribute("onClick", "removeDominio('" + className + "')");
+        var linkText = document.createTextNode("Excluir");
+        a.appendChild(linkText);
+
+
+        var newCell = newRow.insertCell(coluna);
+        newCell.appendChild(a);
+    }
+
+    function removeDominio(dominio) {
+        var x = document.getElementsByClassName(dominio);
+        var i;
+        for (i = 0; i < x.length; i++) {
+            console.log(x[i]);
+            x[i].remove();
+        }
+
+    }
+
+
+</script> 
 <div class="container">
     <div class="row">
         <div class="col-md-12 ">
@@ -11,7 +95,7 @@
                 </div>
 
                 <div class="panel-body">
-                    <form action=" {{ route('divindade.salvar') }} " method="post">
+                    <form action=" {{ route('divindade.salvar') }} " method="post" id="formPrincipal" name="formPrincipal">
                         {{ csrf_field() }}
                         <input name="id" type="hidden" value="{{$divindade->id}}"/>                        
 
@@ -62,12 +146,12 @@
                         <div class="form-group{{ $errors->has('dominio') ? 'has-error' : '' }}" >
                             <label for="dominio">Dominios:</label>
                             <div class="input-group">
-                                <select name="dominio" class="form-control selectpicker" data-live-search="true" value="{{ $divindade->dominio }}">                                   
+                                <select id="dominio" name="dominio" class="form-control selectpicker" data-live-search="true" value="{{ $divindade->dominio }}">                                   
                                     @foreach($divindade->dominios() as $dominio)                                                                
                                     <option value="{{$dominio->id}}" class="form-control" data-tokens="{{ $dominio->nome }}">{{ $dominio->nome }}</option>                                
                                     @endforeach
                                 </select>
-                                <span class="input-group-btn"> <button class="btn btn-info" type="button">Adicionar</button></span>
+                                <span class="input-group-btn"> <a class="btn btn-info" onclick="insere()">Adicionar Dominio</a></span>
                             </div>
 
                             @if($errors->has('dominio'))
@@ -77,7 +161,7 @@
                             @endif
                         </div>                                                        
 
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" id="tabelaDominios" name="tabelaDominios">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -86,14 +170,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($divindade->_dominios as $_dominio)				
+                                @foreach($divindade->divindadeDominios as $_dominio)				
                                 <tr>
                                     <th scope="row">{{ $_dominio->id }}</th>
                                     <td>{{ $_dominio->nome }}</td>                                                                                                                                                                                                                                                                                                                                                                                            
 
-                                    <td>
-                                        <a class="btn btn-default" href="#">Editar</a>
-                                        <a class="btn btn-danger" href="#">Excluir</a>
+                                    <td>                                        
+                                        <a class="btn btn-danger" href="javascript:confirm('Deletar dominio?') ? 
+                                           window.location.href='{{ route('dominio.deletar',$_dominio) }}' : false ">Excluir</a>
                                     </td>
                                 </tr>
                                 @endforeach		
@@ -123,6 +207,8 @@
                             </span>
                             @endif
                         </div>   
+
+                        <div id="divDominios" name="divDominios"></div>
 
                         <button class="btn btn-info">Salvar</a>                            
                     </form>

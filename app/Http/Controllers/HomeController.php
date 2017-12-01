@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller {
+
+    public $listas = [];
 
     /**
      * Create a new controller instance.
@@ -19,11 +22,24 @@ class HomeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        if (\Auth::check()) {            
+        if (\Auth::check()) {
             return view('home');
         } else {
             return view('login');
         }
+    }
+
+    public function salvar(Request $request) {
+        dd($request->all());
+    }
+
+    public function getListas() {
+        return $this->listas;
+    }
+
+    public function setListas($valor) {
+        array_push($this->listas, $valor);
+        $this->index($this->listas);
     }
 
 }

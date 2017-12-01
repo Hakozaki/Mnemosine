@@ -21,8 +21,7 @@ class DominioController extends Controller
         return view('dominio.detalhe', compact('dominio'));
     }
 
-    public function salvar(Request $request) {
-        //dd($request->all());
+    public function salvar(Request $request) {        
         $id = $request->id;
         $dominio = \App\Dominio::find($id);
         

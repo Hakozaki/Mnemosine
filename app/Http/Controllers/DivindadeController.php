@@ -21,14 +21,25 @@ class DivindadeController extends Controller {
     }
 
     public function salvar(Request $request) {
+        dd($request->all());
         $id = $request->id;
         $divindade = \App\Divindade::find($id);
 
         if (is_null($divindade)) {
-            \App\Divindade::create($request->all());
+            $divindade = \App\Divindade::create($request->all());
         } else {
             $divindade->update($request->all());
         }
+
+        $dominios = $request->dominios;
+
+        if (!is_null($dominios)) {
+            foreach ($dominios as $key => $value) {
+                $dominio = \App\Dominio::find($key);
+                $divindade->adicionaDominio($dominio);
+            }
+        }
+
         return redirect()->route('divindade.index');
     }
 

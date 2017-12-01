@@ -11,20 +11,20 @@
                 </div>
 
                 <div class="panel-body">
-                    
+
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Nome</th>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                <th>Nome</th>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
                                 <th>Ações</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody>                            
                             @foreach($dominios as $dominio)				
                             <tr>
                                 <th scope="row">{{ $dominio->id }}</th>
-                                <td>{{ $dominio->nome }}</td>                                                                                                                                                                                                                                                                                                                                                                                            
+                                <td>{{ $dominio->nome }}</td>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
                                 <td>
                                     <a class="btn btn-default" href="{{ route('dominio.detalhe',$dominio) }}">Editar</a>
                                     <a class="btn btn-danger" href="javascript:confirm('Deletar dominio?') ? 

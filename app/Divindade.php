@@ -6,14 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Divindade extends Model {
 
-    protected $fillable = ['nome', 'descricao', 'tendencia', 'alinhamento', 'observacao'];
-    public $_dominios = array();
+    protected $fillable = ['nome', 'descricao', 'tendencia', 'alinhamento', 'observacao'];    
 
     /**
      * 
      * @return Array Retorna os dominios relacionados a divindade
      */
-    public function dinvidadeDominios() {
+    public function divindadeDominios() {
         return $this->belongsToMany('App\Dominio', 'divindade_dominio', 'divindade_id', 'dominio_id');
     }
 

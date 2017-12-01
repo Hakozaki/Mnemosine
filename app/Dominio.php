@@ -9,17 +9,14 @@ class Dominio extends Model {
     protected $fillable = ['nome', 'poderes', 'descricao', 'observacao', 'magia1', 'magia2', 'magia3', 'magia4',
         'magia5', 'magia6', 'magia7', 'magia8', 'magia9'];
 
-    
     /**
-     * Retorna as tendencias contidas na classe Auxiliar
-     * @return Array Tendencias setadas.
+     * 
+     * @return Array Retorna as Divindades relacionados ao Dominio
      */
-    public function divindades($dominio) {
-        $sql = 'select * from ';
-        $divindades = Divindade::all();
-        return $divindades;
+    public function dominioDivindades() {
+        return $this->belongsToMany('App\Divindade', 'divindade_dominio', 'dominio_id', 'divindade_id');
     }
-    
+
     /**
      * Retorna as tendencias contidas na classe Auxiliar
      * @return Array Tendencias setadas.
