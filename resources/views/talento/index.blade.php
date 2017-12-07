@@ -16,6 +16,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>Categoria</th>                                                                                                                                                                                                                                                          
                                 <th>Nome</th>                                                                                                                                                                                                                                                          
                                 <th>Tipo</th>                                                                                                                                                                                                                                                          
                                 <th>Ações</th>
@@ -25,6 +26,7 @@
                             @foreach($talentos as $talento)				
                             <tr>
                                 <th scope="row">{{ $talento->id }}</th>
+                                <td>{{ $talento->_talentoHabilidades($talento->talentoHabilidade) }}</td>                                                                                                                              
                                 <td>{{ $talento->nome }}</td>                                                                                                                              
                                 <td>{{ $talento->tipo }}</td>                                                                                                                              
                                 <td>

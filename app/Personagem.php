@@ -16,6 +16,22 @@ class Personagem extends Model {
         'toque', 'surpresa', 'bba', 'agarrar', 'modAgarrar', 'forcaAgarrar', 'tamanhoAgarrar', 'outrosAgarrar'];
 
     /**
+     * 
+     * @return Array Retorna os talentos relacionados ao personagem
+     */
+    public function personagemTalentos() {
+        return $this->belongsToMany('App\Talento', 'personagem_talento', 'personagem_id', 'talento_id');
+    }
+    
+      /**
+     * Retorna os talentos
+     * @return Array Talentos cadastrados.
+     */
+    public function talentos() {        
+        return \App\Talento::all();
+    }
+
+    /**
      * Retorna as Raças 
      * @return Array de Raças.
      */
@@ -118,7 +134,7 @@ class Personagem extends Model {
     public function setPvAttribute($value) {
         $this->attributes['pv'] = $this->verificaAtributo($value);
     }
-    
+
     /**
      * Set do atributo Resistencia Mágica
      * @param string $value Valor do atributo
@@ -126,7 +142,7 @@ class Personagem extends Model {
     public function setResistenciaMagicaAttribute($value) {
         $this->attributes['resistenciaMagica'] = $this->verificaAtributo($value);
     }
-    
+
     /**
      * Set do atributo Força
      * @param string $value Valor do atributo
@@ -150,7 +166,7 @@ class Personagem extends Model {
     public function setConstituicaoAttribute($value) {
         $this->attributes['constituicao'] = $this->verificaAtributo($value);
     }
-    
+
     /**
      * Set do atributo Inteligencia
      * @param string $value Valor do atributo
@@ -343,7 +359,6 @@ class Personagem extends Model {
         $this->attributes['magicoVontade'] = $this->verificaAtributo($value);
     }
 
-    
     /**
      * Set do atributo CA
      * @param string $value Valor do atributo
