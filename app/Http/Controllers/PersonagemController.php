@@ -21,7 +21,8 @@ class PersonagemController extends Controller
         return view('personagem.detalhe', compact('personagem'));
     }
 
-    public function salvar(Request $request) {          
+    public function salvar(Request $request) {    
+        //dd($request->all());
         $id = $request->id;
         $personagem = \App\Personagem::find($id);
         
@@ -30,6 +31,16 @@ class PersonagemController extends Controller
         } else {
             $personagem->update($request->all());
         }
+        
+        $talentos = $request->talentos;
+
+        if (!is_null($talentos)) {
+            foreach ($talentos as $key => $value) {                
+                $talento = \App\Talento::find($key);
+                $personagem->adicionaTalento($talento);
+            }
+        }
+        
         return redirect()->route('personagem.index');
     }
 

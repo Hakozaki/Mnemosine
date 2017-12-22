@@ -22,13 +22,30 @@ class Personagem extends Model {
     public function personagemTalentos() {
         return $this->belongsToMany('App\Talento', 'personagem_talento', 'personagem_id', 'talento_id');
     }
-    
-      /**
+
+    /**
+     * 
+     * @param \App\Dominio $talento Talento para salvar
+     * @return $this Retorna o modelo
+     */
+    public function adicionaTalento(Talento $talento) {
+        return $this->personagemTalentos()->save($talento);
+    }
+
+    /**
      * Retorna os talentos
      * @return Array Talentos cadastrados.
      */
-    public function talentos() {        
-        return \App\Talento::all();
+    public function talentos() {
+        return \DB::table('talentos')->where('talentoHabilidade', 'talento')->get();
+    }
+
+    /**
+     * Retorna os talentos
+     * @return Array Habilidades Especiais cadastrados.
+     */
+    public function habilidadesEspeciais() {
+        return \DB::table('talentos')->where('talentoHabilidade', 'habilidade')->get();
     }
 
     /**

@@ -41,15 +41,15 @@
             <label for="habEspecial">Habilidade Especial:</label>
             <div class="input-group">
                 <select id="habEspecial" name="habEspecial" class="form-control selectpicker" data-live-search="true" value="">                                   
-                    @foreach($personagem->talentos() as $talento)                                                                
-                    <option value="{{$talento->id}}" class="form-control" data-tokens="{{ $talento->nome }}">{{ $talento->nome }}</option>                                
+                    @foreach($personagem->habilidadesEspeciais() as $habilidadeEspecial)                                                                
+                    <option value="{{$habilidadeEspecial->id}}" class="form-control" data-tokens="{{ $habilidadeEspecial->nome }}">{{ $habilidadeEspecial->nome }}</option>                                
                     @endforeach
                 </select>
-                <span class="input-group-btn"> <a class="btn btn-info" onclick="insereTalento()">Adicionar Habilidade</a></span>
+                <span class="input-group-btn"> <a class="btn btn-info" onclick="insereHabilidadeEspecial()">Adicionar Habilidade</a></span>
             </div>
         </div>                                                        
 
-        <table class="table table-bordered" id="tabelaTalentos" name="tabelaTalentos">
+        <table class="table table-bordered" id="tabelaHabEspeciais" name="tabelaHabEspeciais">
             <thead>
                 <tr>
                     <th>#</th>
@@ -70,6 +70,6 @@
                 @endforeach		
             </tbody>
         </table>
-        <div id="divTalentos" name="divTalentos"></div>
+        <div id="divHabilidadesEspeciais" name="divHabilidadesEspeciais"></div>
     </div><!-- FIM DIV HAB.ESPECIAL -->
 </div>

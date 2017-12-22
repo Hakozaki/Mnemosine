@@ -6,6 +6,7 @@
 <script src="/js/jquery.mask.min.js"></script>
 
 <script src="/js/personagem/adicionaTalentos.js"></script>
+<script src="/js/personagem/adicionaHabilidadesEspeciais.js"></script>
 <!-- -->
 
 <div class="container">
