@@ -22,7 +22,7 @@ class PersonagemController extends Controller
     }
 
     public function salvar(Request $request) {    
-        //dd($request->all());
+        dd($request->all());
         $id = $request->id;
         $personagem = \App\Personagem::find($id);
         
@@ -35,6 +35,13 @@ class PersonagemController extends Controller
         $talentos = $request->talentos;
 
         if (!is_null($talentos)) {
+            foreach ($talentos as $key => $value) {                
+                $talento = \App\Talento::find($key);
+                $personagem->adicionaTalento($talento);
+            }
+        }
+        
+        if (!is_null($classes)) {
             foreach ($talentos as $key => $value) {                
                 $talento = \App\Talento::find($key);
                 $personagem->adicionaTalento($talento);

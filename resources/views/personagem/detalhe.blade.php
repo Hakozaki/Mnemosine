@@ -7,6 +7,7 @@
 
 <script src="/js/personagem/adicionaTalentos.js"></script>
 <script src="/js/personagem/adicionaHabilidadesEspeciais.js"></script>
+<script src="/js/personagem/adicionaClasses.js"></script>
 <!-- -->
 
 <div class="container">

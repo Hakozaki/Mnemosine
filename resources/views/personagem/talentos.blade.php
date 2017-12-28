@@ -21,7 +21,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($personagem->personagemTalentos as $_talento)				
+                @foreach($personagem->_personagemTalentos as $_talento)				
                 <tr>
                     <th scope="row">{{ $_talento->id }}</th>
                     <td>{{ $_talento->nome }}</td>                                                                                                                                                                                                                                                                                                                                                                                            
@@ -58,7 +58,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($personagem->personagemTalentos as $_talento)				
+                @foreach($personagem->_personagemHabilidades as $_talento)				
                 <tr>
                     <th scope="row">{{ $_talento->id }}</th>
                     <td>{{ $_talento->nome }}</td>                                                                                                                                                                                                                                                                                                                                                                                            

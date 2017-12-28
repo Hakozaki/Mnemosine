@@ -181,7 +181,52 @@
         @endif
     </div>
 </div><!-- OLHOS CABELO PELE DIVINDADE -->                                             
-<!-- FIM DIVINDADE -->
+
+<div>
+    <div class="row">
+        <div class="form-group col-md-6{{ $errors->has('classe') ? 'has-error' : '' }}" >
+            <label for="classe">Classes:</label>            
+            <select id="classe" name="classe" id="classe" class="form-control selectpicker" data-live-search="true" value="">                                   
+                @foreach($personagem->classes() as $classe)                                                                
+                <option value="{{$classe->id}}" class="form-control" data-tokens="{{ $classe->nome }}">{{ $classe->nome }}</option>                                
+                @endforeach
+            </select>                
+        </div>                                                        
+
+        <div class="form-group col-md-6{{ $errors->has('classeNivel') ? 'has-error' : '' }}" >
+            <label for="classeNivel">Nivel:</label>
+            <div class="input-group">
+                <input type="text" id="classeNivel" name="classeNivel" class="form-control" value="" placeholder="Nível da classe">        
+                <span class="input-group-btn"> <a class="btn btn-info" onclick="insereClasse()">Adicionar Classe</a></span>
+            </div>
+        </div>                                                        
+    </div>
+
+    <table class="table table-bordered" id="tabelaClasses" name="tabelaClasses">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nome</th>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+                <th>Nível</th>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($personagem->personagemClasses as $_classe)				
+            <tr>
+                <th scope="row">{{ $_classe->id }}</th>
+                <td>{{ $_classe->nome }}</td>                                                                                                                                                                                                                                                                                                                                                                                            
+                <td>                                        
+                    <a class="btn btn-danger" href="javascript:confirm('Deletar classe?') ? 
+                       window.location.href='{{ route('talento.deletar',$_classe) }}' : false ">Excluir</a>
+                </td>
+            </tr>
+            @endforeach		
+        </tbody>
+    </table>
+    <div id="divClasses" name="divClasses"></div>
+</div><!-- FIM DIV TALENTOS -->
+
 <div class="form-group {{ $errors->has('observacao') ? 'has-error' : '' }}">
     <label for="observacao">Observação:</label>
     <textarea name="observacao" style="max-width:100%" class="form-control" 

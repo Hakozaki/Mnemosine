@@ -22,14 +22,47 @@ class Personagem extends Model {
     public function personagemTalentos() {
         return $this->belongsToMany('App\Talento', 'personagem_talento', 'personagem_id', 'talento_id');
     }
+    
+    /**
+     * 
+     * @return Array Retorna os talentos relacionados ao personagem
+     */
+    public function personagemClasses() {
+        return $this->belongsToMany('App\Classe', 'personagem_classe', 'personagem_id', 'classe_id');
+    }
 
     /**
      * 
-     * @param \App\Dominio $talento Talento para salvar
+     * @param \App\Talento $talento Talento para salvar
      * @return $this Retorna o modelo
      */
     public function adicionaTalento(Talento $talento) {
         return $this->personagemTalentos()->save($talento);
+    }
+    
+    /**
+     * 
+     * @param \App\Classe $classe Classe para salvar
+     * @return $this Retorna o modelo
+     */
+    public function adicionaClasse(Classe $classe) {
+        return $this->personagemClasses()->save($classe);
+    }
+
+    /**
+     * 
+     * @return Array Retorna os Talentos relacionados ao personagem
+     */
+    public function _personagemTalentos() {
+        return $this->personagemTalentos()->where('talentos.talentoHabilidade', 'talento');
+    }
+
+    /**
+     * 
+     * @return Array Retorna as Habilidades Especiais relacionados ao personagem
+     */
+    public function _personagemHabilidades() {
+        return $this->personagemTalentos()->where('talentos.talentoHabilidade', 'habilidade');
     }
 
     /**
@@ -62,6 +95,14 @@ class Personagem extends Model {
      */
     public function racas() {
         return \App\Raca::all();
+    }
+    
+    /**
+     * Retorna as Classes 
+     * @return Array de Classes.
+     */
+    public function classes() {
+        return \App\Classe::all();
     }
 
     /**

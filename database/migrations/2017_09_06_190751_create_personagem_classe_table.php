@@ -17,6 +17,7 @@ class CreatePersonagemClasseTable extends Migration {
 
             $table->integer('personagem_id')->unsigned();
             $table->integer('classe_id')->unsigned();
+            $table->integer('nivel')->nullable();
 
             $table->timestamps();
         });
