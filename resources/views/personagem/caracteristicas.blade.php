@@ -216,6 +216,7 @@
             <tr>
                 <th scope="row">{{ $_classe->id }}</th>
                 <td>{{ $_classe->nome }}</td>                                                                                                                                                                                                                                                                                                                                                                                            
+                <td>{{ $_classe->nivel }}</td>                                                                                                                                                                                                                                                                                                                                                                                            
                 <td>                                        
                     <a class="btn btn-danger" href="javascript:confirm('Deletar classe?') ? 
                        window.location.href='{{ route('talento.deletar',$_classe) }}' : false ">Excluir</a>

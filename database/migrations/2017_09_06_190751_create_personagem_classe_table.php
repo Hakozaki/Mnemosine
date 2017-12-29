@@ -22,10 +22,10 @@ class CreatePersonagemClasseTable extends Migration {
             $table->timestamps();
         });
 
-        Schema::table('personagem_classe', function (Blueprint $table) {
-            $table->foreign('personagem_id')->references('id')->on('personagens');
-            $table->foreign('classe_id')->references('id')->on('classes');
-        });
+        //Schema::table('personagem_classe', function (Blueprint $table) {
+        //    $table->foreign('personagem_id')->references('id')->on('personagens');
+        //    $table->foreign('classe_id')->references('id')->on('classes');
+        //});
     }
 
     /**

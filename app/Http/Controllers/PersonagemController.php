@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PersonagemController extends Controller
-{
+class PersonagemController extends Controller {
 
     public function __construct() {
         $this->middleware('auth');
@@ -21,33 +20,34 @@ class PersonagemController extends Controller
         return view('personagem.detalhe', compact('personagem'));
     }
 
-    public function salvar(Request $request) {    
-        dd($request->all());
+    public function salvar(Request $request) {
+        //dd($request->all());
         $id = $request->id;
         $personagem = \App\Personagem::find($id);
-        
+
         if (is_null($personagem)) {
             \App\Personagem::create($request->all());
         } else {
             $personagem->update($request->all());
         }
-        
+
         $talentos = $request->talentos;
 
         if (!is_null($talentos)) {
-            foreach ($talentos as $key => $value) {                
+            foreach ($talentos as $key => $value) {
                 $talento = \App\Talento::find($key);
                 $personagem->adicionaTalento($talento);
             }
         }
-        
+
+        $classes = $request->classes;
+
         if (!is_null($classes)) {
-            foreach ($talentos as $key => $value) {                
-                $talento = \App\Talento::find($key);
-                $personagem->adicionaTalento($talento);
+            foreach ($classes as $key => $value) {
+                $personagem->adicionaClasse($key, $value);
             }
         }
-        
+
         return redirect()->route('personagem.index');
     }
 

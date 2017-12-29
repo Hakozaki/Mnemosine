@@ -20,15 +20,15 @@ class Personagem extends Model {
      * @return Array Retorna os talentos relacionados ao personagem
      */
     public function personagemTalentos() {
-        return $this->belongsToMany('App\Talento', 'personagem_talento', 'personagem_id', 'talento_id');
+        return $this->belongsToMany('App\Talento', 'personagem_talento', 'personagem_id', 'talento_id')->withTimestamps();
     }
-    
+
     /**
      * 
      * @return Array Retorna os talentos relacionados ao personagem
      */
     public function personagemClasses() {
-        return $this->belongsToMany('App\Classe', 'personagem_classe', 'personagem_id', 'classe_id');
+        return $this->belongsToMany('App\Classe', 'personagem_classe')->withPivot('personagem_id', 'classe_id','nivel')->withTimestamps();
     }
 
     /**
@@ -39,14 +39,23 @@ class Personagem extends Model {
     public function adicionaTalento(Talento $talento) {
         return $this->personagemTalentos()->save($talento);
     }
-    
+
     /**
      * 
      * @param \App\Classe $classe Classe para salvar
      * @return $this Retorna o modelo
      */
-    public function adicionaClasse(Classe $classe) {
-        return $this->personagemClasses()->save($classe);
+    public function adicionaClasse($classe, $nivel) {
+        //return $this->personagemClasses()->save($classe);        
+        $persoangem_classe = new Personagem_classe;
+        $persoangem_classe->personagem_id = $this->id;
+        $persoangem_classe->classe_id = $classe;
+        $persoangem_classe->nivel = $nivel;
+        //$personagem = ["persoangem_id"=>$this->id , "classe_id" => $classe , "nivel" => $nivel];
+        //dd($persoangem_classe);
+        //dd(Personagem_classe::create($personagem));
+        //return Personagem_classe::create($personagem);
+        return $this->personagemClasses()->save($persoangem_classe);        
     }
 
     /**
@@ -96,7 +105,7 @@ class Personagem extends Model {
     public function racas() {
         return \App\Raca::all();
     }
-    
+
     /**
      * Retorna as Classes 
      * @return Array de Classes.

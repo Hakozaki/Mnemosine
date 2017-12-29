@@ -21,10 +21,10 @@ class CreateDivindadeDominioTable extends Migration {
             $table->timestamps();
         });
 
-        Schema::table('divindade_diminio', function (Blueprint $table) {
-            $table->foreign('divindade_id')->references('id')->on('divindades');
-            $table->foreign('dominio_id')->references('id')->on('dominios');
-        });
+        //Schema::table('divindade_diminio', function (Blueprint $table) {
+        //    $table->foreign('divindade_id')->references('id')->on('divindades');
+        //    $table->foreign('dominio_id')->references('id')->on('dominios');
+        //});
     }
 
     /**

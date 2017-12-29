@@ -33,17 +33,17 @@ class CreateDominioTable extends Migration {
             $table->timestamps();
         });
 
-        Schema::table('dominios', function (Blueprint $table) {
-            $table->foreign('magia1')->references('id')->on('magias');
-            $table->foreign('magia2')->references('id')->on('magias');
-            $table->foreign('magia3')->references('id')->on('magias');
-            $table->foreign('magia4')->references('id')->on('magias');
-            $table->foreign('magia5')->references('id')->on('magias');
-            $table->foreign('magia6')->references('id')->on('magias');
-            $table->foreign('magia7')->references('id')->on('magias');
-            $table->foreign('magia8')->references('id')->on('magias');
-            $table->foreign('magia9')->references('id')->on('magias');
-        });
+        //Schema::table('dominios', function (Blueprint $table) {
+        //    $table->foreign('magia1')->references('id')->on('magias');
+        //    $table->foreign('magia2')->references('id')->on('magias');
+        //    $table->foreign('magia3')->references('id')->on('magias');
+        //    $table->foreign('magia4')->references('id')->on('magias');
+        //    $table->foreign('magia5')->references('id')->on('magias');
+        //    $table->foreign('magia6')->references('id')->on('magias');
+        //    $table->foreign('magia7')->references('id')->on('magias');
+        //    $table->foreign('magia8')->references('id')->on('magias');
+        //    $table->foreign('magia9')->references('id')->on('magias');
+        //});
     }
 
     /**
