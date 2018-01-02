@@ -18,6 +18,7 @@ class CreateTalentoTable extends Migration {
             $table->string('tipo')->nullable();
             $table->string('talentoHabilidade')->nullable();
             $table->text('descricao')->nullable();
+            $table->text('observacao')->nullable();
             $table->text('preRequisito')->nullable();
             $table->text('beneficio')->nullable();
             $table->text('normal')->nullable();

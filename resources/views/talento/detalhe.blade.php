@@ -76,6 +76,17 @@
                             @endif
                         </div> 
 
+                        <div class="form-group {{ $errors->has('observacao') ? 'has-error' : '' }}">
+                            <label for="observacao">Observação:</label>
+                            <textarea name="observacao" style="max-width:100%" class="form-control" 
+                                      value="{{ $talento->observacao }}" placeholder="Observação">{{ $talento->observacao }}</textarea>
+                            @if($errors->has('observacao'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('observacao') }}</strong>								
+                            </span>
+                            @endif
+                        </div>   
+
                         <div class="form-group {{ $errors->has('preRequisito') ? 'has-error' : '' }}">
                             <label for="preRequisito">Pré-requisitos:</label>
                             <textarea name="preRequisito" style="max-width:100%" class="form-control" 

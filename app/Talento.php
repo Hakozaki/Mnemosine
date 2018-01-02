@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Talento extends Model {
 
-    protected $fillable = ['nome', 'tipo', 'talentoHabilidade', 'descricao', 'preRequisito',
+    protected $fillable = ['nome', 'tipo', 'talentoHabilidade', 'descricao', 'observacao', 'preRequisito',
         'beneficio', 'normal', 'especial'];
 
     /**

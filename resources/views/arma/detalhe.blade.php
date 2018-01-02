@@ -153,8 +153,8 @@
                             <div class="form-group col-md-6 {{ $errors->has('custo') ? 'has-error' : '' }}">
                                 <label for="custo">Custo:</label>
                                 <div class="input-group">
-                                    <input type="text" name="custo" id="custo" class="form-control" value="{{ $arma->custo }}" placeholder="Custo em Peças de Cobre">                            
-                                    <span class="input-group-addon">PC</span>
+                                    <input type="text" name="custo" id="custo" class="form-control" value="{{ $arma->custo }}" placeholder="Custo em Peças de Ouro">                            
+                                    <span class="input-group-addon">PO</span>
                                 </div>
 
                                 <script>jQuery(function ($) {

@@ -41,8 +41,6 @@
         }
     }
 
-
-
     function insereLinha(valor, className) {
         var tableRef = document.getElementById('tabelaDominios').getElementsByTagName('tbody')[0];
         // Insert a row in the table at the last row
@@ -80,10 +78,7 @@
             console.log(x[i]);
             x[i].remove();
         }
-
     }
-
-
 </script> 
 <div class="container">
     <div class="row">

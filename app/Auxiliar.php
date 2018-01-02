@@ -53,7 +53,8 @@ class Auxiliar extends Model {
      * @return Array Lista de Tipo de dano de armas.
      */
     public static function tipoDanoArma() {
-        return ["concussao" => "Concussão",
+        return ["contusao" => "Contusão",
+            "concussao" => "Concussão",
             "perfurante" => "Perfurante",
             "cortante" => "Cortante",
             "concussaoEperfurante" => "Concussão e Perfurante",
@@ -179,7 +180,7 @@ class Auxiliar extends Model {
             "leal" => "Leal",
             "caotico" => "Caótico"];
     }
-    
+
     /**
      * Função que retorna uma lista de Alinhamentos do personagem.     
      * @return Array Lista de Alinhamentos.
@@ -250,8 +251,7 @@ class Auxiliar extends Model {
         return ["talento" => "Talento",
             "habilidade" => "Habilidade Especial"];
     }
-    
-    
+
     /**
      * Função que retorna uma lista de Tendencias do personagem.     
      * @return Array Lista de Tendencias.
@@ -261,7 +261,7 @@ class Auxiliar extends Model {
             "leal" => "Leal",
             "caotico" => "Caótico"];
     }
-    
+
     /**
      * Função que retorna uma lista de Alinhamentos do personagem.     
      * @return Array Lista de Alinhamentos.
