@@ -15,6 +15,10 @@ class CreateClasseTable extends Migration
         Schema::create('classes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome')->nullable();
+            $table->string('tendencia')->nullable();
+            $table->string('dv')->nullable();
+            $table->string('pontosPericiaNivel1')->nullable();
+            $table->string('pontosPericiaPorNivel')->nullable();
             $table->text('descricao')->nullable();        
             $table->timestamps();
         });

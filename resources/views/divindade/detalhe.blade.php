@@ -1,85 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<script>
-    function insere() {
-        var e = document.getElementById("dominio");
-        var campoId = e.options[e.selectedIndex].value;
-        var campoValor = e.options[e.selectedIndex].text;
-        var className = campoId.replace(" ", "") + campoValor.replace(" ", "");
-        className = className.replace(" ", "");
+<!-- -->
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/jquery.mask.min.js"></script>
 
-        criaCampoTeste(className);
+<script src="/js/divindade/adicionaDominios.js"></script>
+<!-- -->
 
-        var inp = document.createElement("input");
-        inp.setAttribute("id", "dominios[" + campoId + "]");
-        inp.setAttribute("type", "text");
-        inp.setAttribute("name", "dominios[" + campoId + "]");
-        inp.setAttribute("class", className);
-        inp.setAttribute("value", campoValor);
-        inp.setAttribute("hidden", true);
-
-
-        var pai = document.getElementById("divDominios");
-        pai.appendChild(inp);
-
-        insereLinha(campoValor, className);
-    }
-
-    function criaCampoTeste(className) {
-        if (document.getElementById('teste') === null) {
-            var inp = document.createElement("input");
-            inp.setAttribute("id", "teste");
-            inp.setAttribute("type", "text");
-            inp.setAttribute("name", "teste");
-            inp.setAttribute("class", className);
-            inp.setAttribute("value", "teste");
-            inp.setAttribute("hidden", true);
-
-            var pai = document.getElementById("divDominios");
-            pai.appendChild(inp);
-        }
-    }
-
-    function insereLinha(valor, className) {
-        var tableRef = document.getElementById('tabelaDominios').getElementsByTagName('tbody')[0];
-        // Insert a row in the table at the last row
-        var newRow = tableRef.insertRow(tableRef.rows.length);
-        newRow.setAttribute("class", className);
-        // Insert a cell in the row at index 0
-        insereCelula(newRow, 0, "#");
-        insereCelula(newRow, 1, valor);
-        insereBotao(newRow, 2, className);
-    }
-
-    function insereCelula(newRow, coluna, valor) {
-        var newCell = newRow.insertCell(coluna);
-        var newText = document.createTextNode(valor);
-        newCell.appendChild(newText);
-    }
-
-    function insereBotao(newRow, coluna, className) {
-        var a = document.createElement('a');
-        //a.class = "btn btn-danger";
-        a.setAttribute("class", "btn btn-info " + className);
-        a.setAttribute("onClick", "removeDominio('" + className + "')");
-        var linkText = document.createTextNode("Excluir");
-        a.appendChild(linkText);
-
-
-        var newCell = newRow.insertCell(coluna);
-        newCell.appendChild(a);
-    }
-
-    function removeDominio(dominio) {
-        var x = document.getElementsByClassName(dominio);
-        var i;
-        for (i = 0; i < x.length; i++) {
-            console.log(x[i]);
-            x[i].remove();
-        }
-    }
-</script> 
 <div class="container">
     <div class="row">
         <div class="col-md-12 ">
@@ -93,16 +21,37 @@
                     <form action=" {{ route('divindade.salvar') }} " method="post" id="formPrincipal" name="formPrincipal">
                         {{ csrf_field() }}
                         <input name="id" type="hidden" value="{{$divindade->id}}"/>                        
+                        <div class="row">
+                            <div class="form-group col-md-6{{ $errors->has('nome') ? 'has-error' : '' }}">
+                                <label for="nome">Nome:</label>
+                                <input type="text" name="nome" class="form-control" value="{{ $divindade->nome }}" placeholder="Nome">
+                                @if($errors->has('nome'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('nome') }}</strong>								
+                                </span>
+                                @endif
+                            </div>
+                            <div class="form-group col-md-6{{ $errors->has('panteao') ? 'has-error' : '' }}">
+                                <label for="panteao">Panteão:</label>
+                                <input type="text" name="panteao" class="form-control" value="{{ $divindade->panteao }}" placeholder="Panteão">
+                                @if($errors->has('panteao'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('panteao') }}</strong>								
+                                </span>
+                                @endif
+                            </div>
+                        </div>
 
-                        <div class="form-group {{ $errors->has('nome') ? 'has-error' : '' }}">
-                            <label for="nome">Nome:</label>
-                            <input type="text" name="nome" class="form-control" value="{{ $divindade->nome }}" placeholder="Nome">
-                            @if($errors->has('nome'))
+                        <div class="form-group {{ $errors->has('aspectos') ? 'has-error' : '' }}">
+                            <label for="aspectos">Aspectos:</label>
+                            <input type="text" name="aspectos" class="form-control" value="{{ $divindade->aspectos }}" placeholder="Aspectos">
+                            @if($errors->has('aspectos'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('nome') }}</strong>								
+                                <strong>{{ $errors->first('aspectos') }}</strong>								
                             </span>
                             @endif
                         </div>
+
                         <div class="row"> 
                             <div class="form-group col-md-6 {{ $errors->has('tendencia') ? 'has-error' : '' }}" >
                                 <label for="tendencia">Tendência:</label>
@@ -146,7 +95,7 @@
                                     <option value="{{$dominio->id}}" class="form-control" data-tokens="{{ $dominio->nome }}">{{ $dominio->nome }}</option>                                
                                     @endforeach
                                 </select>
-                                <span class="input-group-btn"> <a class="btn btn-info" onclick="insere()">Adicionar Dominio</a></span>
+                                <span class="input-group-btn"> <a class="btn btn-info" onclick="insereDominio()">Adicionar Dominio</a></span>
                             </div>
 
                             @if($errors->has('dominio'))
@@ -188,6 +137,17 @@
                             @if($errors->has('descricao'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('descricao') }}</strong>								
+                            </span>
+                            @endif
+                        </div>  
+
+                        <div class="form-group {{ $errors->has('dogma') ? 'has-error' : '' }}">
+                            <label for="dogma">Dogma:</label>
+                            <textarea name="dogma" style="max-width:100%" class="form-control" 
+                                      value="{{ $divindade->dogma }}" placeholder="Aspectos">{{ $divindade->Dogma }}</textarea>
+                            @if($errors->has('dogma'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('dogma') }}</strong>								
                             </span>
                             @endif
                         </div>                       

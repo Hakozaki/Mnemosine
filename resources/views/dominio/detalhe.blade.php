@@ -41,29 +41,6 @@
                             @endif
                         </div>   
 
-                        <div class="form-group {{ $errors->has('descricao') ? 'has-error' : '' }}">
-                            <label for="descricao">Descrição:</label>
-                            <textarea name="descricao" style="max-width:100%" class="form-control" 
-                                      value="{{ $dominio->descricao }}" placeholder="Descrição">{{ $dominio->descricao }}</textarea>
-                            @if($errors->has('descricao'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('descricao') }}</strong>								
-                            </span>
-                            @endif
-                        </div>                       
-
-                        <div class="form-group {{ $errors->has('observacao') ? 'has-error' : '' }}">
-                            <label for="observacao">Observação:</label>
-                            <textarea name="observacao" style="max-width:100%" class="form-control" 
-                                      value="{{ $dominio->observacao }}" placeholder="Observação">{{ $dominio->observacao }}</textarea>
-                            @if($errors->has('observacao'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('observacao') }}</strong>								
-                            </span>
-                            @endif
-                        </div>   
-
-
                         <table class="table form-group">
                             <thead>
                                 <tr>

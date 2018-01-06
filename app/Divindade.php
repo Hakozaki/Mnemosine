@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Divindade extends Model {
 
-    protected $fillable = ['nome', 'descricao', 'tendencia', 'alinhamento', 'observacao'];    
+    protected $fillable = ['nome', 'descricao', 'tendencia', 'alinhamento', 'observacao', 'panteao', 'aspectos', 'dogma'];
 
     /**
      * 

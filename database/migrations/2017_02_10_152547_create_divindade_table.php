@@ -15,10 +15,13 @@ class CreateDivindadeTable extends Migration {
         Schema::create('divindades', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome')->nullable();
+            $table->string('panteao')->nullable();
             $table->string('tendencia')->nullable();
             $table->string('alinhamento')->nullable();
             $table->text('descricao')->nullable();
             $table->text('observacao')->nullable();
+            $table->string('aspectos')->nullable();
+            $table->text('dogma')->nullable();
             $table->timestamps();
         });
     }

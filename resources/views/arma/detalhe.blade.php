@@ -2,11 +2,26 @@
 
 @section('content')
 <!--  -->
-<script src="/js/cleave.min.js"></script>
-<script src="/js/cleave-phone.br.js"></script>
 <script src="/js/jquery-3.1.1.min.js"></script>
 <script src="/js/jquery.mask.min.js"></script>
 <!-- -->
+
+<script>
+    jQuery(function ($) {
+        $('#peso').mask('##00.00', {reverse: true});
+        $('#custo').mask('##00.00', {reverse: true});
+    });
+
+    function preencheDano(valor) {
+        document.getElementById('dano').value = valor;
+    }
+
+    function preencheDecisivo(valor) {
+        document.getElementById('incrementoDecisivo').value = valor;
+    }
+
+</script>
+
 
 <div class="container">
     <div class="row">
@@ -136,13 +151,7 @@
                                 <div class="input-group">
                                     <input type="text" name="peso" id="peso" class="form-control" value="{{ $arma->peso }}" placeholder="Peso da arma">                            
                                     <span class="input-group-addon">KG</span>
-                                </div>
-
-                                <script>jQuery(function ($) {
-                                        $('#peso').mask('##00.00', {reverse: true});
-                                    });
-                                </script>
-
+                                </div>                               
                                 @if($errors->has('peso'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('peso') }}</strong>								
@@ -156,12 +165,6 @@
                                     <input type="text" name="custo" id="custo" class="form-control" value="{{ $arma->custo }}" placeholder="Custo em Peças de Ouro">                            
                                     <span class="input-group-addon">PO</span>
                                 </div>
-
-                                <script>jQuery(function ($) {
-                                        $('#custo').mask('##00.00', {reverse: true});
-                                    });
-                                </script>
-                                
                                 @if($errors->has('custo'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('custo') }}</strong>								
@@ -187,11 +190,7 @@
                                     </div><!-- /btn-group -->
                                     <input id="dano" type="text" name="dano" class="form-control" value="{{ $arma->dano }}" placeholder="Dano">
                                 </div><!-- /input-group -->
-                                <script>
-                                    function preencheDano(valor) {
-                                        document.getElementById('dano').value = valor;
-                                    }
-                                </script>
+
                                 @if($errors->has('dano'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('dano') }}</strong>								
@@ -213,12 +212,7 @@
                                         </ul>
                                     </div><!-- /btn-group -->
                                     <input id="incrementoDecisivo" type="text" name="incrementoDecisivo" class="form-control" value="{{ $arma->incrementoDecisivo }}" placeholder="Decisivo">
-                                </div><!-- /input-group -->
-                                <script>
-                                    function preencheDecisivo(valor) {
-                                        document.getElementById('incrementoDecisivo').value = valor;
-                                    }
-                                </script>
+                                </div><!-- /input-group -->                              
                                 @if($errors->has('incrementoDecisivo'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('incrementoDecisivo') }}</strong>								

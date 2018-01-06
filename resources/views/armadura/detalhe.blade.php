@@ -1,6 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
+
+<!--  -->
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/jquery.mask.min.js"></script>
+<!-- -->
+
+<script>
+    jQuery(function ($) {
+        $('#peso').mask('##00.00', {reverse: true});
+        $('#custo').mask('##00.00', {reverse: true});
+        $('.numero').mask('##00', {reverse: true});
+    });
+</script>
+
 <div class="container">
     <div class="row">
         <div class="col-md-12 ">
@@ -57,7 +71,7 @@
                             <div class="form-group col-md-4{{ $errors->has('peso') ? 'has-error' : '' }}">
                                 <label for="peso">Peso:</label>
                                 <div class="input-group">
-                                    <input type="text" name="peso" class="form-control" value="{{ $armadura->peso }}" placeholder="Peso">                            
+                                    <input type="text" id="peso" name="peso" class="form-control" value="{{ $armadura->peso }}" placeholder="Peso">                            
                                     <span class="input-group-addon">KG</span>
                                 </div>
                                 @if($errors->has('peso'))
@@ -70,7 +84,7 @@
                             <div class="form-group col-md-4{{ $errors->has('custo') ? 'has-error' : '' }}">
                                 <label for="custo">Custo:</label>
                                 <div class="input-group">
-                                    <input type="text" name="custo" class="form-control" value="{{ $armadura->custo }}" placeholder="Custo em Peças de Ouro">                            
+                                    <input type="text" id="custo" name="custo" class="form-control" value="{{ $armadura->custo }}" placeholder="Custo em Peças de Ouro">                            
                                     <span class="input-group-addon">PO</span>
                                 </div>
                                 @if($errors->has('custo'))
@@ -84,7 +98,7 @@
                         <div class="row">
                             <div class="form-group col-md-3 {{ $errors->has('bonus') ? 'has-error' : '' }}">
                                 <label for="bonus">Bônus:</label>
-                                <input type="text" name="bonus" class="form-control" value="{{ $armadura->bonus }}" placeholder="Bônus de armadura">                            
+                                <input type="text" name="bonus" class="form-control numero" value="{{ $armadura->bonus }}" placeholder="Bônus de armadura">                            
                                 @if($errors->has('bonus'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('bonus') }}</strong>								
@@ -94,7 +108,7 @@
 
                             <div class="form-group col-md-3{{ $errors->has('bonusDestreza') ? 'has-error' : '' }}">
                                 <label for="bonusDestreza">B.Destreza:</label>
-                                <input type="text" name="bonusDestreza" class="form-control" value="{{ $armadura->bonusDestreza }}" placeholder="Bônus de destreza maxima">                            
+                                <input type="text" name="bonusDestreza" class="form-control numero" value="{{ $armadura->bonusDestreza }}" placeholder="Bônus de destreza maxima">                            
                                 @if($errors->has('bonusDestreza'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('bonusDestreza') }}</strong>								
@@ -106,7 +120,7 @@
                                 <label for="falhaArmadura">Falha de Armadura:</label>                            
                                 <div class="input-group">
                                     <span class="input-group-addon">-</span>
-                                    <input type="text" name="falhaArmadura" class="form-control" value="{{ $armadura->falhaArmadura }}" placeholder="Falha de Armadura">                                                        
+                                    <input type="text" name="falhaArmadura" class="form-control numero" value="{{ $armadura->falhaArmadura }}" placeholder="Falha de Armadura">                                                        
                                 </div>
                                 @if($errors->has('falhaArmadura'))
                                 <span class="help-block">
@@ -118,7 +132,7 @@
                             <div class="form-group col-md-3{{ $errors->has('falhaMagia') ? 'has-error' : '' }}">
                                 <label for="falhaMagia">Falha de Magia:</label>
                                 <div class="input-group">
-                                    <input type="text" name="falhaMagia" class="form-control" value="{{ $armadura->falhaMagia }}" placeholder="Falha de Magia">                            
+                                    <input type="text" name="falhaMagia" class="form-control numero" value="{{ $armadura->falhaMagia }}" placeholder="Falha de Magia">                            
                                     <span class="input-group-addon">%</span>
                                 </div>
                                 @if($errors->has('falhaMagia'))

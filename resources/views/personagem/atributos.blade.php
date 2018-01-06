@@ -149,27 +149,7 @@
             </span>
             @endif
         </div>
-
-        <div class="form-group col-md-6 {{ $errors->has('toque') ? 'has-error' : '' }}">
-            <label for="toque">Toque:</label>
-            <input type="text" name="toque" class="form-control" value="{{ $personagem->toque }}" placeholder="Toque">
-            @if($errors->has('toque'))
-            <span class="help-block">
-                <strong>{{ $errors->first('toque') }}</strong>								
-            </span>
-            @endif
-        </div>
-
-        <div class="form-group col-md-6 {{ $errors->has('surpresa') ? 'has-error' : '' }}">
-            <label for="surpresa">Surpresa:</label>
-            <input type="text" name="surpresa" class="form-control" value="{{ $personagem->surpresa }}" placeholder="Surpresa">
-            @if($errors->has('surpresa'))
-            <span class="help-block">
-                <strong>{{ $errors->first('surpresa') }}</strong>								
-            </span>
-            @endif
-        </div>
-
+       
         <div class="form-group col-md-12 {{ $errors->has('bba') ? 'has-error' : '' }}">
             <label for="bba">B.B.A:</label>
             <input type="text" name="bba" class="form-control" value="{{ $personagem->bba }}" placeholder="Bônus base de ataque">
