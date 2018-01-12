@@ -47,7 +47,7 @@ class PersonagemController extends Controller {
                 $personagem->adicionaClasse($key, $value);
             }
         }
-
+                
         return redirect()->route('personagem.index');
     }
 

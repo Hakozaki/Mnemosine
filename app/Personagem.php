@@ -28,7 +28,22 @@ class Personagem extends Model {
      * @return Array Retorna os talentos relacionados ao personagem
      */
     public function personagemClasses() {
-        return $this->belongsToMany('App\Classe', 'personagem_classe')->withPivot('personagem_id', 'classe_id','nivel')->withTimestamps();
+        return $this->belongsToMany('App\Classe', 'personagem_classe', 'personagem_id', 'classe_id', 'nivel')->withTimestamps();
+    }
+
+    /**
+     * 
+     * @return Array Retorna os talentos relacionados ao personagem
+     */
+    public function _personagemClasses() {
+        if (!is_null($this->id)) {
+            $indexador = " select pc.id , c.nome ,pc.nivel from personagem_classe pc " .
+                    "left join classes c on c.id = pc.classe_id " .
+                    "where pc.personagem_id = " . $this->id;                        
+            return \DB::select($indexador);
+        } else {
+            return [];
+        }
     }
 
     /**
@@ -55,7 +70,7 @@ class Personagem extends Model {
         //dd($persoangem_classe);
         //dd(Personagem_classe::create($personagem));
         //return Personagem_classe::create($personagem);
-        return $this->personagemClasses()->save($persoangem_classe);        
+        return $this->personagemClasses()->save($persoangem_classe);
     }
 
     /**
