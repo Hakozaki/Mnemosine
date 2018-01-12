@@ -24,6 +24,7 @@
                         <li><a data-toggle="tab" href="#menu1">Atributos</a></li>
                         <li><a data-toggle="tab" href="#menu2">Testes</a></li>
                         <li><a data-toggle="tab" href="#menu3">Talentos</a></li>
+                        <li><a data-toggle="tab" href="#menu4">Magias</a></li>
                     </ul><!-- menus -->  
                     <form action=" {{ route('personagem.salvar') }} " method="post">
                         {{ csrf_field() }}
@@ -45,6 +46,10 @@
                             <div id="menu3" class="tab-pane fade">
                                 @include('personagem.talentos')
                             </div><!-- TAB 04 (menu3) 'TALENTOS'-->
+
+                            <div id="menu4" class="tab-pane fade">
+                                @include('personagem.magias')
+                            </div><!-- TAB 05 (menu4) 'MAGIAS'-->
 
                             <button class="btn btn-info">Salvar</a>                            
 

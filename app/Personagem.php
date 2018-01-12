@@ -33,21 +33,6 @@ class Personagem extends Model {
 
     /**
      * 
-     * @return Array Retorna os talentos relacionados ao personagem
-     */
-    public function _personagemClasses() {
-        if (!is_null($this->id)) {
-            $indexador = " select pc.id , c.nome ,pc.nivel from personagem_classe pc " .
-                    "left join classes c on c.id = pc.classe_id " .
-                    "where pc.personagem_id = " . $this->id;
-            return \DB::select($indexador);
-        } else {
-            return [];
-        }
-    }
-
-    /**
-     * 
      * @param \App\Talento $talento Talento para salvar
      * @return $this Retorna o modelo
      */
