@@ -21,14 +21,22 @@ class Personagem extends Model {
      */
     public function personagemTalentos() {
         return $this->belongsToMany('App\Talento', 'personagem_talento', 'personagem_id', 'talento_id')->withTimestamps();
-    }
+    }        
 
     /**
      * 
      * @return Array Retorna os talentos relacionados ao personagem
-     */
+     */    
     public function personagemClasses() {
-        return $this->belongsToMany('App\Classe', 'personagem_classe', 'personagem_id', 'classe_id')->withPivot('nivel')->withTimestamps();
+        return $this->hasMany('App\PersonagemClasse');
+    }
+    
+    /**
+     * 
+     * @return Array Retorna os Classes do personagem
+     */ 
+    public function _personagemClasses() {
+        return $this->hasMany('App\PersonagemClasse')->leftJoin('classes','classes.id','=','personagem_classe.classe_id');
     }
 
     /**
@@ -45,19 +53,14 @@ class Personagem extends Model {
      * @param \App\Classe $classe Classe para salvar
      * @return $this Retorna o modelo
      */
-    public function adicionaClasse($classe, $nivel) {
-        //return $this->personagemClasses()->save($classe);        
-        $persoangem_classe = new Personagem_classe;
+    public function adicionaClasse($classe, $nivel) {        
+        $persoangemClasse = new PersonagemClasse;
 
-        $persoangem_classe->personagem_id = $this->id;
-        $persoangem_classe->classe_id = $classe;
-        $persoangem_classe->nivel = $nivel;
-        //dd($persoangem_classe);
-        //$personagem = ["persoangem_id"=>$this->id , "classe_id" => $classe , "nivel" => $nivel];
-        //dd($persoangem_classe);
-        //dd(Personagem_classe::create($personagem));
-        //return Personagem_classe::create($personagem);
-        return $this->personagemClasses()->save($persoangem_classe);
+        $persoangemClasse->personagem_id = $this->id;
+        $persoangemClasse->classe_id = $classe;
+        $persoangemClasse->nivel = $nivel;
+        
+        return $this->personagemClasses()->save($persoangemClasse);
     }
 
     /**

@@ -84,6 +84,7 @@
         <label for="raca_id">Raça:</label>
 
         <select name="raca_id" class="form-control selectpicker" data-live-search="true" value="{{ $personagem->raca_id }}">                                   
+           
             @foreach($personagem->racas() as $raca)                                                                
             <option value="{{$raca->id}}"  <?php echo $key == $personagem->raca_id ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $raca->nome }}">{{ $raca->nome }}</option>                                
             @endforeach
@@ -212,11 +213,11 @@
             </tr>
         </thead>
         <tbody>             
-            @foreach($personagem->personagemClasses as $_classe)				
+            @foreach($personagem->_personagemClasses as $_classe)				
             <tr>
                 <th scope="row">{{ $_classe->id }}</th>
                 <td>{{ $_classe->nome }}</td>                                                                                                                                                                                                                                                                                                                                                                                            
-                <td>{{ $_classe->pivot->nivel }}</td>                                                                                                                                                                                                                                                                                                                                                                                            
+                <td>{{ $_classe->nivel }}</td>                                                                                                                                                                                                                                                                                                                                                                                            
                 <td>                                        
                     <a class="btn btn-danger" href="javascript:confirm('Deletar classe?') ? 
                        window.location.href='{{ route('talento.deletar',$_classe) }}' : false ">Excluir</a>

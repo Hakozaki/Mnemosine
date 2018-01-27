@@ -21,7 +21,7 @@ class DivindadeController extends Controller {
     }
 
     public function salvar(Request $request) {
-        dd($request->all());
+        //dd($request->all());
         $id = $request->id;
         $divindade = \App\Divindade::find($id);
 

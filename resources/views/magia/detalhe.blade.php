@@ -1,6 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
+<script>
+    function preencheTempoExecucao(valor) {
+        document.getElementById('tempoExecucao').value = valor;
+    }
+    
+    function preencheAlcance(valor) {
+        document.getElementById('alcance').value = valor;
+    }
+    
+    function preencheTeste(valor) {
+        document.getElementById('testeResistencia').value = valor;
+    }
+    
+    function preencheResMagia(valor) {
+        document.getElementById('resistenciaMagia').value = valor;
+    }
+</script>
+
 <div class="container">
     <div class="row">
         <div class="col-md-12 ">
@@ -72,7 +90,7 @@
                                     @endif
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-3 ">
                                 <div class="form-group {{ $errors->has('descritor') ? 'has-error' : '' }}" >
                                     <label for="descritor">Descritor:</label>
@@ -149,11 +167,7 @@
                                 </div><!-- /btn-group -->
                                 <input id="tempoExecucao" type="text" name="tempoExecucao" class="form-control" value="{{ $magia->tempoExecucao }}" placeholder="Tempo de execução">
                             </div><!-- /input-group -->
-                            <script>
-                                function preencheTempoExecucao(valor) {
-                                    document.getElementById('tempoExecucao').value = valor;
-                                }
-                            </script>
+
                             @if($errors->has('tempoExecucao'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('tempoExecucao') }}</strong>								
@@ -186,12 +200,7 @@
                                     </ul>
                                 </div><!-- /btn-group -->
                                 <input id="alcance" type="text" name="alcance" class="form-control" value="{{ $magia->alcance }}" placeholder="Alcance">
-                            </div><!-- /input-group -->
-                            <script>
-                                function preencheAlcance(valor) {
-                                    document.getElementById('alcance').value = valor;
-                                }
-                            </script>
+                            </div><!-- /input-group -->                            
                             @if($errors->has('alcance'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('alcance') }}</strong>								
@@ -242,12 +251,7 @@
                                         </ul>
                                     </div><!-- /btn-group -->
                                     <input id="testeResistencia" type="text" name="testeResistencia" class="form-control" value="{{ $magia->testeResistencia }}" placeholder="Teste de resistência">
-                                </div><!-- /input-group -->
-                                <script>
-                                    function preencheTeste(valor) {
-                                        document.getElementById('testeResistencia').value = valor;
-                                    }
-                                </script>
+                                </div><!-- /input-group -->                                
                                 @if($errors->has('testeResistencia'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('testeResistencia') }}</strong>								
@@ -265,12 +269,7 @@
                                         </ul>
                                     </div><!-- /btn-group -->
                                     <input id="resistenciaMagia" type="text" name="resistenciaMagia" class="form-control" value="{{ $magia->resistenciaMagia }}" placeholder="Teste de resistência">
-                                </div><!-- /input-group -->
-                                <script>
-                                    function preencheResMagia(valor) {
-                                        document.getElementById('resistenciaMagia').value = valor;
-                                    }
-                                </script>
+                                </div><!-- /input-group -->                              
                                 @if($errors->has('resistenciaMagia'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('resistenciaMagia') }}</strong>								

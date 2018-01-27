@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+<script>
+    function preencheTipo(valor) {
+        document.getElementById('tipo').value = valor;
+    }
+</script>
+
 <div class="container">
     <div class="row">
         <div class="col-md-12 ">
@@ -52,12 +58,7 @@
                                     </ul>
                                 </div><!-- /btn-group -->
                                 <input id="tipo" type="text" name="tipo" class="form-control" value="{{ $talento->tipo }}" placeholder="Tipo">
-                            </div><!-- /input-group -->
-                            <script>
-                                function preencheTipo(valor) {
-                                    document.getElementById('tipo').value = valor;
-                                }
-                            </script>
+                            </div><!-- /input-group -->                     
                             @if($errors->has('tipo'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('tipo') }}</strong>								

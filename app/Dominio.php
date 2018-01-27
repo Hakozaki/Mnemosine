@@ -16,6 +16,14 @@ class Dominio extends Model {
     public function dominioDivindades() {
         return $this->belongsToMany('App\Divindade', 'divindade_dominio', 'dominio_id', 'divindade_id');
     }
+    
+    /**
+     * 
+     * @return Array Retorna as Divindades relacionados ao Dominio
+     */
+    public function magias() {
+        return $this->belongsToMany('App\Magia', 'divindade_dominio', 'dominio_id', 'divindade_id');
+    }
 
     /**
      * Retorna as tendencias contidas na classe Auxiliar

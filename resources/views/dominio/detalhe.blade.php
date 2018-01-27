@@ -54,6 +54,7 @@
                                     <td> <div class="form-group {{ $errors->has('magia1') ? 'has-error' : '' }}" >                                            
 
                                             <select name="magia1" class="form-control selectpicker" data-live-search="true" value="{{ $dominio->magia1 }}">                                   
+                                                <option class="form-control" ></option>
                                                 @foreach($dominio->magias1() as $magia1)                                                                
                                                 <option value="{{$magia1->id}}"  <?php echo $magia1->id == $dominio->magia1 ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $magia1->nome }}">{{ $magia1->nome }}</option>                                
                                                 @endforeach
@@ -71,6 +72,7 @@
                                     <td><div class="form-group {{ $errors->has('magia2') ? 'has-error' : '' }}" >                                            
 
                                             <select name="magia2" class="form-control selectpicker" data-live-search="true" value="{{ $dominio->magia2 }}">                                   
+                                                <option class="form-control" ></option>
                                                 @foreach($dominio->magias2() as $magia2)                                                                
                                                 <option value="{{$magia2->id}}"  <?php echo $magia2->id == $dominio->magia2 ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $magia2->nome }}">{{ $magia2->nome }}</option>                                
                                                 @endforeach
@@ -88,6 +90,7 @@
                                     <td><div class="form-group {{ $errors->has('magia3') ? 'has-error' : '' }}" >                                            
 
                                             <select name="magia3" class="form-control selectpicker" data-live-search="true" value="{{ $dominio->magia3 }}">                                   
+                                                <option class="form-control" ></option>
                                                 @foreach($dominio->magias3() as $magia3)                                                                
                                                 <option value="{{$magia3->id}}"  <?php echo $magia3->id == $dominio->magia3 ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $magia3->nome }}">{{ $magia3->nome }}</option>                                
                                                 @endforeach
@@ -105,6 +108,7 @@
                                     <td><div class="form-group {{ $errors->has('magia4') ? 'has-error' : '' }}" >                                            
 
                                             <select name="magia4" class="form-control selectpicker" data-live-search="true" value="{{ $dominio->magia4 }}">                                   
+                                                <option class="form-control" ></option>
                                                 @foreach($dominio->magias4() as $magia4)                                                                
                                                 <option value="{{$magia4->id}}"  <?php echo $magia4->id == $dominio->magia4 ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $magia4->nome }}">{{ $magia4->nome }}</option>                                
                                                 @endforeach
@@ -122,6 +126,7 @@
                                     <td><div class="form-group {{ $errors->has('magia5') ? 'has-error' : '' }}" >                                            
 
                                             <select name="magia5" class="form-control selectpicker" data-live-search="true" value="{{ $dominio->magia5 }}">                                   
+                                                <option class="form-control" ></option>
                                                 @foreach($dominio->magias5() as $magia5)                                                                
                                                 <option value="{{$magia5->id}}"  <?php echo $magia5->id == $dominio->magia5 ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $magia5->nome }}">{{ $magia5->nome }}</option>                                
                                                 @endforeach
@@ -139,6 +144,7 @@
                                     <td><div class="form-group {{ $errors->has('magia6') ? 'has-error' : '' }}" >                                            
 
                                             <select name="magia6" class="form-control selectpicker" data-live-search="true" value="{{ $dominio->magia6 }}">                                   
+                                                <option class="form-control" ></option>
                                                 @foreach($dominio->magias6() as $magia6)                                                                
                                                 <option value="{{$magia6->id}}"  <?php echo $magia6->id == $dominio->magia6 ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $magia6->nome }}">{{ $magia6->nome }}</option>                                
                                                 @endforeach
@@ -156,6 +162,7 @@
                                     <td><div class="form-group {{ $errors->has('magia7') ? 'has-error' : '' }}" >                                            
 
                                             <select name="magia7" class="form-control selectpicker" data-live-search="true" value="{{ $dominio->magia7 }}">                                   
+                                                <option class="form-control" ></option>
                                                 @foreach($dominio->magias7() as $magia7)                                                                
                                                 <option value="{{$magia7->id}}"  <?php echo $magia7->id == $dominio->magia7 ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $magia7->nome }}">{{ $magia7->nome }}</option>                                
                                                 @endforeach
@@ -173,6 +180,7 @@
                                     <td><div class="form-group {{ $errors->has('magia8') ? 'has-error' : '' }}" >                                            
 
                                             <select name="magia8" class="form-control selectpicker" data-live-search="true" value="{{ $dominio->magia8 }}">                                   
+                                                <option class="form-control" ></option>
                                                 @foreach($dominio->magias8() as $magia8)                                                                
                                                 <option value="{{$magia8->id}}"  <?php echo $magia8->id == $dominio->magia8 ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $magia8->nome }}">{{ $magia8->nome }}</option>                                
                                                 @endforeach
@@ -190,6 +198,7 @@
                                     <td><div class="form-group {{ $errors->has('magia9') ? 'has-error' : '' }}" >                                            
 
                                             <select name="magia9" class="form-control selectpicker" data-live-search="true" value="{{ $dominio->magia9 }}">                                   
+                                                <option class="form-control" ></option>
                                                 @foreach($dominio->magias9() as $magia9)                                                                
                                                 <option value="{{$magia9->id}}"  <?php echo $magia9->id == $dominio->magia9 ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $magia9->nome }}">{{ $magia9->nome }}</option>                                
                                                 @endforeach
