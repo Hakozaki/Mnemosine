@@ -140,7 +140,8 @@
                             @endif
                         </div> 
 
-                        <button class="btn btn-info">Salvar</a>                            
+                        <button class="btn btn-info">Salvar</button>
+                        <a class="btn btn-default" href="{{ route('talento.index') }}">Voltar</a>
                     </form>
                 </div> <!-- panel-body -->
             </div><!-- panel-default -->

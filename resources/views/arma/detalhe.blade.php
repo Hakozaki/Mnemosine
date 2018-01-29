@@ -218,7 +218,8 @@
                             </div>
                         </div>
 
-                        <button class="btn btn-info">Salvar</a>                            
+                        <button class="btn btn-info">Salvar</button>  
+                        <a class="btn btn-default" href="{{ route('arma.index') }}">Cancelar</a>
                     </form>
                 </div> <!-- panel-body -->
             </div><!-- panel-default -->

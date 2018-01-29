@@ -53,8 +53,8 @@
                                 @include('personagem.magias')
                             </div><!-- TAB 05 (menu4) 'MAGIAS'-->
 
-                            <button class="btn btn-info">Salvar</a>                            
-
+                            <button class="btn btn-info">Salvar</button>                            
+                            <a class="btn btn-default" href="{{ route('personagem.index') }}">Voltar</a>
                         </div><!-- tab-content -->
                     </form><!-- FORM -->
                 </div> <!-- panel-body -->

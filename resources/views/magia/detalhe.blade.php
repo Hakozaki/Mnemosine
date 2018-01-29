@@ -291,7 +291,8 @@
                             </span>
                             @endif
                         </div> 
-                        <button class="btn btn-info">Salvar</a>                            
+                        <button class="btn btn-info">Salvar</button>
+                        <a class="btn btn-default" href="{{ route('magia.index') }}">Voltar</a>
                     </form>
                 </div>
             </div>

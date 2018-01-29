@@ -165,7 +165,8 @@
 
                         <div id="divDominios" name="divDominios"></div>
 
-                        <button class="btn btn-info">Salvar</a>                            
+                        <button class="btn btn-info">Salvar</button>                            
+                        <a class="btn btn-default" href="{{ route('divindade.index') }}">Voltar</a>
                     </form>
                 </div> <!-- panel-body -->
             </div><!-- panel-default -->
