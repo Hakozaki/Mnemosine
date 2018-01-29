@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+
+<!--  -->
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/jquery.mask.min.js"></script>
+<!-- -->
+<script src="/js/bootstrap-select.min.js"></script>
+<link href="/css/bootstrap-select.min.css" rel="stylesheet">
+
 <div class="container">
     <div class="row">
         <div class="col-md-12 ">

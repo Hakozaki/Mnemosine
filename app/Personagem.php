@@ -36,7 +36,7 @@ class Personagem extends Model {
      * @return Array Retorna os Classes do personagem
      */ 
     public function _personagemClasses() {
-        return $this->hasMany('App\PersonagemClasse')->leftJoin('classes','classes.id','=','personagem_classe.classe_id');
+        return $this->personagemClasses()->leftJoin('classes','classes.id','=','personagem_classe.classe_id');
     }
 
     /**

@@ -7,6 +7,8 @@
 
 <script src="/js/divindade/adicionaDominios.js"></script>
 <!-- -->
+<script src="/js/bootstrap-select.min.js"></script>
+<link href="/css/bootstrap-select.min.css" rel="stylesheet">
 
 <div class="container">
     <div class="row">
@@ -127,8 +129,6 @@
                                 @endforeach		
                             </tbody>
                         </table>
-
-
 
                         <div class="form-group {{ $errors->has('descricao') ? 'has-error' : '' }}">
                             <label for="descricao">Descrição:</label>

@@ -6,6 +6,8 @@
 <script src="/js/jquery-3.1.1.min.js"></script>
 <script src="/js/jquery.mask.min.js"></script>
 <!-- -->
+<script src="/js/bootstrap-select.min.js"></script>
+<link href="/css/bootstrap-select.min.css" rel="stylesheet">
 
 <script>
     jQuery(function ($) {
@@ -54,8 +56,7 @@
                             <div class="form-group col-md-4{{ $errors->has('categoria') ? 'has-error' : '' }}" >
                                 <label for="categoria">Categoria:</label>
 
-                                <select name="categoria" class="form-control selectpicker" data-live-search="true" value="{{ $armadura->categoria }}">   
-                                    <option class="form-control" ></option>
+                                <select name="categoria" class="form-control selectpicker" data-live-search="true" value="{{ $armadura->categoria }}">                                       
                                     @foreach($armadura->categorias() as $key => $categoria)                                                                
                                     <option value="{{$key}}"  <?php echo $key == $armadura->categoria ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $categoria }}">{{ $categoria }}</option>                                
                                     @endforeach

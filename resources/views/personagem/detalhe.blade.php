@@ -9,6 +9,8 @@
 <script src="/js/personagem/adicionaHabilidadesEspeciais.js"></script>
 <script src="/js/personagem/adicionaClasses.js"></script>
 <!-- -->
+<script src="/js/bootstrap-select.min.js"></script>
+<link href="/css/bootstrap-select.min.css" rel="stylesheet">
 
 <div class="container">
     <div class="row">

@@ -84,7 +84,7 @@
         <label for="raca_id">Raça:</label>
 
         <select name="raca_id" class="form-control selectpicker" data-live-search="true" value="{{ $personagem->raca_id }}">                                   
-           
+            <option class="form-control" disabled selected value></option>
             @foreach($personagem->racas() as $raca)                                                                
             <option value="{{$raca->id}}"  <?php echo $key == $personagem->raca_id ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $raca->nome }}">{{ $raca->nome }}</option>                                
             @endforeach
@@ -169,7 +169,7 @@
     <div class="form-group col-md-3 {{ $errors->has('divindade_id') ? 'has-error' : '' }}" >
         <label for="divindade_id">Divindade:</label>
 
-        <select name="divindade_id" class="form-control selectpicker" data-live-search="true" value="{{ $personagem->divindade_id }}">                                   
+        <select name="divindade_id" class="form-control selectpicker" data-live-search="true" value="{{ $personagem->divindade_id }}">                                               
             @foreach($personagem->divindades() as $divindade)                                                                
             <option value="{{$divindade->id}}"  <?php echo $key == $personagem->divindade_id ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $divindade->nome }}">{{ $divindade->nome }}</option>                                
             @endforeach

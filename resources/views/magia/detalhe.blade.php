@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+<!--  -->
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/jquery.mask.min.js"></script>
+<!-- -->
+<script src="/js/bootstrap-select.min.js"></script>
+<link href="/css/bootstrap-select.min.css" rel="stylesheet">
+
 <script>
     function preencheTempoExecucao(valor) {
         document.getElementById('tempoExecucao').value = valor;
@@ -57,8 +64,7 @@
                                 <div class="form-group {{ $errors->has('escola') ? 'has-error' : '' }}" >
                                     <label for="escola">Escola:</label>
 
-                                    <select id="escola"  name="escola" class="form-control selectpicker" data-live-search="true" value="{{ $magia->escola }}">   
-                                        <option class="form-control" ></option>
+                                    <select id="escola"  name="escola" class="form-control selectpicker" data-live-search="true" value="{{ $magia->escola }}">                                           
                                         @foreach($magia->escolas() as $key => $escola)                                                                
                                         <option value="{{$key}}"  <?php echo $key == $magia->escola ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $escola }}">{{ $escola }}</option>                                
                                         @endforeach
@@ -76,8 +82,7 @@
                                 <div class="form-group {{ $errors->has('subEscola') ? 'has-error' : '' }}" >
                                     <label for="subEscola">Sub-escola:</label>
 
-                                    <select id="subEscola" name="subEscola" class="form-control selectpicker" data-live-search="true" value="{{ $magia->subescola }}">   
-                                        <option class="form-control" ></option>                                                                             
+                                    <select id="subEscola" name="subEscola" class="form-control selectpicker" data-live-search="true" value="{{ $magia->subescola }}">                                           
                                         @foreach($magia->subescolas() as $key => $subEscola)                                                                
                                         <option value="{{$key}}"  <?php echo $key == $magia->subEscola ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $subEscola }}">{{ $subEscola }}</option>                                
                                         @endforeach
@@ -95,8 +100,7 @@
                                 <div class="form-group {{ $errors->has('descritor') ? 'has-error' : '' }}" >
                                     <label for="descritor">Descritor:</label>
 
-                                    <select name="descritor" class="form-control selectpicker" data-live-search="true" value="{{ $magia->descritor }}">   
-                                        <option class="form-control" ></option>                                                                             
+                                    <select name="descritor" class="form-control selectpicker" data-live-search="true" value="{{ $magia->descritor }}">                                           
                                         @foreach($magia->descritores() as $key => $descritor)                                                                
                                         <option value="{{$key}}"  <?php echo $key == $magia->descritor ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $descritor }}">{{ $descritor }}</option>                                
                                         @endforeach
