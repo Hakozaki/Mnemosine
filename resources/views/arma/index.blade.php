@@ -17,41 +17,40 @@
                     <form action="{{ route('arma.pesquisar') }}" method="post">
                         {{ csrf_field() }}
                         <div class="row" style="margin-bottom: 10px">
-                            <div class="col-md-5">
-                                <label for="filtro">Filtros:</label>                                
-                                <input type="text" id="filtro" name="filtro" class="form-control" value="" placeholder="Digite o valor a ser buscado.">                                    
-                            </div><!-- FIM "FILTRO" -->                
+                            <div class="col-md-3">
+                                <label for="campo">Campo:</label>
+                                <select id="campo" name="campo" class="form-control">                                                                               
+                                    <option value="id"  class="form-control" >Código</option>                                                                        
+                                    <option value="nome"  class="form-control" >Nome</option>                                                                        
+                                    <option value="categoria"  class="form-control" >Categoria</option>                                                                        
+                                </select>                                                                    
+                            </div><!-- FIM "CAMPO" -->                            
 
                             <div class="col-md-2">
                                 <label for="operador">Operador:</label>                                
                                 <select id="operador" name="operador" class="form-control">                                                                               
                                     <option value="="  class="form-control" >=</option>                                                                        
+                                    <option value="like"  class="form-control" >Contém</option>                                                                        
                                     <option value="<"  class="form-control" ><</option>                                                                        
                                     <option value=">"  class="form-control" >></option>                                                                        
                                 </select>                                    
                             </div><!-- FIM "OPERADOR" -->
 
-                            <div class="col-md-5">
-                                <label for="campo">Campo:</label>
+                            <div class="col-md-7">
+                                <label for="filtro">Filtros:</label>                                
                                 <div class="input-group">
-                                    <select id="campo" name="campo" class="form-control">                                                                               
-                                        <option value="id"  class="form-control" >Código</option>                                                                        
-                                        <option value="nome"  class="form-control" >Nome</option>                                                                        
-                                        <option value="categoria"  class="form-control" >Categoria</option>                                                                        
-                                    </select>
+                                    <input type="text" id="filtro" name="filtro" class="form-control" value="" placeholder="Digite o valor a ser buscado.">                                    
                                     <span class="input-group-btn">                                                                                                                                        
                                         <a class="btn btn-info" onclick="insereFiltro()">Adicionar Filtro</a>
                                         <button class="btn btn-default">Pesquisar</button>
                                     </span>
                                 </div>
-                            </div><!-- FIM "CAMPO" -->
+                            </div><!-- FIM "FILTRO" -->                
 
                             <div id="divCamposFiltro">
-
                             </div><!-- -->
-                            
-                            <div id="divCamposFiltroM" class="col-md-12" style="margin-top: 10px">
 
+                            <div id="divCamposFiltroM" class="col-md-12" style="margin-top: 10px">
                             </div><!-- -->
                         </div>
                     </form><!-- FIM FORM -->

@@ -5,16 +5,22 @@ function insereFiltro() {
     var filtroValor = eFiltro.value;
 
     var eCampo = document.getElementById("campo");
-    var campoId = eCampo.options[eCampo.selectedIndex].value;
+    var campoValor = eCampo.options[eCampo.selectedIndex].value;
+    var campoTexto = eCampo.options[eCampo.selectedIndex].text;
 
     var eOperador = document.getElementById("operador");
-    var operadorValor = eOperador.value;
+    var operadorValor = eOperador.options[eOperador.selectedIndex].value;
+    var operadorTexto = eOperador.options[eOperador.selectedIndex].text;
 
-    criarInput(contador, campoId, "divCamposFiltro");
+    criarInput(contador, campoValor, "divCamposFiltro");
     criarInput(contador, operadorValor, "divCamposFiltro");
-    criarInput(contador, filtroValor, "divCamposFiltro");
-    
-    var filtros = campoId + " " + operadorValor + " " + filtroValor;   
+    if (operadorValor === 'like') {
+        criarInput(contador, "%" + filtroValor + "%", "divCamposFiltro");
+    } else {
+        criarInput(contador, filtroValor, "divCamposFiltro");
+    }
+
+    var filtros = campoTexto + " " + operadorTexto + " '" + filtroValor + "'";
     criarSpan(filtros, "divCamposFiltroM");
 
     contador += 1;
@@ -36,6 +42,7 @@ function criarSpan(valor, container) {
     var sp = document.createElement("button");
     sp.setAttribute("class", "btn btn-primary");
     sp.setAttribute("disabled", true);
+    sp.setAttribute("style", "margin-right : 5px; margin-top : 5px");
     var txt = document.createTextNode(valor);
     sp.appendChild(txt);
 

@@ -21,7 +21,7 @@ class ArmaController extends Controller {
         return view('arma.detalhe', compact('arma'));
     }
 
-    public function salvar(ArmaRequest $request) {
+    public function salvar(ArmaRequest $request) {        
         $id = $request->id;
         $arma = \App\Arma::find($id);
 
@@ -34,6 +34,7 @@ class ArmaController extends Controller {
     }
 
     public function pesquisar(Request $request) {
+        //dd($request->all());
         if (!is_null($request->input('filtros'))) {
             $armas = \App\Arma::where($request->input('filtros'))->paginate(10);
         } else {
