@@ -22,7 +22,6 @@ class ArmaController extends Controller {
     }
 
     public function salvar(ArmaRequest $request) {
-        //dd($request->all());
         $id = $request->id;
         $arma = \App\Arma::find($id);
 
@@ -32,6 +31,16 @@ class ArmaController extends Controller {
             $arma->update($request->all());
         }
         return redirect()->route('arma.index');
+    }
+
+    public function pesquisar(Request $request) {
+        if (!is_null($request->input('filtros'))) {
+            $armas = \App\Arma::where($request->input('filtros'))->paginate(10);
+        } else {
+            $armas = \App\Arma::paginate(10);
+        }
+
+        return view('arma.index', compact('armas'));
     }
 
     public function deletar(\App\Arma $arma) {
