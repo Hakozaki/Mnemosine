@@ -21,22 +21,22 @@ class Personagem extends Model {
      */
     public function personagemTalentos() {
         return $this->belongsToMany('App\Talento', 'personagem_talento', 'personagem_id', 'talento_id')->withTimestamps();
-    }        
+    }
 
     /**
      * 
      * @return Array Retorna os talentos relacionados ao personagem
-     */    
+     */
     public function personagemClasses() {
         return $this->hasMany('App\PersonagemClasse');
     }
-    
+
     /**
      * 
      * @return Array Retorna os Classes do personagem
-     */ 
+     */
     public function _personagemClasses() {
-        return $this->personagemClasses()->leftJoin('classes','classes.id','=','personagem_classe.classe_id');
+        return $this->personagemClasses()->leftJoin('classes', 'classes.id', '=', 'personagem_classe.classe_id');
     }
 
     /**
@@ -53,13 +53,13 @@ class Personagem extends Model {
      * @param \App\Classe $classe Classe para salvar
      * @return $this Retorna o modelo
      */
-    public function adicionaClasse($classe, $nivel) {        
+    public function adicionaClasse($classe, $nivel) {
         $persoangemClasse = new PersonagemClasse;
 
         $persoangemClasse->personagem_id = $this->id;
         $persoangemClasse->classe_id = $classe;
         $persoangemClasse->nivel = $nivel;
-        
+
         return $this->personagemClasses()->save($persoangemClasse);
     }
 
@@ -166,10 +166,14 @@ class Personagem extends Model {
      * @param string $valor Valor a ser verificado
      * @return string Retorna 0 se o atributo for vazio ou nulo
      */
-    private function verificaAtributo($valor) {
+    private function verificaAtributo($valor, $vazio = false) {
 
         if (empty(str_replace(" ", "", $valor))) {
-            return "0";
+            if ($vazio) {
+                return null;
+            } else {
+                return "0";
+            }
         } else {
             return $valor;
         }
@@ -581,6 +585,14 @@ class Personagem extends Model {
      */
     public function setOutrosAgarrarAttribute($value) {
         $this->attributes['outrosAgarrar'] = $this->verificaAtributo($value);
+    }
+
+    /**
+     * Set do atributo Outros Agarrar
+     * @param string $value Valor do atributo
+     */
+    public function setDinvindade_id($value) {
+        $this->attributes['divindade_id'] = $this->verificaAtributo($value, true);
     }
 
 }

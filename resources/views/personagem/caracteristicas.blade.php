@@ -170,6 +170,7 @@
         <label for="divindade_id">Divindade:</label>
 
         <select name="divindade_id" class="form-control selectpicker" data-live-search="true" value="{{ $personagem->divindade_id }}">                                               
+            <option></option>
             @foreach($personagem->divindades() as $divindade)                                                                
             <option value="{{$divindade->id}}"  <?php echo $key == $personagem->divindade_id ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $divindade->nome }}">{{ $divindade->nome }}</option>                                
             @endforeach
