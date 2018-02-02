@@ -57,6 +57,7 @@
                                 <label for="categoria">Categoria:</label>
 
                                 <select name="categoria" class="form-control selectpicker" data-live-search="true" value="{{ $armadura->categoria }}">                                       
+                                    <option class="form-control" ></option>
                                     @foreach($armadura->categorias() as $key => $categoria)                                                                
                                     <option value="{{$key}}"  <?php echo $key == $armadura->categoria ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $categoria }}">{{ $categoria }}</option>                                
                                     @endforeach

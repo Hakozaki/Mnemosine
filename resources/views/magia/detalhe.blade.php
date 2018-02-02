@@ -65,6 +65,7 @@
                                     <label for="escola">Escola:</label>
 
                                     <select id="escola"  name="escola" class="form-control selectpicker" data-live-search="true" value="{{ $magia->escola }}">                                           
+                                        <option class="form-control" ></option>
                                         @foreach($magia->escolas() as $key => $escola)                                                                
                                         <option value="{{$key}}"  <?php echo $key == $magia->escola ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $escola }}">{{ $escola }}</option>                                
                                         @endforeach
@@ -83,6 +84,7 @@
                                     <label for="subEscola">Sub-escola:</label>
 
                                     <select id="subEscola" name="subEscola" class="form-control selectpicker" data-live-search="true" value="{{ $magia->subescola }}">                                           
+                                        <option class="form-control" ></option>
                                         @foreach($magia->subescolas() as $key => $subEscola)                                                                
                                         <option value="{{$key}}"  <?php echo $key == $magia->subEscola ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $subEscola }}">{{ $subEscola }}</option>                                
                                         @endforeach
@@ -101,6 +103,7 @@
                                     <label for="descritor">Descritor:</label>
 
                                     <select name="descritor" class="form-control selectpicker" data-live-search="true" value="{{ $magia->descritor }}">                                           
+                                        <option class="form-control" ></option>
                                         @foreach($magia->descritores() as $key => $descritor)                                                                
                                         <option value="{{$key}}"  <?php echo $key == $magia->descritor ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $descritor }}">{{ $descritor }}</option>                                
                                         @endforeach

@@ -84,9 +84,9 @@
         <label for="raca_id">Raça:</label>
 
         <select name="raca_id" class="form-control selectpicker" data-live-search="true" value="{{ $personagem->raca_id }}">                                   
-            <option class="form-control" disabled selected value></option>
+            <option class="form-control" ></option>
             @foreach($personagem->racas() as $raca)                                                                
-            <option value="{{$raca->id}}"  <?php echo $key == $personagem->raca_id ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $raca->nome }}">{{ $raca->nome }}</option>                                
+            <option value="{{$raca->id}}"  <?php echo $raca->id == $personagem->raca_id ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $raca->nome }}">{{ $raca->nome }}</option>                                
             @endforeach
         </select>
 
@@ -170,9 +170,9 @@
         <label for="divindade_id">Divindade:</label>
 
         <select name="divindade_id" class="form-control selectpicker" data-live-search="true" value="{{ $personagem->divindade_id }}">                                               
-            <option></option>
+            <option class="form-control" ></option>
             @foreach($personagem->divindades() as $divindade)                                                                
-            <option value="{{$divindade->id}}"  <?php echo $key == $personagem->divindade_id ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $divindade->nome }}">{{ $divindade->nome }}</option>                                
+            <option value="{{$divindade->id}}"  <?php echo $divindade->id == $personagem->divindade_id ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $divindade->nome }}">{{ $divindade->nome }}</option>                                
             @endforeach
         </select>
 

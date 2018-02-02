@@ -17,6 +17,7 @@ class PersonagemController extends Controller {
     }
 
     public function detalhe(\App\Personagem $personagem) {
+        //dd($personagem);
         return view('personagem.detalhe', compact('personagem'));
     }
 
@@ -27,7 +28,7 @@ class PersonagemController extends Controller {
 
         if (is_null($personagem)) {
             \App\Personagem::create($request->all());
-        } else {
+        } else {            
             $personagem->update($request->all());
         }
 
@@ -47,7 +48,7 @@ class PersonagemController extends Controller {
                 $personagem->adicionaClasse($key, $value);
             }
         }
-                
+
         return redirect()->route('personagem.index');
     }
 

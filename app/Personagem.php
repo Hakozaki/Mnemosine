@@ -10,8 +10,8 @@ class Personagem extends Model {
     protected $fillable = ['nome', 'idade', 'sexo', 'tendencia', 'alinhamento', 'tamanho', 'altura', 'peso', 'olhos', 'cabelo', 'pele', 'reducaoDano',
         'resistenciaMagica', 'deslocamento', 'jogador_id', 'raca_id', 'divindade_id', 'pv', 'forca', 'destreza', 'constituicao',
         'inteligencia', 'sabedoria', 'carisma', 'modForca', 'modDestreza', 'modConstituicao', 'modInteligencia',
-        'modSabedoria', 'modCarisma', 'fortitude', 'reflexos', 'vontade', 'modFortitude', 'modReflexos', 'modVontade', 'habFortitude', 'habReflexos',
-        'habVontade', 'magicoFortitude', 'magicoReflexos', 'magicoVontade', 'outrosFortitude', 'outrosReflexos', 'outrosVontade', 'ca', 'armaduraCa',
+        'modSabedoria', 'modCarisma', 'fortitude', 'reflexo', 'vontade', 'modFortitude', 'modReflexo', 'modVontade', 'habFortitude', 'habReflexo',
+        'habVontade', 'magicoFortitude', 'magicoReflexo', 'magicoVontade', 'outrosFortitude', 'outrosReflexo', 'outrosVontade', 'ca', 'armaduraCa',
         'escudoCa', 'destrezaCa', 'tamanhoCa', 'armaduraNaturalCa', 'deflexaoCa', 'outrosCa', 'iniciativa', 'modDestrezaIniciativa', 'outrosIniciativa',
         'toque', 'surpresa', 'bba', 'agarrar', 'modAgarrar', 'forcaAgarrar', 'tamanhoAgarrar', 'outrosAgarrar'];
 
@@ -166,10 +166,10 @@ class Personagem extends Model {
      * @param string $valor Valor a ser verificado
      * @return string Retorna 0 se o atributo for vazio ou nulo
      */
-    private function verificaAtributo($valor, $vazio = false) {
+    private function verificaAtributo($valor, $retornaNulo = false) {
 
         if (empty(str_replace(" ", "", $valor))) {
-            if ($vazio) {
+            if ($retornaNulo) {
                 return null;
             } else {
                 return "0";
@@ -424,7 +424,7 @@ class Personagem extends Model {
      * @param string $value Valor do atributo
      */
     public function setOutrosReflexoAttribute($value) {
-        $this->attributes['magicoReflexo'] = $this->verificaAtributo($value);
+        $this->attributes['outrosReflexo'] = $this->verificaAtributo($value);
     }
 
     /**
@@ -432,7 +432,7 @@ class Personagem extends Model {
      * @param string $value Valor do atributo
      */
     public function setOutrosVontadeAttribute($value) {
-        $this->attributes['magicoVontade'] = $this->verificaAtributo($value);
+        $this->attributes['outrosVontade'] = $this->verificaAtributo($value);
     }
 
     /**
@@ -588,11 +588,19 @@ class Personagem extends Model {
     }
 
     /**
-     * Set do atributo Outros Agarrar
+     * Set do atributo Divindade
      * @param string $value Valor do atributo
      */
-    public function setDinvindade_id($value) {
+    public function setDivindadeIdAttribute($value) {
         $this->attributes['divindade_id'] = $this->verificaAtributo($value, true);
+    }
+    
+    /**
+     * Set do atributo Divindade
+     * @param string $value Valor do atributo
+     */
+    public function setRacaIdAttribute($value) {
+        $this->attributes['raca_id'] = $this->verificaAtributo($value, true);
     }
 
 }

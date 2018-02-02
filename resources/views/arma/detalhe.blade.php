@@ -65,6 +65,7 @@
                                 <label for="categoria">Categoria:</label>
 
                                 <select name="categoria" class="form-control selectpicker" data-live-search="true" value="{{ $arma->categoria }}">                                       
+                                    <option class="form-control" ></option>
                                     @foreach($arma->categorias() as $key => $categoria)                                                                
                                     <option value="{{$key}}"  <?php echo $key == $arma->categoria ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $categoria }}">{{ $categoria }}</option>                                
                                     @endforeach
@@ -81,6 +82,7 @@
                                 <label for="subCategoria">Sub-Categoria:</label>
 
                                 <select name="subCategoria" class="form-control selectpicker" data-live-search="true" value="{{ $arma->subCategoria }}">                                       
+                                    <option class="form-control" ></option>
                                     @foreach($arma->subCategorias() as $key => $subcategoria)                                                                
                                     <option value="{{$key}}"  <?php echo $key == $arma->subCategoria ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $subcategoria }}">{{ $subcategoria }}</option>                                
                                     @endforeach
@@ -97,6 +99,7 @@
                                 <label for="tipo">Tipo:</label>
 
                                 <select name="tipo" class="form-control selectpicker" data-live-search="true" value="{{ $arma->tipo }}">                                       
+                                    <option class="form-control" ></option>
                                     @foreach($arma->tipos() as $key => $tipo)                                                                
                                     <option value="{{$key}}"  <?php echo $key == $arma->tipo ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $tipo }}">{{ $tipo }}</option>                                
                                     @endforeach
@@ -113,6 +116,7 @@
                                 <label for="subTipo">Sub-Tipo:</label>
 
                                 <select name="subTipo" class="form-control selectpicker" data-live-search="true" value="{{ $arma->subTipo }}">                                       
+                                    <option class="form-control" ></option>
                                     @foreach($arma->subTipos() as $key => $subTipo)                                                                
                                     <option value="{{$key}}"  <?php echo $key == $arma->subTipo ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $subTipo }}">{{ $subTipo }}</option>                                
                                     @endforeach
@@ -129,6 +133,7 @@
                                 <label for="tipoDano">Tipo de dano:</label>
 
                                 <select name="tipoDano" class="form-control selectpicker" data-live-search="true" value="{{ $arma->tipoDano }}">                                       
+                                    <option class="form-control" ></option>
                                     @foreach($arma->tipoDanos() as $key => $tipoDano)                                                                
                                     <option value="{{$key}}"  <?php echo $key == $arma->tipoDano ? 'selected' : ''; ?> class="form-control" data-tokens="{{ $tipoDano }}">{{ $tipoDano }}</option>                                
                                     @endforeach
