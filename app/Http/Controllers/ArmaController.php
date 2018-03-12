@@ -21,7 +21,7 @@ class ArmaController extends Controller {
         return view('arma.detalhe', compact('arma'));
     }
 
-    public function salvar(ArmaRequest $request) {        
+    public function salvar(ArmaRequest $request) {
         $id = $request->id;
         $arma = \App\Arma::find($id);
 
@@ -47,6 +47,17 @@ class ArmaController extends Controller {
     public function deletar(\App\Arma $arma) {
         $arma->delete();
         return redirect()->route('arma.index');
+    }
+
+    public function imprimir(Request $request) {          
+        $report = new ReportsController();
+        
+        return $report->imprimir($request->input('filtros'), 'listaArmas');        
+    }
+
+    function array_push_assoc($array, $key, $value) {
+        $array[$key] = $value;
+        return $array;
     }
 
 }

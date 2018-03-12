@@ -31,6 +31,7 @@ Route::get('/arma/detalhe/{arma?}', ['uses' => 'ArmaController@detalhe', 'as' =>
 Route::get('/arma/deletar/{arma?}', ['uses' => 'ArmaController@deletar', 'as' => 'arma.deletar']);
 Route::post('/arma/salvar', ['uses' => 'ArmaController@salvar', 'as' => 'arma.salvar']);
 Route::post('/arma/pesquisar', ['uses' => 'ArmaController@pesquisar', 'as' => 'arma.pesquisar']);
+Route::post('/arma/imprimir', ['uses' => 'ArmaController@imprimir', 'as' => 'arma.imprimir']);
 
 Route::get('/armadura', ['uses' => 'ArmaduraController@index', 'as' => 'armadura.index']);
 Route::get('/armadura/detalhe/{armadura?}', ['uses' => 'ArmaduraController@detalhe', 'as' => 'armadura.detalhe']);

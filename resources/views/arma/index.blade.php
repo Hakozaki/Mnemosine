@@ -3,6 +3,15 @@
 @section('content')
 
 <script src="/js/arma/adicionaFiltros.js"></script>
+<script>
+    function pesquisar() {
+        document.getElementById('frm').action = "{{ route('arma.pesquisar') }}";
+    }
+
+    function imprimir() {
+        document.getElementById('frm').action = "{{ route('arma.imprimir') }}";
+    }
+</script>
 
 <div class="container">
     <div class="row">
@@ -14,7 +23,7 @@
                 </div>
 
                 <div class="panel-body">
-                    <form action="{{ route('arma.pesquisar') }}" method="post">
+                    <form method="post" name="frm" id="frm">
                         {{ csrf_field() }}
                         <div class="row" style="margin-bottom: 10px">
                             <div class="col-md-3">
@@ -42,7 +51,8 @@
                                     <input type="text" id="filtro" name="filtro" class="form-control" value="" placeholder="Digite o valor a ser buscado.">                                    
                                     <span class="input-group-btn">                                                                                                                                        
                                         <a class="btn btn-info" onclick="insereFiltro()">Adicionar Filtro</a>
-                                        <button class="btn btn-default">Pesquisar</button>
+                                        <button class="btn btn-default" onclick="pesquisar()">Pesquisar</button>                                        
+                                        <button class="btn btn-default" onclick="imprimir()">Imprimir</button>                                        
                                     </span>
                                 </div>
                             </div><!-- FIM "FILTRO" -->                
