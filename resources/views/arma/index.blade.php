@@ -29,9 +29,19 @@
                             <div class="col-md-3">
                                 <label for="campo">Campo:</label>
                                 <select id="campo" name="campo" class="form-control">                                                                               
-                                    <option value="id"  class="form-control" >Código</option>                                                                        
-                                    <option value="nome"  class="form-control" >Nome</option>                                                                        
-                                    <option value="categoria"  class="form-control" >Categoria</option>                                                                        
+                                    <option value="id" class="form-control" >Código</option>                                                                        
+                                    <option value="nome" class="form-control" >Nome</option>                                                                        
+                                    <option value="descricao" class="form-control" >Descrição</option>                                                                        
+                                    <option value="categoria" class="form-control" >Categoria</option>                                                                        
+                                    <option value="subCategoria" class="form-control" >Subcategoria</option>                                                                        
+                                    <option value="tipo" class="form-control" >Tipo</option>                                                                        
+                                    <option value="subTipo" class="form-control" >Subtipo</option>                                                                        
+                                    <option value="custo" class="form-control" >Custo</option>                                                                        
+                                    <option value="dano" class="form-control" >Dano</option>                                                                        
+                                    <option value="incrementoDecisivo"  class="form-control" >Incremento Decisivo</option>                                                                        
+                                    <option value="distancia" class="form-control" >Distânçia</option>                                                                        
+                                    <option value="peso" class="form-control" >Peso</option>                                                                        
+                                    <option value="tipoDano" class="form-control" >Tipo Dano</option>                                                                        
                                 </select>                                                                    
                             </div><!-- FIM "CAMPO" -->                            
 
