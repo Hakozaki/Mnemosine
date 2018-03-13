@@ -14,7 +14,7 @@ function insereFiltro() {
 
     criarInput(contador, campoValor, "divCamposFiltro");
     criarInput(contador, operadorValor, "divCamposFiltro");
-    if (operadorValor === 'like') {
+    if (operadorValor === 'ilike') {
         criarInput(contador, "%" + filtroValor + "%", "divCamposFiltro");
     } else {
         criarInput(contador, filtroValor, "divCamposFiltro");

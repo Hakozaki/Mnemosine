@@ -39,7 +39,7 @@
                                 <label for="operador">Operador:</label>                                
                                 <select id="operador" name="operador" class="form-control">                                                                               
                                     <option value="="  class="form-control" >=</option>                                                                        
-                                    <option value="like"  class="form-control" >Contém</option>                                                                        
+                                    <option value="ilike"  class="form-control" >Contém</option>                                                                        
                                     <option value="<"  class="form-control" ><</option>                                                                        
                                     <option value=">"  class="form-control" >></option>                                                                        
                                 </select>                                    

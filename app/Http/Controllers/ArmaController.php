@@ -34,9 +34,9 @@ class ArmaController extends Controller {
     }
 
     public function pesquisar(Request $request) {
-        //dd($request->all());
+        //dd($request->input('filtros'));
         if (!is_null($request->input('filtros'))) {
-            $armas = \App\Arma::where($request->input('filtros'))->paginate(10);
+            $armas = \App\Arma::where($request->input('filtros'))->paginate(10);            
         } else {
             $armas = \App\Arma::paginate(10);
         }
@@ -49,10 +49,10 @@ class ArmaController extends Controller {
         return redirect()->route('arma.index');
     }
 
-    public function imprimir(Request $request) {          
+    public function imprimir(Request $request) {
         $report = new ReportsController();
-        
-        return $report->imprimir($request->input('filtros'), 'listaArmas');        
+
+        return $report->imprimir($request->input('filtros'), 'listaArmas');
     }
 
     function array_push_assoc($array, $key, $value) {
