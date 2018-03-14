@@ -1,0 +1,2 @@
+($F{subCategoria}.equals("branca") ? "Arma Branca" :
+($F{subCategoria}.equals("distancia") ? "Ataque a distância" : ""))

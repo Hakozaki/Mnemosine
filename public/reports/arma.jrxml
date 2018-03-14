@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="arma" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3eb1fb3a-8b10-4c2f-8d9b-13c533a320bd">
+	<property name="ireport.zoom" value="1.1000000000000003"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[null]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from listaArmas($P{id})]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="descricao" class="java.lang.String"/>
+	<field name="categoria" class="java.lang.String"/>
+	<field name="subCategoria" class="java.lang.String"/>
+	<field name="tipo" class="java.lang.String"/>
+	<field name="subTipo" class="java.lang.String"/>
+	<field name="custo" class="java.math.BigDecimal"/>
+	<field name="dano" class="java.lang.String"/>
+	<field name="incrementoDecisivo" class="java.lang.String"/>
+	<field name="distancia" class="java.lang.String"/>
+	<field name="peso" class="java.math.BigDecimal"/>
+	<field name="tipoDano" class="java.lang.String"/>
+	<field name="created_at" class="java.sql.Timestamp"/>
+	<field name="updated_at" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="242" splitType="Stretch">
+			<textField>
+				<reportElement x="57" y="6" width="64" height="20" uuid="b4bd0c1e-c67d-49ff-bbdd-f988f59295bf"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="7" y="6" width="39" height="20" uuid="1198863a-5e2e-44fe-8ea4-2b4b92f0c0b4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="174" y="6" width="369" height="20" uuid="28e76347-5ea5-465e-a0e1-2f8c6b55b761"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="135" y="6" width="39" height="20" uuid="279121a0-4b95-4a2f-b2df-63a35352f1b9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="82" y="114" width="187" height="20" uuid="39afd5c5-f037-4441-abee-37f7a8a0b8c3"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{categoria}.equals("simples") ? "Simples" :
+($F{categoria}.equals("comum") ? "Comuns" :
+($F{categoria}.equals("exotica") ? "Exóticas" : "")))
+]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="7" y="114" width="69" height="20" uuid="15960e7c-589e-49e7-ac48-cccd2b660fde"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Categoria.....:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="7" y="33" width="536" height="74" uuid="455a567f-1aed-418b-a590-0734db94dec5"/>
+				<textElement markup="html">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<b>Descrição:</b>"  +
+$F{descricao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="394" y="114" width="149" height="20" uuid="71f567eb-ee10-4213-8d36-fd174dd76888"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{subCategoria}.equals("branca") ? "Arma Branca" :
+($F{subCategoria}.equals("distancia") ? "Ataque a distância" : ""))]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="277" y="114" width="112" height="20" uuid="357ff8d6-eca2-4662-bc1b-9ced4a117a60"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subcategoria..............:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="82" y="136" width="187" height="20" uuid="7dd3d1b0-5219-4937-8e4b-66393aeeebca"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{tipo}.equals("desarmado") ? "Ataque Desarmado" :
+($F{tipo}.equals("leve") ? "Armas Leves" :
+($F{tipo}.equals("umaMao") ? "Armas de Uma Mão" :
+($F{tipo}.equals("duasMaos") ? "Armas de Duas Mãos" :
+($F{tipo}.equals("disparo") ? "Armas de Disparo" :
+($F{tipo}.equals("municao") ? "Munição" : ""))))))
+]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="7" y="136" width="69" height="20" uuid="30f26692-a373-424e-b96f-9273ee024957"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo...............:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="394" y="136" width="149" height="20" uuid="5c872529-be39-42c7-88b1-71d780b29a4a"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{subTipo}.equals("haste") ? "Haste" :
+($F{subTipo}.equals("dupla") ? "Armas Duplas" :
+($F{subTipo}.equals("arremesso") ? "Armas de Arremesso" : "")))
+]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="277" y="136" width="112" height="20" uuid="dc771779-f2fb-44f8-8571-b4c0074acb42"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subtipo........................:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="82" y="160" width="166" height="20" uuid="8f7fefa5-2e3b-4b21-b893-d3e35019db8f"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipoDano}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="7" y="160" width="69" height="20" uuid="881e19de-268d-4d15-ab3d-7ed25dbea1aa"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de dano:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="82" y="184" width="187" height="20" uuid="15bdac67-137e-4ff8-98fc-816bd1de0fec"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{peso} + " KG"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="7" y="184" width="69" height="20" uuid="618a968b-287d-4bc6-81c6-e87feecf3890"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Peso.............:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="394" y="160" width="149" height="20" uuid="a46d35f7-eb39-4c2d-85b3-7447fd8d5064"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{custo} + " PO"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="277" y="160" width="112" height="20" uuid="823de51a-ceee-4a47-8e5a-6dae2e6ebe92"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Custo...........................:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="82" y="208" width="100" height="20" uuid="d111ac64-fb2d-4d57-98fa-34af43e73cf3"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dano}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="7" y="208" width="69" height="20" uuid="421c427a-8334-4dbb-b08d-87ef4693fab0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dano..............:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="394" y="184" width="149" height="20" uuid="9810e336-71ff-4685-9349-2cf022bb6ae5"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incrementoDecisivo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="277" y="184" width="112" height="20" uuid="09133ec2-bc76-4d44-876c-9a3600d33498"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Incremento Decisivo:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="24" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="27" splitType="Stretch"/>
+	</summary>
+</jasperReport>

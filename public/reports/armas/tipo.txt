@@ -1,0 +1,6 @@
+($F{tipo}.equals("desarmado") ? "Ataque Desarmado" :
+($F{tipo}.equals("leve") ? "Armas Leves" :
+($F{tipo}.equals("umaMao") ? "Armas de Uma Mão" :
+($F{tipo}.equals("duasMaos") ? "Armas de Duas Mãos" :    
+($F{tipo}.equals("disparo") ? "Armas de Disparo" :    
+($F{tipo}.equals("municao") ? "Munição" : ""))))))

@@ -39,7 +39,7 @@
                                     <option value="custo" class="form-control" >Custo</option>                                                                        
                                     <option value="dano" class="form-control" >Dano</option>                                                                        
                                     <option value="incrementoDecisivo"  class="form-control" >Incremento Decisivo</option>                                                                        
-                                    <option value="distancia" class="form-control" >Distânçia</option>                                                                        
+                                    <option value="distancia" class="form-control" >Distância</option>                                                                        
                                     <option value="peso" class="form-control" >Peso</option>                                                                        
                                     <option value="tipoDano" class="form-control" >Tipo Dano</option>                                                                        
                                 </select>                                                                    
@@ -96,6 +96,7 @@
                                 <td>{{ $arma->_tipo($arma->tipo) }}</td>                                                                                                                                                              
                                 <td>
                                     <a class="btn btn-default" href="{{ route('arma.detalhe',$arma) }}">Editar</a>
+                                    <a class="btn btn-default" href="{{ route('arma.imprimir.detalhe',$arma->id) }}">Imprimir</a>
                                     <a class="btn btn-danger" href="javascript:confirm('Deletar talento?') ? 
                                        window.location.href='{{ route('arma.deletar',$arma) }}' : false ">Excluir</a>
                                 </td>

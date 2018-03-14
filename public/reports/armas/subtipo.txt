@@ -1,0 +1,3 @@
+($F{subTipo}.equals("haste") ? "Haste" :
+($F{subTipo}.equals("dupla") ? "Armas Duplas" :
+($F{subTipo}.equals("arremesso") ? "Armas de Arremesso" : "")))

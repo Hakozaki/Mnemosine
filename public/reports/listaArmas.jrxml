@@ -78,9 +78,9 @@ $P{tipoDano}
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="55" splitType="Stretch">
+		<band height="75" splitType="Stretch">
 			<staticText>
-				<reportElement x="5" y="5" width="212" height="47" uuid="76e6cb29-8b9f-4b8c-b9a8-ef547f5b9b12"/>
+				<reportElement x="10" y="8" width="212" height="47" uuid="76e6cb29-8b9f-4b8c-b9a8-ef547f5b9b12"/>
 				<textElement>
 					<font size="30"/>
 				</textElement>
@@ -95,7 +95,7 @@ $P{tipoDano}
 		<band height="27" splitType="Stretch">
 			<staticText>
 				<reportElement x="6" y="3" width="53" height="20" uuid="047a1196-573a-488a-be42-9a56446ac9ea"/>
-				<text><![CDATA[Id]]></text>
+				<text><![CDATA[Código]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="65" y="3" width="100" height="20" uuid="859ebfff-1ead-43fa-ab87-f00fad2739b6"/>
@@ -108,6 +108,14 @@ $P{tipoDano}
 			<staticText>
 				<reportElement x="281" y="3" width="100" height="20" uuid="13e8eba4-5c4d-44c6-ba3c-b848a7aad9ee"/>
 				<text><![CDATA[Subcategoria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="389" y="2" width="83" height="20" uuid="cf716100-0cec-451e-8ccc-74bbf1a2b397"/>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="477" y="2" width="75" height="20" uuid="aa41d5c3-9493-4201-bc66-2cc3bfa11e1e"/>
+				<text><![CDATA[Subtipo]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -123,11 +131,32 @@ $P{tipoDano}
 			</textField>
 			<textField>
 				<reportElement x="173" y="6" width="100" height="20" uuid="da679fef-ad42-4354-a09d-189392e54712"/>
-				<textFieldExpression><![CDATA[$F{categoria}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($F{categoria}.equals("simples") ? "Simples" :
+($F{categoria}.equals("comum") ? "Comuns" :
+($F{categoria}.equals("exotica") ? "Exóticas" : "")))
+]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="281" y="6" width="100" height="20" uuid="6d6b5877-58d6-4ba3-8778-ad02f3ff4dcf"/>
-				<textFieldExpression><![CDATA[$F{subCategoria}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($F{subCategoria}.equals("branca") ? "Arma Branca" :
+($F{subCategoria}.equals("distancia") ? "Ataque a distância" : ""))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="389" y="6" width="83" height="20" uuid="52151295-d547-41c8-a048-18617054eef7"/>
+				<textFieldExpression><![CDATA[($F{tipo}.equals("desarmado") ? "Ataque Desarmado" :
+($F{tipo}.equals("leve") ? "Armas Leves" :
+($F{tipo}.equals("umaMao") ? "Armas de Uma Mão" :
+($F{tipo}.equals("duasMaos") ? "Armas de Duas Mãos" :
+($F{tipo}.equals("disparo") ? "Armas de Disparo" :
+($F{tipo}.equals("municao") ? "Munição" : ""))))))
+]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="477" y="6" width="75" height="20" uuid="18a33ec9-ebbc-4033-bfe9-8b04a272ef3e"/>
+				<textFieldExpression><![CDATA[($F{subTipo}.equals("haste") ? "Haste" :
+($F{subTipo}.equals("dupla") ? "Armas Duplas" :
+($F{subTipo}.equals("arremesso") ? "Armas de Arremesso" : "-")))
+]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
