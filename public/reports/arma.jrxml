@@ -64,7 +64,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[($F{categoria}.equals("simples") ? "Simples" :
 ($F{categoria}.equals("comum") ? "Comuns" :
-($F{categoria}.equals("exotica") ? "Exóticas" : "")))
+($F{categoria}.equals("exotica") ? "Exóticas" : "-")))
 ]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -79,8 +79,8 @@
 				<textElement markup="html">
 					<font size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA["<b>Descrição:</b>"  +
-$F{descricao}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["<b>Descrição:</b> <br>"  +
+($F{descricao} != "" ? $F{descricao} : "-")]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="394" y="114" width="149" height="20" uuid="71f567eb-ee10-4213-8d36-fd174dd76888"/>
@@ -88,7 +88,7 @@ $F{descricao}]]></textFieldExpression>
 					<font size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[($F{subCategoria}.equals("branca") ? "Arma Branca" :
-($F{subCategoria}.equals("distancia") ? "Ataque a distância" : ""))]]></textFieldExpression>
+($F{subCategoria}.equals("distancia") ? "Ataque a distância" : "-"))]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="277" y="114" width="112" height="20" uuid="357ff8d6-eca2-4662-bc1b-9ced4a117a60"/>
@@ -107,7 +107,7 @@ $F{descricao}]]></textFieldExpression>
 ($F{tipo}.equals("umaMao") ? "Armas de Uma Mão" :
 ($F{tipo}.equals("duasMaos") ? "Armas de Duas Mãos" :
 ($F{tipo}.equals("disparo") ? "Armas de Disparo" :
-($F{tipo}.equals("municao") ? "Munição" : ""))))))
+($F{tipo}.equals("municao") ? "Munição" : "-"))))))
 ]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -124,7 +124,7 @@ $F{descricao}]]></textFieldExpression>
 				</textElement>
 				<textFieldExpression><![CDATA[($F{subTipo}.equals("haste") ? "Haste" :
 ($F{subTipo}.equals("dupla") ? "Armas Duplas" :
-($F{subTipo}.equals("arremesso") ? "Armas de Arremesso" : "")))
+($F{subTipo}.equals("arremesso") ? "Armas de Arremesso" : "-")))
 ]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -139,7 +139,17 @@ $F{descricao}]]></textFieldExpression>
 				<textElement>
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tipoDano}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($F{tipoDano}.equals("contusao") ? "Contusão" :
+($F{tipoDano}.equals("concussao") ? "Concussão" :
+($F{tipoDano}.equals("perfurante") ? "Perfurante" :
+($F{tipoDano}.equals("cortante") ? "Cortante" :
+($F{tipoDano}.equals("concussaoEperfurante") ? "Concussão e Perfurante" :
+($F{tipoDano}.equals("concussaoOUperfurante") ? "Concussão ou Perfurante" :
+($F{tipoDano}.equals("perfuranteEcortante") ? "Perfurante e Cortante" :
+($F{tipoDano}.equals("perfuranteOUcortante") ? "Perfurante ou Cortante" :
+($F{tipoDano}.equals("concussaoEcortante") ? "Concussão e Cortante" :
+($F{tipoDano}.equals("concussaoOUcortante") ? "Concussão ou Cortante" : "-"))))))))))
+]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="7" y="160" width="69" height="20" uuid="881e19de-268d-4d15-ab3d-7ed25dbea1aa"/>
@@ -206,13 +216,4 @@ $F{descricao}]]></textFieldExpression>
 			</staticText>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="24" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="25" splitType="Stretch"/>
-	</pageFooter>
-	<summary>
-		<band height="27" splitType="Stretch"/>
-	</summary>
 </jasperReport>

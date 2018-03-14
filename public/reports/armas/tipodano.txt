@@ -1,0 +1,10 @@
+($F{tipoDano}.equals("contusao") ? "Contusão" :
+($F{tipoDano}.equals("concussao") ? "Concussão" :
+($F{tipoDano}.equals("perfurante") ? "Perfurante" :
+($F{tipoDano}.equals("cortante") ? "Cortante" :
+($F{tipoDano}.equals("concussaoEperfurante") ? "Concussão e Perfurante" :
+($F{tipoDano}.equals("concussaoOUperfurante") ? "Concussão ou Perfurante" :
+($F{tipoDano}.equals("perfuranteEcortante") ? "Perfurante e Cortante" :
+($F{tipoDano}.equals("perfuranteOUcortante") ? "Perfurante ou Cortante" :
+($F{tipoDano}.equals("concussaoEcortante") ? "Concussão e Cortante" :    
+($F{tipoDano}.equals("concussaoOUcortante") ? "Concussão ou Cortante" : ""))))))))))
