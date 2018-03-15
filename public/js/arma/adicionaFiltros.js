@@ -4,6 +4,11 @@ function insereFiltro() {
     var eFiltro = document.getElementById("filtro");
     var filtroValor = eFiltro.value;
 
+    if (filtroValor === "") {
+        criaAlerta("Valor não pode ser vazio!", "divCamposFiltroM");
+        return;
+    }        
+
     var eCampo = document.getElementById("campo");
     var campoValor = eCampo.options[eCampo.selectedIndex].value;
     var campoTexto = eCampo.options[eCampo.selectedIndex].text;
@@ -36,6 +41,27 @@ function criarInput(nome, valor, container) {
 
     var pai = document.getElementById(container);
     pai.appendChild(inp);
+}
+
+function criaAlerta(mensagem, container) {
+    var div = document.createElement("div");
+    div.setAttribute("class", "alert alert-warning alert-dismissible");
+    
+    var texto = document.createTextNode(mensagem);    
+    div.appendChild(texto);
+    
+    var fechar = document.createElement("a");
+    fechar.setAttribute("href","#");
+    fechar.setAttribute("class","close");
+    fechar.setAttribute("data-dismiss","alert");
+    fechar.setAttribute("arial-label","close");    
+    fechar.textContent='x';
+                
+    div.appendChild(fechar);
+    
+
+    var pai = document.getElementById(container);
+    pai.appendChild(div);
 }
 
 function criarSpan(valor, container) {
