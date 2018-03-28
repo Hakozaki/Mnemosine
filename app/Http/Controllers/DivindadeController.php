@@ -22,12 +22,11 @@ class DivindadeController extends Controller {
 
     public function salvar(Request $request) {
         //dd($request->all());
-        $id = $request->id;
-        $divindade = \App\Divindade::find($id);
-
-        if (is_null($divindade)) {
+        $id = $request->id;       
+        if (empty($id)) {
             $divindade = \App\Divindade::create($request->all());
         } else {
+            $divindade = \App\Divindade::find($id);
             $divindade->update($request->all());
         }
 

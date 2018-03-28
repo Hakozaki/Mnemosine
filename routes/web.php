@@ -15,7 +15,6 @@ Route::get('/home', ['uses' => 'HomeController@index', 'as' => 'home.index']);
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home.index']);
 Route::post('/home/salvar', ['uses' => 'HomeController@salvar', 'as' => 'home.salvar']);
 
-
 Route::get('/magia', ['uses' => 'MagiaController@index', 'as' => 'magia.index']);
 Route::get('/magia/detalhe/{magia?}', ['uses' => 'MagiaController@detalhe', 'as' => 'magia.detalhe']);
 Route::get('/magia/deletar/{magia?}', ['uses' => 'MagiaController@deletar', 'as' => 'magia.deletar']);
@@ -63,6 +62,14 @@ Route::get('/dominio', ['uses' => 'DominioController@index', 'as' => 'dominio.in
 Route::get('/dominio/detalhe/{dominio?}', ['uses' => 'DominioController@detalhe', 'as' => 'dominio.detalhe']);
 Route::get('/dominio/deletar/{dominio?}', ['uses' => 'DominioController@deletar', 'as' => 'dominio.deletar']);
 Route::post('/dominio/salvar', ['uses' => 'DominioController@salvar', 'as' => 'dominio.salvar']);
+
+Route::get('/batalha', ['uses' => 'BatalhaController@index', 'as' => 'batalha.index']);
+Route::get('/batalha/detalhe/{batalha?}', ['uses' => 'BatalhaController@detalhe', 'as' => 'batalha.detalhe']);
+Route::get('/batalha/deletar/{batalha?}', ['uses' => 'BatalhaController@deletar', 'as' => 'batalha.deletar']);
+Route::post('/batalha/salvar', ['uses' => 'BatalhaController@salvar', 'as' => 'batalha.salvar']);
+Route::get('/batalha/criaPartida', ['uses' => 'BatalhaController@criaPartida', 'as' => 'batalha.criaPartida']);
+Route::post('/batalha/adicionarPersonagem', ['uses' => 'BatalhaController@adicionarPersonagem', 'as' => 'batalha.adicionarPersonagem']);
+Route::post('/batalha/aplicarDano', ['uses' => 'BatalhaController@aplicarDano', 'as' => 'batalha.aplicarDano']);
 
 Auth::routes();
 

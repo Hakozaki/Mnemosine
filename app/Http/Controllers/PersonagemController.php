@@ -23,12 +23,11 @@ class PersonagemController extends Controller {
 
     public function salvar(Request $request) {
         //dd($request->all());
-        $id = $request->id;
-        $personagem = \App\Personagem::find($id);
-
-        if (is_null($personagem)) {
+        $id = $request->id;        
+        if (empty($id)) {
             \App\Personagem::create($request->all());
         } else {            
+            $personagem = \App\Personagem::find($id);
             $personagem->update($request->all());
         }
 

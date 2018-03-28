@@ -17,17 +17,16 @@ class ArmaController extends Controller {
         return view('arma.index', compact('armas'));
     }
 
-    public function detalhe(\App\Arma $arma) {
+    public function detalhe(\App\Arma $arma) {        
         return view('arma.detalhe', compact('arma'));
     }
 
     public function salvar(ArmaRequest $request) {
-        $id = $request->id;
-        $arma = \App\Arma::find($id);
-
-        if (is_null($arma)) {
+        $id = $request->id;           
+        if (empty($id)) {            
             \App\Arma::create($request->all());
         } else {
+            $arma = \App\Arma::find($id);
             $arma->update($request->all());
         }
         return redirect()->route('arma.index');

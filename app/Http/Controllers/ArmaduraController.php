@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ArmaduraController extends Controller
-{
+class ArmaduraController extends Controller {
 
     public function __construct() {
         $this->middleware('auth');
@@ -23,11 +22,10 @@ class ArmaduraController extends Controller
 
     public function salvar(Request $request) {
         $id = $request->id;
-        $armadura = \App\Armadura::find($id);
-        
-        if (is_null($armadura)) {
+        if (empty($id)) {
             \App\Armadura::create($request->all());
         } else {
+            $armadura = \App\Armadura::find($id);
             $armadura->update($request->all());
         }
         return redirect()->route('armadura.index');

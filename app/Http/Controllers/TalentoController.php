@@ -21,12 +21,11 @@ class TalentoController extends Controller {
     }
 
     public function salvar(Request $request) {        
-        $id = $request->id;
-        $talento = \App\Talento::find($id);
-        
-        if (is_null($talento)) {
+        $id = $request->id;                
+        if (empty($id)) {
             \App\Talento::create($request->all());
         } else {
+            $talento = \App\Talento::find($id);
             $talento->update($request->all());
         }
         return redirect()->route('talento.index');

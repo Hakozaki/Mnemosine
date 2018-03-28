@@ -40,6 +40,11 @@
                         <li><a href="{{ route("raca.index") }}">Raça</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="{{ route("batalha.index") }}" >
+                        Batalha 
+                    </a>
+                </li>
                 @endif
             </ul>
 

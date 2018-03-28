@@ -22,12 +22,11 @@ class DominioController extends Controller
     }
 
     public function salvar(Request $request) {        
-        $id = $request->id;
-        $dominio = \App\Dominio::find($id);
-        
-        if (is_null($dominio)) {
+        $id = $request->id;                
+        if (empty($id)) {
             \App\Dominio::create($request->all());
         } else {
+            $dominio = \App\Dominio::find($id);
             $dominio->update($request->all());
         }
         return redirect()->route('dominio.index');

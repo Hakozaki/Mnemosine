@@ -5,10 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Arma extends Model {
-
     protected $fillable = ['nome', 'descricao', 'categoria', 'subCategoria', 'tipo',
         'subTipo', 'custo', 'dano', 'incrementoDecisivo', 'distancia',
         'peso', 'tipoDano', 'classe'];
+    
+    
+    
    
     /**
      * Retorna as categorias contidas na classe ExtArma

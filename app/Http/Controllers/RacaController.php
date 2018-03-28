@@ -22,12 +22,11 @@ class RacaController extends Controller
     }
 
     public function salvar(Request $request) {
-        $id = $request->id;
-        $raca = \App\Raca::find($id);
-        
-        if (is_null($raca)) {
+        $id = $request->id;                
+        if (empty($id)) {
             \App\Raca::create($request->all());
         } else {
+            $raca = \App\Raca::find($id);
             $raca->update($request->all());
         }
         return redirect()->route('raca.index');

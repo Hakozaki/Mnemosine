@@ -5,7 +5,7 @@ function insereFiltro() {
     var filtroValor = eFiltro.value;
 
     if (filtroValor === "") {
-        criaAlerta("Valor não pode ser vazio!", "divCamposFiltroM");
+        criaAlerta("Valor não pode ser vazio!", "divCamposFiltroM");        
         return;
     }        
 
@@ -19,6 +19,7 @@ function insereFiltro() {
 
     criarInput(contador, campoValor, "divCamposFiltro");
     criarInput(contador, operadorValor, "divCamposFiltro");
+    
     if (operadorValor === 'ilike') {
         criarInput(contador, "%" + filtroValor + "%", "divCamposFiltro");
     } else {
@@ -29,6 +30,10 @@ function insereFiltro() {
     criarSpan(filtros, "divCamposFiltroM");
 
     contador += 1;
+    eCampo.selectedIndex = 0;
+    eOperador.selectedIndex = 0;
+    eFiltro.value = "";
+    
 }
 
 function criarInput(nome, valor, container) {
@@ -41,6 +46,43 @@ function criarInput(nome, valor, container) {
 
     var pai = document.getElementById(container);
     pai.appendChild(inp);
+}
+
+function criaAlertaModal(mensagem){
+    var divPrincipal = document.createElement("div");
+    divPrincipal.setAttribute("id", "dlgModal");
+    divPrincipal.setAttribute("class", "modal fade");
+    divPrincipal.setAttribute("role", "dialog");
+    
+    var divDialog = document.createElement("div");
+    divDialog.setAttribute("class", "modal-dialog");
+    
+    divPrincipal.appendChild(divDialog);
+    
+    var divContent = document.createElement("div");
+    divContent.setAttribute("class" ,"modal-content");
+    divDialog.appendChild(divContent);
+    
+    var divHeader = document.createElement("div");
+    var botaoFechar = document.createElement("button");
+    botaoFechar.setAttribute("type","button");
+    botaoFechar.setAttribute("class","close");
+    botaoFechar.setAttribute("data-dismiss","modal");
+    botaoFechar.textContent='x';
+    divHeader.appendChild(botaoFechar);
+    
+    divContent.appendChild(divHeader);         
+    
+    var divBody = document.createElement("div");
+    divContent.setAttribute("class" ,"modal-body");
+    
+    divContent.appendChild(divBody);
+     
+    var divFooter = document.createElement("div"); 
+    divContent.appendChild(divFooter);   
+    
+    var divFooter = document.createElement("div");
+    
 }
 
 function criaAlerta(mensagem, container) {

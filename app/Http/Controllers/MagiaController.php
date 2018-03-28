@@ -21,13 +21,12 @@ class MagiaController extends Controller {
     }
 
     public function salvar(Request $request) {
-        $id = $request->id;
-        $magia = \App\magia::find($id);    
-        //dd($request->all());
-        
-        if(is_null($magia)){            
+        $id = $request->id;        
+        //dd($request->all());        
+        if(empty($id)){            
             \App\magia::create($request->all());                       
         }else{
+            $magia = \App\magia::find($id);    
             $magia->update($request->all());
         }               
         return redirect()->route('magia.index');

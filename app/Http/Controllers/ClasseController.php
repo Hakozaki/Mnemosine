@@ -22,12 +22,11 @@ class ClasseController extends Controller
     }
 
     public function salvar(Request $request) {
-        $id = $request->id;
-        $classe = \App\Classe::find($id);
-        
-        if (is_null($classe)) {
+        $id = $request->id;                
+         if (empty($id)) {
             \App\Classe::create($request->all());
         } else {
+            $classe = \App\Classe::find($id);
             $classe->update($request->all());
         }
         return redirect()->route('classe.index');
