@@ -1,24 +1,35 @@
 <script>
 
-    function preencheDanoModal(id, nome) {
+    function preencheDanoModal(id, nome, batalha, turno, acao) {
         document.getElementById('jogador_origem').value = id;
         document.getElementById('jogador_origem_nome').value = nome;
+
+        document.getElementById('batalha_id').value = batalha;
+        document.getElementById('turno_id').value = turno;
+        document.getElementById('acao').value = acao;
     }
 
-    function adicionarPersonagem() {
+    function adicionarTurno() {
         document.getElementById('frmModalDano').action = "{{ route('batalha.aplicarDano') }}";
         document.getElementById('frmModalDano').submit();
     }
 
+    function apagaCamposEfeito() {
+        document.getElementById('efeito').value = "";
+        document.getElementById('duracao_efeito').value = "0";
+    }
+
     jQuery(function ($) {
         $("#efeito_ativo").on("change", function () {
-            if ($("#efeito_ativo").val() === "0") {
-                console.log('0');
-                $("#panel_efeito").show();
-            }
-            if ($("#efeito_ativo").val() === "1") {
-                console.log('1');
-                $("#panel_efeito").hide();
+            switch ($(this).val()) {
+                case "0":
+                    apagaCamposEfeito();
+                    $("#panel_efeito").hide();
+                    break;
+                case "1":
+                    apagaCamposEfeito();
+                    $("#panel_efeito").show();
+                    break;
             }
         });
     });
@@ -70,12 +81,23 @@
                                 </div><!-- jogador destino -->
                                 <div class="form-group {{ $errors->has('efeito_ativo') ? 'has-error' : '' }}">
                                     <label for="efeito_ativo">Efeito Ativo:</label>
-                                    <input type="radio" name="efeito_ativo" id="efeito_ativo" value="1" >Sim
-                                    <input type="radio" name="efeito_ativo" id="efeito_ativo" value="0" checked>Não
+                                    <select class="form-control" id="efeito_ativo" name="efeito_ativo">
+                                        <option value="0" >Não</option>
+                                        <option value="1" >Sim</option>
+                                    </select>
                                 </div> 
-                                <div class="row" name="panel_efeito" id="panel_efeito">
-                                    TESTE
-                                </div>
+
+                                <div class="row" name="panel_efeito" id="panel_efeito" hidden>
+                                    <div class="form-group col-md-9 {{ $errors->has('efeito') ? 'has-error' : '' }}">
+                                        <label for="efeito">Efeito:</label>
+                                        <input type="text" name="efeito" id="efeito" class="form-control" placeholder="Efeito">                            
+                                    </div> 
+                                    <div class="form-group col-md-3 {{ $errors->has('duracao_efeito') ? 'has-error' : '' }}">
+                                        <label for="duracao_efeito">Duração efeito:</label>
+                                        <input type="text" name="duracao_efeito" id="duracao_efeito" class="form-control" placeholder="Duração do efeito" value="0">                            
+                                    </div>                                      
+                                </div><!-- efeito -->
+
                             </form><!--form -->  
                         </div><!-- col-md-12 -->
                     </div><!-- row -->
@@ -83,7 +105,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="adicionarPersonagem()" data-dismiss="modal">Save changes</button>
+                <button type="button" class="btn btn-primary" onclick="adicionarTurno()" data-dismiss="modal">Save changes</button>
             </div>
         </div>
     </div>

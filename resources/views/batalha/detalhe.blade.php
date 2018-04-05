@@ -11,23 +11,29 @@
 
 <script>
     jQuery(function ($) {
-        $("#jogador").change(function () {
-            var personagem;
-            $("select option:selected").each(function () {
-                if ($(this).val() !== "") {
-                    personagem = JSON.parse($(this).val());
-                    $("#jogador_id").val(personagem.id);
-                    $("#pv").val(personagem.pv);
-                }
-            });
-        }).trigger("change");
+        $("#jogador").on("change", function () {
+            if ($(this).val() !== "") {
+                var personagem;
+                personagem = JSON.parse($(this).val());
+                $("#jogador_id").val(personagem.id);
+                $("#pv").val(personagem.pv);
+            }
+        });
+
+        $("#tabelaJogadores").ready(function () {
+            $('#linha' + $("#turno").val()).css("background", "#e6e6e6");
+            $('#linha' + $("#turno").val()).css("fontWeight", "bold");
+
+        });
     });
 
     function adicionarPersonagem() {
         document.getElementById('frm').action = "{{ route('batalha.adicionarPersonagem') }}";
+        document.getElementById('frm').submit();
     }
 
 </script>
+
 
 <div class="container-fluid">
     <div class="row">
@@ -44,21 +50,40 @@
                         <div>                           
                             <div class="form-group col-md-3 {{ $errors->has('id') ? 'has-error' : '' }}">
                                 <label for="id">Código:</label>
-                                <input type="text" name="id" class="form-control" value="{{ $batalha->id }}" placeholder="Código" readonly>                            
+                                <div class="input-group">
+                                    <input type="text" name="id" class="form-control" value="{{ $batalha->id }}" placeholder="Código" readonly>                            
+                                    <span class="input-group-btn">                                                                                                                                                                                                                        
+                                        <a class="btn btn-default" href="javascript:confirm('Deseja reordenar por iniciativas?') ? 
+                                           window.location.href='{{ route('batalha.ordenarIniciativa',$batalha->id) }}' : false">Ordernar</a>
+
+                                    </span>
+                                </div>
                                 <input type="hidden" name="batalha_id" value="{{ $batalha->id }}">                            
                             </div>                       
                             <div class="form-group col-md-3 {{ $errors->has('rodada') ? 'has-error' : '' }}">
                                 <label for="rodada">Rodada:</label>
-                                <input type="text" name="rodada" class="form-control" value="{{ $batalha->rodada }}" placeholder="Rodada" readonly>                            
+                                <div class="input-group">
+                                    <input type="text" name="rodada" class="form-control" value="{{ $batalha->rodada }}" placeholder="Rodada" readonly>                            
+                                    <span class="input-group-btn">                                                                                                                                                                                
+                                        <a class="btn btn-default" href="javascript:confirm('Proxima Rodada?') ? 
+                                           window.location.href='{{ route('batalha.passaRodada',$batalha->id) }}' : false">Passar Rodada</a>
+                                    </span>
+                                </div>
                             </div>                       
                             <div class="form-group col-md-3 {{ $errors->has('turno') ? 'has-error' : '' }}">
                                 <label for="turno">Turno:</label>
-                                <input type="text" name="turno" class="form-control" value="{{ $batalha->turno }}" placeholder="Turno" readonly>                            
+                                <div class="input-group">
+                                    <input type="text" id="turno" name="turno" class="form-control" value="{{ $batalha->turno }}" placeholder="Turno" readonly>                            
+                                    <span class="input-group-btn">                                                                                                                                                                                
+                                        <a class="btn btn-default" href="javascript:confirm('Proximo turno?') ? 
+                                           window.location.href='{{ route('batalha.passaTurno',$batalha->id) }}' : false">Passar Turno</a>                                        
+                                    </span>
+                                </div>
                             </div>                                                   
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-3 {{ $errors->has('acao') ? 'has-error' : '' }}">
                                 <label for="acao">Ação:</label>
-                                <input type="text" name="acao" class="form-control" placeholder="Ação" readonly>                            
-                            </div>                                                   
+                                <input type="text" name="acao" class="form-control" value="{{ $batalha->acao }}" placeholder="Ação" readonly>                            
+                            </div>                                                                               
                         </div>   
                         <!-- Painel de CABEÇALHO -->
 
@@ -85,37 +110,45 @@
                                 <div class="input-group">
                                     <input type="text" name="iniciativa" id="iniciativa" class="form-control" value="{{ $batalha->iniciativa }}" placeholder="Iniciativa" >                            
                                     <span class="input-group-btn">                                                                                                                                                                                
-                                        <button class="btn btn-default" onclick="adicionarPersonagem()">Adicionar</button>                                        
+                                        <a class="btn btn-default" onclick="adicionarPersonagem()">Adicionar</a>                                        
                                     </span>
                                 </div>
                             </div>  
 
-                            <table class="table table-bordered">
+                            <table id="tabelaJogadores" name="tabelaJogadores" class="table table-bordered">
                                 <thead>
                                     <tr>                                        
-                                        <th>Posição</th>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                        <th>Turno</th>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
                                         <th>Iniciativa</th>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
                                         <th>Jogador</th>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-                                        <th>PV</th>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-                                        <th>DANO</th>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                        <th>PV Total</th>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                        <th>Dano</th>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                        <th>PV Atual</th>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
                                         <th>Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($batalha->jogadores() as $jogador)				
-                                    <tr>
+                                    <tr id="linha{{ $jogador->posicao }}" name="linha{{ $jogador->posicao }}">
 
                                         <th scope="row">{{ $jogador->posicao }}</th>                                        
                                         <td>{{ $jogador->iniciativa }}</td>                                                                                                                                                                                                                                                                                                                                                                                                                            
                                         <td>{{ $jogador->nome }}</td>                                                                                                                                                                                                                                                                                                                                                                                                                            
                                         <td>{{ $jogador->pv }}</td>                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-                                        <td>{{ $jogador->pv }}</td>                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                        <td>{{ $jogador->dano }}</td>                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                        <td>{{ $jogador->pv - $jogador->dano }}</td>                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                                         <td>
                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#danoModal" 
-                                                    onclick="preencheDanoModal('<?php echo $jogador->id ?>', '<?php echo $jogador->nome ?>')">
+                                                    onclick=" preencheDanoModal('<?php echo $jogador->id ?>',
+                                                                    '<?php echo $jogador->nome ?>',
+                                                                    '<?php echo $batalha->id ?>',
+                                                                    '<?php echo $batalha->turno ?>',
+                                                                    '<?php echo $batalha->acao ?>')">
                                                 Atacar
                                             </button>
                                             <a href="#" class="btn btn-success">Curar</a>
+                                            <a type="button" class="btn btn-default"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                                            <a type="button" class="btn btn-default"><span class="glyphicon glyphicon-arrow-down"></span></a>
                                         </td>
                                     </tr>
                                     @endforeach		
@@ -129,5 +162,5 @@
         </div><!-- panel col-md-12 -->
     </div>
 </div>
-@include('batalha.modal_detalhe') 
+@include('batalha.dano') 
 @endsection

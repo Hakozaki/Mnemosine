@@ -41,6 +41,7 @@ class BatalhaController extends Controller {
         $parametros = ["usuario_id" => Auth()->User()->id,
             "rodada" => 1,
             "turno" => 1,
+            "acao" => 1,
             "data" => date("Y-m-d h:m:s")];
 
         $batalha = \App\Batalha::create($parametros);
@@ -49,12 +50,116 @@ class BatalhaController extends Controller {
     }
 
     public function adicionarPersonagem(Request $request) {
-        \App\Batalha_jogador::create($request->all());
+        $posicao = \DB::select('select count(*) as contador from batalha_jogador where batalha_id = ' . $request->input('batalha_id'));
+
+        $parametros = ["batalha_id" => $request->input('batalha_id'),
+            "jogador_id" => $request->input('jogador_id'),
+            "pv" => $request->input('pv'),
+            "iniciativa" => $request->input('iniciativa'),
+            "posicao" => ($posicao[0]->contador + 1)
+        ];
+
+        \App\Batalha_jogador::create($parametros);
+
         return redirect()->back();
     }
 
     public function aplicarDano(Request $request) {
-        dd($request->all());
+        $parametros = ['batalha_id' => $request->input('batalha_id'),
+            'turno_id' => $request->input('turno_id'),
+            'acao' => $request->input('acao'),
+            'jogador_origem' => $request->input('jogador_origem'),
+            'jogador_destino' => $request->input('jogador_destino'),
+            'efeito' => $request->input('efeito'),
+            'duracao_efeito' => $request->input('duracao_efeito'),
+            'efeito_ativo' => $request->input('efeito_ativo'),
+            'dano' => ('-' . $request->input('dano')),
+        ];
+
+        \App\Batalha_turno::create($parametros);
+
+        $this->incrementaAcao($request->input('batalha_id'));
+
+        return redirect()->back();
+    }
+
+    public function aplicarCura(Request $request) {
+        $parametros = ['batalha_id' => $request->input('batalha_id'),
+            'turno_id' => $request->input('turno_id'),
+            'acao' => $request->input('acao'),
+            'jogador_origem' => $request->input('jogador_origem'),
+            'jogador_destino' => $request->input('jogador_destino'),
+            'efeito' => $request->input('efeito'),
+            'duracao_efeito' => $request->input('duracao_efeito'),
+            'efeito_ativo' => $request->input('efeito_ativo'),
+            'dano' => $request->input('dano'),
+        ];
+
+        \App\Batalha_turno::create($parametros);
+
+        $this->incrementaAcao($request->input('batalha_id'));
+
+        return redirect()->back();
+    }
+
+    public function subirPosicao($batalha_id) {
+        $jogadores = \DB::select('SELECT * FROM batalha_jogadores where batalha_id = ' . $batalha_id);
+
+        dd($jogadores);
+    }
+
+    public function incrementaAcao($batalha) {
+        \DB::update('UPDATE batalha SET acao = acao + 1 WHERE id = ' . $batalha);
+    }
+
+    public function resetaAcao($batalha) {
+        \DB::update('UPDATE batalha SET acao = 1 WHERE id = ' . $batalha);
+    }
+
+    public function resetaTurno($batalha) {
+        \DB::update('UPDATE batalha SET turno = 1 WHERE id = ' . $batalha);
+    }
+
+    public function passaTurno($batalha_id) {
+
+        $turno = \DB::select(
+                        ' select ' .
+                        '   turno ' .
+                        ' from batalha where id = ' . $batalha_id);
+        $personagem = \DB::select(
+                        ' select ' .
+                        '   count(*) as contador ' .
+                        ' from batalha_jogador where batalha_id = ' . $batalha_id);
+
+        if ($turno[0]->turno < $personagem[0]->contador) {
+            \DB::update('UPDATE batalha SET turno = turno + 1 WHERE id = ' . $batalha_id);
+        } else {
+            $this->passaRodada($batalha_id);
+        }
+
+        $this->resetaAcao($batalha_id);
+
+        return redirect()->back();
+    }
+
+    public function passaRodada($batalha_id) {
+        \DB::update('UPDATE batalha SET rodada = rodada + 1 WHERE id = ' . $batalha_id);
+
+        $this->resetaTurno($batalha_id);
+
+        $this->resetaAcao($batalha_id);
+
+        return redirect()->back();
+    }
+
+    public function ordenarIniciativa($batalha_id) {
+        $jogadores = \DB::table('batalha_jogador')->where('batalha_id', '=', $batalha_id)->orderBy('iniciativa', 'desc')->get();
+        $posicao = 1;
+        foreach ($jogadores as $jogador) {
+            \DB::select('UPDATE batalha_jogador SET posicao = ' . $posicao . ' WHERE id = ' . $jogador->id);
+            $posicao++;
+        }
+        return redirect()->back();
     }
 
 }

@@ -18,6 +18,7 @@ class CreateBatalhaTable extends Migration
             $table->integer('usuario_id')->unsigned;
             $table->integer('rodada')->nullable();
             $table->integer('turno')->nullable();
+            $table->integer('acao')->nullable();
             $table->datetime('data')->nullable();
             $table->timestamps();
         });
