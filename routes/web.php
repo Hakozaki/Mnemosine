@@ -70,9 +70,11 @@ Route::post('/batalha/salvar', ['uses' => 'BatalhaController@salvar', 'as' => 'b
 Route::get('/batalha/criaPartida', ['uses' => 'BatalhaController@criaPartida', 'as' => 'batalha.criaPartida']);
 Route::post('/batalha/adicionarPersonagem', ['uses' => 'BatalhaController@adicionarPersonagem', 'as' => 'batalha.adicionarPersonagem']);
 Route::post('/batalha/aplicarDano', ['uses' => 'BatalhaController@aplicarDano', 'as' => 'batalha.aplicarDano']);
+Route::post('/batalha/aplicarCura', ['uses' => 'BatalhaController@aplicarCura', 'as' => 'batalha.aplicarCura']);
 Route::get('/batalha/ordenarIniciativa/{batalha_id?}', ['uses' => 'BatalhaController@ordenarIniciativa', 'as' => 'batalha.ordenarIniciativa']);
 Route::get('/batalha/passaTurno/{batalha_id?}', ['uses' => 'BatalhaController@passaTurno', 'as' => 'batalha.passaTurno']);
 Route::get('/batalha/passaRodada/{batalha_id?}', ['uses' => 'BatalhaController@passaRodada', 'as' => 'batalha.passaRodada']);
+Route::get('/batalha/subirPosicao/{batalha_id?}/{jogador_id?}', ['uses' => 'BatalhaController@subirPosicao', 'as' => 'batalha.subirPosicao']);
 
 Auth::routes();
 

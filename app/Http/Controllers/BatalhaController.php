@@ -102,10 +102,24 @@ class BatalhaController extends Controller {
         return redirect()->back();
     }
 
-    public function subirPosicao($batalha_id) {
-        $jogadores = \DB::select('SELECT * FROM batalha_jogadores where batalha_id = ' . $batalha_id);
-
+    public function subirPosicao($batalha_id, $jogador_id) {
+        $jogadores = \DB::select(
+                        ' select ' .
+                        '   * ' .
+                        ' from batalha_jogador ' .
+                        ' where ' .
+                        '   batalha_id = ' . $batalha_id .
+                        ' order by posicao asc');
+        
         dd($jogadores);
+        foreach ($jogadores as $jogador) {
+
+            if ($jogador->id == $jogador_id) {
+                dd($jogador->id);
+            }
+
+            $jogador_anterior = $jogador;
+        }
     }
 
     public function incrementaAcao($batalha) {

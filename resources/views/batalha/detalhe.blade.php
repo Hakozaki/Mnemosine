@@ -147,7 +147,12 @@
                                                 Atacar
                                             </button>
                                             <a href="#" class="btn btn-success">Curar</a>
-                                            <a type="button" class="btn btn-default"><span class="glyphicon glyphicon-arrow-up"></span></a>
+
+                                            <a class="btn btn-default" href="javascript:confirm('Deseja subir o jogador de posição?') ? 
+                                               window.location.href='{{ route('batalha.subirPosicao',[$batalha->id,$jogador->id]) }}' : false">
+                                                <span class="glyphicon glyphicon-arrow-up"></span>
+                                            </a>
+
                                             <a type="button" class="btn btn-default"><span class="glyphicon glyphicon-arrow-down"></span></a>
                                         </td>
                                     </tr>
