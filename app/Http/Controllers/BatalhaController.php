@@ -102,24 +102,51 @@ class BatalhaController extends Controller {
         return redirect()->back();
     }
 
-    public function subirPosicao($batalha_id, $jogador_id) {
-        $jogadores = \DB::select(
+    public function subirPosicao($batalha_id, $id) {
+        $batalha_jogadores = \DB::select(
                         ' select ' .
                         '   * ' .
                         ' from batalha_jogador ' .
                         ' where ' .
                         '   batalha_id = ' . $batalha_id .
                         ' order by posicao asc');
-        
-        dd($jogadores);
-        foreach ($jogadores as $jogador) {
 
-            if ($jogador->id == $jogador_id) {
-                dd($jogador->id);
+        $jogador_anterior = null;
+
+        foreach ($batalha_jogadores as $batalha_jogador) {
+            if ($batalha_jogador->id == $id && $jogador_anterior !== null) {
+                \DB::update('UPDATE batalha_jogador SET posicao = (posicao + 1) WHERE id = ' . $jogador_anterior->id);
+                \DB::update('UPDATE batalha_jogador SET posicao = (posicao - 1) WHERE id = ' . $id);
             }
 
-            $jogador_anterior = $jogador;
+            $jogador_anterior = $batalha_jogador;
         }
+
+        return redirect()->back();
+    }
+
+    public function descerPosicao($id) {
+        $jogador = \DB::select(
+                        ' select ' .
+                        '   * ' .
+                        ' from batalha_jogador ' .
+                        ' where ' .
+                        '  id = ' . $id);
+
+        $jogador_proximo = \DB::select(
+                        ' select ' .
+                        '   * ' .
+                        ' from batalha_jogador ' .
+                        ' where ' .
+                        '  batalha_id = ' . $jogador[0]->batalha_id .
+                        '  and posicao = ' . ($jogador[0]->posicao + 1));
+
+        if (!empty($jogador_proximo)) {
+            \DB::update('UPDATE batalha_jogador SET posicao = (posicao + 1) WHERE id = ' . $jogador[0]->id);
+            \DB::update('UPDATE batalha_jogador SET posicao = (posicao - 1) WHERE id = ' . $jogador_proximo[0]->id);
+        }
+
+        return redirect()->back();
     }
 
     public function incrementaAcao($batalha) {
@@ -140,6 +167,7 @@ class BatalhaController extends Controller {
                         ' select ' .
                         '   turno ' .
                         ' from batalha where id = ' . $batalha_id);
+
         $personagem = \DB::select(
                         ' select ' .
                         '   count(*) as contador ' .
@@ -174,6 +202,10 @@ class BatalhaController extends Controller {
             $posicao++;
         }
         return redirect()->back();
+    }
+
+    public function retornaEfeitos() {
+        return json_encode(\DB::select('select * from batalha'));
     }
 
 }

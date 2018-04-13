@@ -5,11 +5,10 @@
         <group>
             <file>file:/D:/Hakozaki/Mnemosine/routes/web.php</file>
             <file>file:/D:/Hakozaki/Mnemosine/app/Batalha.php</file>
-            <file>file:/D:/Hakozaki/Mnemosine/resources/views/magia/detalhe.blade.php</file>
             <file>file:/D:/Hakozaki/Mnemosine/app/Http/Controllers/BatalhaController.php</file>
-            <file>file:/D:/Hakozaki/Mnemosine/resources/views/batalha/modal_detalhe.blade.php</file>
+            <file>file:/D:/Hakozaki/Mnemosine/resources/views/batalha/modal/dano.blade.php</file>
             <file>file:/D:/Hakozaki/Mnemosine/resources/views/batalha/detalhe.blade.php</file>
-            <file>file:/D:/Hakozaki/Mnemosine/app/Batalha_jogador.php</file>
+            <file>file:/D:/Hakozaki/Mnemosine/resources/views/arma/index.blade.php</file>
         </group>
     </open-files>
 </project-private>

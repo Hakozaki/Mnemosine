@@ -138,22 +138,24 @@
                                         <td>{{ $jogador->dano }}</td>                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                                         <td>{{ $jogador->pv - $jogador->dano }}</td>                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                                         <td>
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#danoModal" 
+                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#danoModal" 
                                                     onclick=" preencheDanoModal('<?php echo $jogador->id ?>',
                                                                     '<?php echo $jogador->nome ?>',
                                                                     '<?php echo $batalha->id ?>',
                                                                     '<?php echo $batalha->turno ?>',
                                                                     '<?php echo $batalha->acao ?>')">
-                                                Atacar
-                                            </button>
-                                            <a href="#" class="btn btn-success">Curar</a>
+                                                Ação
+                                            </button>                                            
 
                                             <a class="btn btn-default" href="javascript:confirm('Deseja subir o jogador de posição?') ? 
                                                window.location.href='{{ route('batalha.subirPosicao',[$batalha->id,$jogador->id]) }}' : false">
                                                 <span class="glyphicon glyphicon-arrow-up"></span>
                                             </a>
+                                            <a class="btn btn-default" href="javascript:confirm('Deseja descer o jogador de posição?') ? 
+                                               window.location.href='{{ route('batalha.descerPosicao',$jogador->id) }}' : false">
+                                                <span class="glyphicon glyphicon-arrow-down"></span>
+                                            </a>
 
-                                            <a type="button" class="btn btn-default"><span class="glyphicon glyphicon-arrow-down"></span></a>
                                         </td>
                                     </tr>
                                     @endforeach		
@@ -167,5 +169,5 @@
         </div><!-- panel col-md-12 -->
     </div>
 </div>
-@include('batalha.dano') 
+@include('batalha.modal.dano') 
 @endsection
