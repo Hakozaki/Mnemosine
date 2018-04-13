@@ -65,6 +65,8 @@ class BatalhaController extends Controller {
     }
 
     public function aplicarDano(Request $request) {
+        $dano = $request->input('dano_cura') . $request->input('dano');
+        
         $parametros = ['batalha_id' => $request->input('batalha_id'),
             'turno_id' => $request->input('turno_id'),
             'acao' => $request->input('acao'),
@@ -73,7 +75,7 @@ class BatalhaController extends Controller {
             'efeito' => $request->input('efeito'),
             'duracao_efeito' => $request->input('duracao_efeito'),
             'efeito_ativo' => $request->input('efeito_ativo'),
-            'dano' => ('-' . $request->input('dano')),
+            'dano' => $dano,
         ];
 
         \App\Batalha_turno::create($parametros);

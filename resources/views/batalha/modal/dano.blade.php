@@ -74,7 +74,14 @@
                                             @endforeach
                                         </select>                               
                                     </div>
-                                    <div class="form-group col-md-6 {{ $errors->has('dano') ? 'has-error' : '' }}">
+                                    <div class="form-group col-md-2 {{ $errors->has('dano_cura') ? 'has-error' : '' }}">
+                                        <label for="dano_cura">D/C:</label>
+                                        <select class="form-control" id="dano_cura" name="dano_cura">
+                                            <option value="+" >Dano</option>
+                                            <option value="-" >Cura</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4 {{ $errors->has('dano') ? 'has-error' : '' }}">
                                         <label for="dano">Dano:</label>
                                         <input type="text" name="dano" id="dano" class="form-control" placeholder="Dano">                            
                                     </div>  
@@ -104,8 +111,8 @@
                 </div><!-- container-fluid -->
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="adicionarTurno()" data-dismiss="modal">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="adicionarTurno()" data-dismiss="modal">Salvar</button>
             </div>
         </div>
     </div>
