@@ -65,20 +65,38 @@ class BatalhaController extends Controller {
     }
 
     public function aplicarDano(Request $request) {
-        $dano = $request->input('dano_cura') . $request->input('dano');
-        
+        //dd($request->input('removeEfeito'));
+
+        if ($request->input('jogador_destino') !== "") {
+            $jogador_destino = $request->input('jogador_destino');
+        } else {
+            return redirect()->back();
+        }
+
+        if ($request->input('dano') !== "") {
+            $dano = $request->input('dano_cura') . $request->input('dano');
+        } else {
+            $dano = '0';
+        }
+
         $parametros = ['batalha_id' => $request->input('batalha_id'),
+            'rodada' => $request->input('rodada'),
             'turno_id' => $request->input('turno_id'),
             'acao' => $request->input('acao'),
             'jogador_origem' => $request->input('jogador_origem'),
-            'jogador_destino' => $request->input('jogador_destino'),
+            'jogador_destino' => $jogador_destino,
             'efeito' => $request->input('efeito'),
             'duracao_efeito' => $request->input('duracao_efeito'),
             'efeito_ativo' => $request->input('efeito_ativo'),
             'dano' => $dano,
         ];
 
+
         \App\Batalha_turno::create($parametros);
+
+        if (!empty($request->input('removeEfeito'))) {
+            $this->removeEfeitos($request->input('removeEfeito'));
+        }
 
         $this->incrementaAcao($request->input('batalha_id'));
 
@@ -151,6 +169,12 @@ class BatalhaController extends Controller {
         return redirect()->back();
     }
 
+    public function removeEfeitos($efeitos) {
+        foreach ($efeitos as $efeito) {
+            \DB::update('UPDATE batalha_turno SET efeito_ativo = 0 WHERE id = ' . $efeito);
+        }
+    }
+
     public function incrementaAcao($batalha) {
         \DB::update('UPDATE batalha SET acao = acao + 1 WHERE id = ' . $batalha);
     }
@@ -206,8 +230,22 @@ class BatalhaController extends Controller {
         return redirect()->back();
     }
 
-    public function retornaEfeitos() {
-        return json_encode(\DB::select('select * from batalha'));
+    public function retornaEfeitos($batalha_id, $jogador_id) {
+        return \Response::json(\DB::select(' select '
+                                . ' bt.id, '
+                                . ' bt.turno_id, '
+                                . ' bt.acao, '
+                                . ' bt.jogador_origem, '
+                                . ' p.nome, '
+                                . ' bt.efeito, '
+                                . ' bt.duracao_efeito '
+                                . ' from '
+                                . ' batalha_turno bt '
+                                . 'join personagens p on p.id = bt.jogador_origem '
+                                . 'where '
+                                . ' bt.efeito_ativo = 1 '
+                                . ' and bt.batalha_id = ' . $batalha_id
+                                . ' and bt.jogador_destino = ' . $jogador_id));
     }
 
 }

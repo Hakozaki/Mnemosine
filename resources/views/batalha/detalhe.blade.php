@@ -25,6 +25,17 @@
             $('#linha' + $("#turno").val()).css("fontWeight", "bold");
 
         });
+
+        $('button').click(function () {
+            if ($(this).attr('class').includes('turno')) {
+                var parametros = $(this).val().split('|');
+                console.log('/batalha/retornaEfeitos/' + parametros[0] + '/' + parametros[1]);
+                $.get('/batalha/retornaEfeitos/' + parametros[0] + '/' + parametros[1], function (turnos) {
+                    console.log(turnos);
+                });
+            }
+        });
+
     });
 
     function adicionarPersonagem() {
@@ -139,9 +150,10 @@
                                         <td>{{ $jogador->pv - $jogador->dano  }}</td>                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                                         <td>
                                             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#danoModal" 
-                                                    onclick=" preencheDanoModal('<?php echo $jogador->id ?>',
+                                                    onclick=" preencheDanoModal('<?php echo $jogador->jogador_id ?>',
                                                                     '<?php echo $jogador->nome ?>',
                                                                     '<?php echo $batalha->id ?>',
+                                                                    '<?php echo $batalha->rodada ?>',
                                                                     '<?php echo $batalha->turno ?>',
                                                                     '<?php echo $batalha->acao ?>')">
                                                 Ação
@@ -155,6 +167,12 @@
                                                window.location.href='{{ route('batalha.descerPosicao',$jogador->id) }}' : false">
                                                 <span class="glyphicon glyphicon-arrow-down"></span>
                                             </a>
+
+                                            <button class="btn btn-default turno" id="'<?php echo 'btnJogador' . $jogador->nome ?>'" 
+                                                    name="'<?php echo 'btnJogador' . $jogador->nome ?>'" 
+                                                    value="{{$batalha->id . "|" . $jogador->jogador_id}}" type="button" >
+                                                Turnos
+                                            </button>
 
                                         </td>
                                     </tr>

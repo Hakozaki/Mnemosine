@@ -16,6 +16,7 @@ class CreateBatalhaTurnoTable extends Migration
         Schema::create('batalha_turno', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('batalha_id')->unsigned;
+            $table->integer('rodada');
             $table->integer('turno_id');
             $table->integer('acao');
             $table->integer('jogador_origem')->unsigned;

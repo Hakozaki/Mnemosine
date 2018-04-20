@@ -35,5 +35,4 @@ class Batalha extends Model {
                         ' group by bj.id, p.nome, p.pv ' .
                         ' order by bj.posicao');
     }
-
 }
