@@ -13,7 +13,7 @@ class CreateBatalhaJogadorTable extends Migration
      */
     public function up()
     {
-        Schema::create('batalha_jogador', function (Blueprint $table) {
+        Schema::create('batalha_jogadores', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('batalha_id')->unsigned;
             $table->integer('jogador_id')->unsigned;
@@ -31,6 +31,6 @@ class CreateBatalhaJogadorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('batalha_jogador');
+        Schema::dropIfExists('batalha_jogadores');
     }
 }

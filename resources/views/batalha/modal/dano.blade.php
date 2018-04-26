@@ -3,10 +3,10 @@
     function preencheDanoModal(id, nome, batalha, rodada, turno, acao) {
         document.getElementById('jogador_origem').value = id;
         document.getElementById('jogador_origem_nome').value = nome;
-
+        
         document.getElementById('batalha_id').value = batalha;
         document.getElementById('rodada').value = rodada;
-        document.getElementById('turno_id').value = turno;
+        document.getElementById('_turno').value = turno;
         document.getElementById('acao').value = acao;
     }
 
@@ -41,12 +41,13 @@
 
                     $.each(turnos, function (turnoId, turnoValue) {
                         var row = $('<tr></tr>').attr({class: [].join(' ')}).appendTo($('#tabelaEfeitos'));
-                        $('<td></td>').text(turnoValue.turno_id).appendTo(row);
+                        $('<td></td>').text(turnoValue.rodada).appendTo(row);
+                        $('<td></td>').text(turnoValue.turno).appendTo(row);
                         $('<td></td>').text(turnoValue.acao).appendTo(row);
                         $('<td></td>').text(turnoValue.nome).appendTo(row);
                         $('<td></td>').text(turnoValue.efeito).appendTo(row);
                         $('<td></td>').text(turnoValue.duracao_efeito).appendTo(row);
-                        $('<td></td>').html('<input type="checkbox" name="removeEfeito[]" id="removeEfeito[]" value="' + turnoValue.id + '"/>').appendTo(row);
+                        $('<td></td>').html('<input type="checkbox" name="removeEfeito[]" id="removeEfeito[]" value="' + turnoId + '"/>').appendTo(row);
                     });
                 });
             }
@@ -69,11 +70,12 @@
                     <div class="row">
                         <div class="col-md-12">
                             <form method="post" name="frmModalDano" id="frmModalDano">
-                                {{ csrf_field() }}    
-                                <input type="hidden" name="batalha_id" id="batalha_id">
-                                <input type="hidden" name="rodada" id="rodada">
-                                <input type="hidden" name="turno_id" id="turno_id">
-                                <input type="hidden" name="acao" id="acao">
+                                {{ csrf_field() }}   
+                                
+                                <input type="hidden" name="batalha_id" id="batalha_id"/>
+                                <input type="hidden" name="rodada" id="rodada"/>
+                                <input type="hidden" name="_turno" id="_turno"/>                                
+                                <input type="hidden" name="acao" id="acao"/>
 
                                 <div class="row">
                                     <div class="form-group col-md-3 {{ $errors->has('jogador_origem') ? 'has-error' : '' }}">
@@ -90,8 +92,8 @@
                                         <label for="jogador_destino">Jogador Destino:</label>
                                         <select name="jogador_destino" id="jogador_destino" class="form-control selectpicker" data-live-search="true">                                       
                                             <option class="form-control" ></option>
-                                            @foreach($batalha->personagens() as $key => $personagem)                                                                
-                                            <option value="{{$personagem->id}}"  class="form-control" data-tokens="{{ $personagem->nome }}">{{ $personagem->nome}}</option>                                
+                                            @foreach($batalha->jogadores() as $key => $personagem)                                                                
+                                            <option value="{{$personagem->jogador_id}}"  class="form-control" data-tokens="{{ $personagem->nome }}">{{ $personagem->nome}}</option>                                
                                             @endforeach
                                         </select>                               
                                     </div>
@@ -130,6 +132,7 @@
                                     <table id="tabelaEfeitos" name="tabelaEfeitos" class="table table-bordered">
                                         <thead>
                                             <tr>                                        
+                                                <th>Rodada</th>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
                                                 <th>Turno</th>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
                                                 <th>Ação</th>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
                                                 <th>Jogador Origem</th>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               

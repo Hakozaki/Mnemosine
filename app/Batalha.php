@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Batalha extends Model {
 
-    protected $table = 'batalha';
-    protected $fillable = ['usuario_id', 'rodada', 'turno', 'data'];
+    protected $table = 'batalhas';
+    protected $fillable = ['usuario_id', 'rodada', 'turno', 'acao', 'data'];
     protected $casts = [
         'id' => 'integer'
     ];
@@ -24,10 +24,10 @@ class Batalha extends Model {
                         '   p.pv, ' .
                         '   sum(bt.dano) as DANO ' .
                         ' from ' .
-                        '   batalha_jogador bj ' .
+                        '   batalha_jogadores bj ' .
                         ' join personagens p on ' .
                         '   p.id = bj.jogador_id ' .
-                        ' left join batalha_turno bt on ' .
+                        ' left join batalha_turnos bt on ' .
                         '   bt.jogador_destino = bj.jogador_id and ' .
                         '   bt.batalha_id = bj.batalha_id' .
                         ' where ' .
@@ -35,4 +35,5 @@ class Batalha extends Model {
                         ' group by bj.id, p.nome, p.pv ' .
                         ' order by bj.posicao');
     }
+
 }

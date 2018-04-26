@@ -13,11 +13,11 @@ class CreateBatalhaTurnoTable extends Migration
      */
     public function up()
     {
-        Schema::create('batalha_turno', function (Blueprint $table) {
+        Schema::create('batalha_turnos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('batalha_id')->unsigned;
             $table->integer('rodada');
-            $table->integer('turno_id');
+            $table->integer('turno');
             $table->integer('acao');
             $table->integer('jogador_origem')->unsigned;
             $table->integer('jogador_destino')->unsigned;
@@ -36,6 +36,6 @@ class CreateBatalhaTurnoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('batalha_turno');
+        Schema::dropIfExists('batalha_turnos');
     }
 }

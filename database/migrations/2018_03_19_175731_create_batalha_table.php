@@ -13,7 +13,7 @@ class CreateBatalhaTable extends Migration
      */
     public function up()
     {
-        Schema::create('batalha', function (Blueprint $table) {
+        Schema::create('batalhas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('usuario_id')->unsigned;
             $table->integer('rodada')->nullable();
@@ -31,6 +31,6 @@ class CreateBatalhaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('batalha');
+        Schema::dropIfExists('batalhas');
     }
 }

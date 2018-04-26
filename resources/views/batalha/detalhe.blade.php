@@ -28,10 +28,22 @@
 
         $('button').click(function () {
             if ($(this).attr('class').includes('turno')) {
+                $('#tabelaTurnos tbody tr').remove();
+
                 var parametros = $(this).val().split('|');
-                console.log('/batalha/retornaEfeitos/' + parametros[0] + '/' + parametros[1]);
-                $.get('/batalha/retornaEfeitos/' + parametros[0] + '/' + parametros[1], function (turnos) {
-                    console.log(turnos);
+
+                $.get('/batalha/retornaTurnos/' + parametros[0] + '/' + parametros[1], function (turnos) {
+                    $.each(turnos, function (turnoId, turnoValue) {
+                        var row = $('<tr></tr>').attr({class: [].join(' ')}).appendTo($('#tabelaTurnos'));
+                        $('<td></td>').text(turnoValue.rodada).appendTo(row);
+                        $('<td></td>').text(turnoValue.turno).appendTo(row);
+                        $('<td></td>').text(turnoValue.acao).appendTo(row);
+                        $('<td></td>').text(turnoValue.jogadororigem).appendTo(row);
+                        $('<td></td>').text(turnoValue.jogadordestino).appendTo(row);
+                        $('<td></td>').text(turnoValue.dano).appendTo(row);
+                        $('<td></td>').text(turnoValue._efeito).appendTo(row);
+                        $('<td></td>').text(turnoValue.duracao_efeito).appendTo(row);
+                    });
                 });
             }
         });
@@ -84,7 +96,7 @@
                             <div class="form-group col-md-3 {{ $errors->has('turno') ? 'has-error' : '' }}">
                                 <label for="turno">Turno:</label>
                                 <div class="input-group">
-                                    <input type="text" id="turno" name="turno" class="form-control" value="{{ $batalha->turno }}" placeholder="Turno" readonly>                            
+                                    <input type="text" name="turno" id="turno" class="form-control" value="{{ $batalha->turno }}" placeholder="Turno" readonly>                            
                                     <span class="input-group-btn">                                                                                                                                                                                
                                         <a class="btn btn-default" href="javascript:confirm('Proximo turno?') ? 
                                            window.location.href='{{ route('batalha.passaTurno',$batalha->id) }}' : false">Passar Turno</a>                                        
@@ -169,7 +181,7 @@
                                             </a>
 
                                             <button class="btn btn-default turno" id="'<?php echo 'btnJogador' . $jogador->nome ?>'" 
-                                                    name="'<?php echo 'btnJogador' . $jogador->nome ?>'" 
+                                                    name="'<?php echo 'btnJogador' . $jogador->nome ?>'" data-toggle="modal" data-target="#turnoModal"  
                                                     value="{{$batalha->id . "|" . $jogador->jogador_id}}" type="button" >
                                                 Turnos
                                             </button>
@@ -188,4 +200,5 @@
     </div>
 </div>
 @include('batalha.modal.dano') 
+@include('batalha.modal.turno') 
 @endsection

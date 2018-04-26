@@ -77,6 +77,8 @@ Route::get('/batalha/passaRodada/{batalha_id?}', ['uses' => 'BatalhaController@p
 Route::get('/batalha/subirPosicao/{batalha_id?}/{id?}', ['uses' => 'BatalhaController@subirPosicao', 'as' => 'batalha.subirPosicao']);
 Route::get('/batalha/descerPosicao/{id?}', ['uses' => 'BatalhaController@descerPosicao', 'as' => 'batalha.descerPosicao']);
 Route::get('/batalha/retornaEfeitos/{batalha_id?}/{jogador_id?}', ['uses' => 'BatalhaController@retornaEfeitos', 'as' => 'batalha.retornaEfeitos']);
+Route::get('/batalha/retornaTurnos/{batalha_id?}/{jogador_id?}', ['uses' => 'BatalhaController@retornaTurnos', 'as' => 'batalha.retornaTurnos']);
+Route::get('/batalha/resetaEfeitos/{batalha_id?}', ['uses' => 'BatalhaController@resetaEfeitos', 'as' => 'batalha.resetaEfeitos']);
 
 Auth::routes();
 
