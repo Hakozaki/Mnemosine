@@ -70,7 +70,6 @@ Route::post('/batalha/salvar', ['uses' => 'BatalhaController@salvar', 'as' => 'b
 Route::get('/batalha/criaPartida', ['uses' => 'BatalhaController@criaPartida', 'as' => 'batalha.criaPartida']);
 Route::post('/batalha/adicionarPersonagem', ['uses' => 'BatalhaController@adicionarPersonagem', 'as' => 'batalha.adicionarPersonagem']);
 Route::post('/batalha/aplicarDano', ['uses' => 'BatalhaController@aplicarDano', 'as' => 'batalha.aplicarDano']);
-Route::post('/batalha/aplicarCura', ['uses' => 'BatalhaController@aplicarCura', 'as' => 'batalha.aplicarCura']);
 Route::get('/batalha/ordenarIniciativa/{batalha_id?}', ['uses' => 'BatalhaController@ordenarIniciativa', 'as' => 'batalha.ordenarIniciativa']);
 Route::get('/batalha/passaTurno/{batalha_id?}', ['uses' => 'BatalhaController@passaTurno', 'as' => 'batalha.passaTurno']);
 Route::get('/batalha/passaRodada/{batalha_id?}', ['uses' => 'BatalhaController@passaRodada', 'as' => 'batalha.passaRodada']);
@@ -79,6 +78,12 @@ Route::get('/batalha/descerPosicao/{id?}', ['uses' => 'BatalhaController@descerP
 Route::get('/batalha/retornaEfeitos/{batalha_id?}/{jogador_id?}', ['uses' => 'BatalhaController@retornaEfeitos', 'as' => 'batalha.retornaEfeitos']);
 Route::get('/batalha/retornaTurnos/{batalha_id?}/{jogador_id?}', ['uses' => 'BatalhaController@retornaTurnos', 'as' => 'batalha.retornaTurnos']);
 Route::get('/batalha/resetaEfeitos/{batalha_id?}', ['uses' => 'BatalhaController@resetaEfeitos', 'as' => 'batalha.resetaEfeitos']);
+
+Route::get('/acompanhaBatalha', ['uses' => 'AcompanhaBatalhaController@index', 'as' => 'acompanhaBatalha.index']);
+Route::get('/acompanhaBatalha/detalhe/{batalha?}', ['uses' => 'AcompanhaBatalhaController@detalhe', 'as' => 'acompanhaBatalha.detalhe']);
+Route::get('/acompanhaBatalha/retornaJogadores/{batalha_id?}', ['uses' => 'AcompanhaBatalhaController@retornaJogadores', 'as' => 'acompanhaBatalha.retornaJogadores']);
+Route::get('/acompanhaBatalha/retornaTurnos/{batalha_id?}', ['uses' => 'AcompanhaBatalhaController@retornaTurnos', 'as' => 'acompanhaBatalha.retornaTurnos']);
+Route::get('/acompanhaBatalha/retornaBatalha/{batalha_id?}', ['uses' => 'AcompanhaBatalhaController@retornaBatalha', 'as' => 'acompanhaBatalha.retornaBatalha']);
 
 Auth::routes();
 

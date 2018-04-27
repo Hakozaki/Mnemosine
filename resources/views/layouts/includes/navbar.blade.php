@@ -45,6 +45,12 @@
                         Batalha 
                     </a>
                 </li>
+                
+                <li>
+                    <a href="{{ route("acompanhaBatalha.index") }}" >
+                       Acompanha Batalha 
+                    </a>
+                </li>
                 @endif
             </ul>
 
