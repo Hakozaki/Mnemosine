@@ -164,6 +164,7 @@
                                             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#danoModal" 
                                                     onclick=" preencheDanoModal('<?php echo $jogador->jogador_id ?>',
                                                                     '<?php echo $jogador->nome ?>',
+                                                                    '<?php echo $jogador->id ?>',
                                                                     '<?php echo $batalha->id ?>',
                                                                     '<?php echo $batalha->rodada ?>',
                                                                     '<?php echo $batalha->turno ?>',
@@ -190,7 +191,10 @@
                                     </tr>
                                     @endforeach		
                                 </tbody>
-                            </table>                                                        
+                            </table>    
+                            <div align="center">
+                                {!! $batalhas->links(); !!}
+                            </div>
                         </div>
                         <!-- Painel de USUÁRIO -->
                     </form>

@@ -4,19 +4,26 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Arma extends Model {
-    protected $fillable = ['nome', 'descricao', 'categoria', 'subCategoria', 'tipo',
+class Arma extends Model
+{
+    protected $fillable = [
+        'nome', 'descricao', 'categoria', 'subCategoria', 'tipo',
         'subTipo', 'custo', 'dano', 'incrementoDecisivo', 'distancia',
-        'peso', 'tipoDano', 'classe'];
-    
-    
-    
-   
+        'peso', 'tipoDano', 'classe'
+    ];
+
+    /**
+     *  Atributo referente rota.  
+     */
+    public $pagina = 'arma';
+
+
     /**
      * Retorna as categorias contidas na classe ExtArma
      * @return Array Categorias setadas.
      */
-    public function categorias() {
+    public function categorias()
+    {
         return Auxiliar::categoriaArma();
     }
 
@@ -24,7 +31,8 @@ class Arma extends Model {
      * Retorna as Sub-Categorias contidas na classe ExtArma
      * @return Array Sub-Categorias setadas.
      */
-    public function subCategorias() {
+    public function subCategorias()
+    {
         return Auxiliar::subCategoriaArma();
     }
 
@@ -32,7 +40,8 @@ class Arma extends Model {
      * Retorna as Tipos contidas na classe ExtArma
      * @return Array Tipos setadas.
      */
-    public function tipos() {
+    public function tipos()
+    {
         return Auxiliar::tipoArma();
     }
 
@@ -40,7 +49,8 @@ class Arma extends Model {
      * Retorna as Sub-Tipos contidas na classe ExtArma
      * @return Array Sub-Tipos setadas.
      */
-    public function subTipos() {
+    public function subTipos()
+    {
         return Auxiliar::subTipoArma();
     }
 
@@ -48,7 +58,8 @@ class Arma extends Model {
      * Retorna os Tipos de dano contidos na classe ExtArma
      * @return Array Tipo de dano setadas.
      */
-    public function tipoDanos() {
+    public function tipoDanos()
+    {
         return Auxiliar::tipoDanoArma();
     }
 
@@ -57,7 +68,8 @@ class Arma extends Model {
      * @param String $categoria Categoria cadastrada no banco
      * @return Retorna o nome da categoria
      */
-    public function _categoria($categoria) {
+    public function _categoria($categoria)
+    {
         if ($categoria == null) {
             return "";
         } else {
@@ -70,7 +82,8 @@ class Arma extends Model {
      * @param String $subCategoria Sub-Categoria cadastrada no banco
      * @return Retorna o nome da Sub-Categoria
      */
-    public function _subCategoria($subCategoria) {
+    public function _subCategoria($subCategoria)
+    {
         if ($subCategoria == null) {
             return "";
         } else {
@@ -83,7 +96,8 @@ class Arma extends Model {
      * @param String $tipo Tipo cadastrada no banco
      * @return Retorna o nome da Tipo
      */
-    public function _tipo($tipo) {
+    public function _tipo($tipo)
+    {
         if ($tipo == null) {
             return "";
         } else {
@@ -96,7 +110,8 @@ class Arma extends Model {
      * @param String $subTipo Sub-Tipo cadastrada no banco
      * @return Retorna o nome da Sub-Tipo
      */
-    public function _subTipo($subTipo) {
+    public function _subTipo($subTipo)
+    {
         if ($subTipo == null) {
             return "";
         } else {
@@ -109,7 +124,8 @@ class Arma extends Model {
      * @param String $tipoDano Tipo de dano cadastrada no banco
      * @return Retorna o nome da Tipo de dano
      */
-    public function _tipoDano($tipoDano) {
+    public function _tipoDano($tipoDano)
+    {
         if ($tipoDano == null) {
             return "";
         } else {

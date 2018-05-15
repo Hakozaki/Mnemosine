@@ -161,6 +161,8 @@ class Personagem extends Model {
         }
     }
 
+    //----------------------------------------- Inicio Sets --------------------------------------------------
+    
     /**
      * Verifica se o valor do atributo e vario ou nulo     
      * @param string $valor Valor a ser verificado

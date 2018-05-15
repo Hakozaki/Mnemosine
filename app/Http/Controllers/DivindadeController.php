@@ -4,47 +4,53 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DivindadeController extends Controller {
+class DivindadeController extends _Controller
+{
 
-    public function __construct() {
-        $this->middleware('auth');
+    public function __construct()
+    {
+        parent::__construct(\App\Divindade::class);
     }
 
-    public function index() {
-        $divindades = \App\Divindade::paginate(10);
-
-        return view('divindade.index', compact('divindades'));
-    }
-
-    public function detalhe(\App\Divindade $divindade) {
-        return view('divindade.detalhe', compact('divindade'));
-    }
-
-    public function salvar(Request $request) {
-        //dd($request->all());
-        $id = $request->id;       
+    public function salvar(Request $request)
+    {
+        $id = $request->id;
         if (empty($id)) {
-            $divindade = \App\Divindade::create($request->all());
+            try {
+                $divindade = \App\Divindade::create($request->all());
+                $this->mensagem('cadastroSucesso', ' ' . $divindade->nome);
+            } catch (\Exception $e) {
+                $this->mensagem('erroCadastro', ' ao cadastrar.');
+                $this->consoleLog($e->getMessage());
+            }
         } else {
-            $divindade = \App\Divindade::find($id);
-            $divindade->update($request->all());
+            try {
+                $divindade = \App\Divindade::find($id);
+                $divindade->update($request->all());
+                $this->mensagem('atualizacaoSucesso', ' ' . $divindade->nome);
+            } catch (\Exception $e) {
+                $this->mensagem('erroCadastro', ' ao atualizar.');
+                $this->consoleLog($e->getMessage());
+            }
+
         }
 
         $dominios = $request->dominios;
 
         if (!is_null($dominios)) {
             foreach ($dominios as $key => $value) {
-                $dominio = \App\Dominio::find($key);
-                $divindade->adicionaDominio($dominio);
+                try {
+                    $dominio = \App\Dominio::find($key);
+                    $divindade->adicionaDominio($dominio);
+                } catch (\Exception $e) {                    
+                    $this->consoleLog($e->getMessage());
+                }
+
             }
         }
 
         return redirect()->route('divindade.index');
     }
 
-    public function deletar(\App\Divindade $divindade) {
-        $divindade->delete();
-        return redirect()->route('divindade.index');
-    }
 
 }

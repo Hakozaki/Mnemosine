@@ -9,6 +9,11 @@ class Divindade extends Model {
     protected $fillable = ['nome', 'descricao', 'tendencia', 'alinhamento', 'observacao', 'panteao', 'aspectos', 'dogma'];
 
     /**
+     *  Atributo referente rota.  
+     */
+    public $pagina = 'divindade';
+
+    /**
      * 
      * @return Array Retorna os dominios relacionados a divindade
      */

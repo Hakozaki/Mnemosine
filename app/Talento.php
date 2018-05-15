@@ -8,6 +8,11 @@ class Talento extends Model {
 
     protected $fillable = ['nome', 'tipo', 'talentoHabilidade', 'descricao', 'observacao', 'preRequisito',
         'beneficio', 'normal', 'especial'];
+    
+    /**
+     *  Atributo referente rota.  
+     */
+    public $pagina = 'talento';
 
     /**
      * Retorna as escolas contidas na classe ExtMagia

@@ -1,8 +1,9 @@
 <script>
 
-    function preencheDanoModal(id, nome, batalha, rodada, turno, acao) {
+    function preencheDanoModal(id, nome, turno_id ,batalha, rodada, turno, acao) {
         document.getElementById('jogador_origem').value = id;
         document.getElementById('jogador_origem_nome').value = nome;
+        document.getElementById('jogador_origem_turno').value = turno_id;
         
         document.getElementById('batalha_id').value = batalha;
         document.getElementById('rodada').value = rodada;
@@ -76,6 +77,7 @@
                                 <input type="hidden" name="rodada" id="rodada"/>
                                 <input type="hidden" name="_turno" id="_turno"/>                                
                                 <input type="hidden" name="acao" id="acao"/>
+                                <input type="hidden" name="jogador_origem_turno" id="jogador_origem_turno"/>
 
                                 <div class="row">
                                     <div class="form-group col-md-3 {{ $errors->has('jogador_origem') ? 'has-error' : '' }}">

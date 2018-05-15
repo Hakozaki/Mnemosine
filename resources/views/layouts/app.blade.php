@@ -18,10 +18,23 @@
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
-        ]); ?>
+                            'csrfToken' => csrf_token(),
+                        ]); ?>
     </script>
 </head>
+
+<!-- import jquery  -->
+<script src="/js/jquery-3.1.1.min.js"></script>
+<!-- -->
+<script>
+    jQuery(function ($) {
+        $(".alertPrincipal").delay(4000).slideUp(200, function() {
+            //console.log($(this));            
+            //$(this).alert('dispose');                        
+        });
+    });
+</script>
+
 <body>
     <div id="app">
         @include('layouts.includes.navbar')
@@ -29,14 +42,14 @@
         @if(Session::has('flash_message'))
             <div class="container">
                 <div class="row">
-                    <div class="col-md-10 col-md-offset-1">
-                        <div align="center" class=" alert {{ Session::get('flash_message')['class'] }}">
-                                {{ Session::get('flash_message')['msg'] }}
+                    <div class="col-md-12">
+                        <div align="center" class="alertPrincipal alert {{ Session::get('flash_message')['class'] }}">
+                             <strong>{{ Session::get('flash_message')['label'] }} !   </strong>   {{ Session::get('flash_message')['msg'] }}
                         </div>
                     </div>
                 </div>
             </div>
-	@endif
+	    @endif
         
         @yield('content')
     </div>

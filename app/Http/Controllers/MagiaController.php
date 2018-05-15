@@ -3,42 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Auxiliar;
+use App\Magia;
 
-class MagiaController extends Controller {
+class MagiaController extends _Controller
+{
 
-    public function __construct() {
-        $this->middleware('auth');
+    public function __construct()
+    {
+        parent::__construct(Magia::class);
     }
 
-    public function index() {
-        $magias = \App\Magia::paginate(10);
-
-        return view('magia.index', compact('magias'));
-    }
-
-    public function detalhe(\App\Magia $magia) {
-        return view('magia.detalhe', compact('magia'));
-    }
-
-    public function salvar(Request $request) {
-        $id = $request->id;        
-        //dd($request->all());        
-        if(empty($id)){            
-            \App\magia::create($request->all());                       
-        }else{
-            $magia = \App\magia::find($id);    
-            $magia->update($request->all());
-        }               
-        return redirect()->route('magia.index');
-    }
-
-    public function deletar(\App\Magia $magia) {  
-        $magia->delete();            
-        return redirect()->route('magia.index');
-    }     
-    
-    public function descritores(){
-        return \App\Auxiliar::descritorMagia();
+    /**
+     * Função que retorna os descritores da classe auxiliar
+     *
+     * @return Array Lista de descritores de magia 
+     */
+    public function descritores()
+    {
+        return Auxiliar::descritorMagia();
     }
 
 }
